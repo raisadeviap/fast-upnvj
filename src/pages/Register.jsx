@@ -105,3 +105,5 @@ function Register() {
 }
 
 export default Register;
+
+// Clipboard
