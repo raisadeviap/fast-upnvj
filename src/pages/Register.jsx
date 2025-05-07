@@ -30,13 +30,13 @@ function Register() {
               htmlFor="lastName"
               className="block mb-1 font-medium text-zinc-900"
             >
-              Last Name
+              NIM
             </label>
             <input
               type="text"
-              id="lastName"
+              id="nim"
               className="w-full px-4 py-2.5 border rounded-2xl focus:outline-none text-neutral-600 border-neutral-300 focus:border-neutral-500 transition-all duration-300"
-              placeholder="Enter your last name"
+              placeholder="Enter your NIM"
             />
           </div>
 
