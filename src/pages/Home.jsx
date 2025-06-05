@@ -131,7 +131,7 @@ function Footer() {
       {/* Tengah: Social media */}
       <div className="flex flex-col items-center w-full md:w-auto">
         <h6 className="uppercase text-sm text-white font-semibold mb-3">Social</h6>
-        <div className="flex space-x-4">
+        <div className="flex space-x-5">
           {/* Twitter */}
           <a href="#" aria-label="Twitter" className="hover:text-gray-200 transition">
             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 fill-current" viewBox="0 0 24 24">
