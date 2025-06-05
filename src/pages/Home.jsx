@@ -117,22 +117,40 @@ function Navbar() {
 
 function Footer() {
   return (
-    <footer className="footer sm:footer-horizontal bg-accent text-accent-content p-10 mt-16">
-      <aside>
-        <img src={Logo} alt="UPN Logo" width={50} height={50} className="mb-2" />
-        <p>
-          FAST UPNVJ<br />
-          Website Peminjaman Fasilitas Kampus UPNVJ
-        </p>
-      </aside>
-      <nav>
-        <h6 className="footer-title">Social</h6>
-        <div className="grid grid-flow-col gap-4">
-          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="..." /></svg></a>
-          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="..." /></svg></a>
-          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="..." /></svg></a>
+    <footer className="bg-green-700 text-white px-10 py-10 mt-16 flex flex-col md:flex-row justify-between items-center">
+      {/* Kiri: Logo dan teks */}
+      <div className="flex items-start space-x-4 mb-6 md:mb-0">
+        <img src={Logo} alt="UPN Logo" width={60} height={60} className="shrink-0" />
+        <div>
+          <p className="font-semibold">FAST UPNVJ</p>
+          <p className="text-sm">Website Peminjaman Fasilitas Kampus UPNVJ</p>
         </div>
-      </nav>
+      </div>
+
+      {/* Tengah: kosong untuk spacing (optional) */}
+      <div className="hidden md:block flex-1" />
+
+      {/* Kanan: Social media */}
+      <div className="text-center">
+        <h6 className="uppercase text-sm text-gray-300 mb-2">Social</h6>
+        <div className="flex justify-center space-x-4">
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-6 h-6" viewBox="0 0 24 24">
+              <path d="M24 4.557a9.93 9.93 0 0 1-2.828.775..." />
+            </svg>
+          </a>
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-6 h-6" viewBox="0 0 24 24">
+              <path d="M19.615 3.184A3.16 3.16 0 0 0..." />
+            </svg>
+          </a>
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-6 h-6" viewBox="0 0 24 24">
+              <path d="M22.675 0h-21.35C.597 0 0..." />
+            </svg>
+          </a>
+        </div>
+      </div>
     </footer>
   );
 }
@@ -204,8 +222,6 @@ export default function HomePage() {
     </div>
   ))}
 </main>
-
-
       </div>
       <Footer />
     </div>
