@@ -177,7 +177,7 @@ export default function HomePage() {
 
         </aside>
 
-        <main className="flex-1 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+       <main className="flex-1 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
   {Fasilitas.map((item, index) => (
     <div
       key={index}
@@ -191,17 +191,13 @@ export default function HomePage() {
             className="w-full h-44 object-cover"
           />
         )}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-2">
-          <p className="text-xs text-white text-left truncate">{item.gedung}</p>
-        </div>
-        <span className="absolute top-2 right-2 bg-[#5dac00] text-white text-xs font-semibold px-2 py-1 rounded-full shadow">
-          {item.kapasitas}
-        </span>
       </div>
       <div className="p-4 text-center">
         <h3 className="text-lg font-bold text-gray-800 group-hover:text-[#5dac00] transition">
           {item.title}
         </h3>
+        <p className="text-sm text-gray-600 mb-1">Gedung: {item.gedung}</p>
+        <p className="text-sm text-gray-500">Kapasitas: {item.kapasitas}</p>
       </div>
     </div>
   ))}
