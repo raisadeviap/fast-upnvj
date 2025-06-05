@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import logo from "../assets/UPN.png";
 
 const userName = "Mahasiswa UPNVJ";
 
