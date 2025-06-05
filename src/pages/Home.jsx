@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion"; // pastikan path ini sesuai
+import { motion } from "framer-motion";
 
 const userName = "Mahasiswa UPNVJ";
 
