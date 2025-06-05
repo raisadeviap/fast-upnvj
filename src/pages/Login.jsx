@@ -1,35 +1,111 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import TogglePassword from "../components/TogglePassword";
 
 function Login() {
+  const [toast, setToast] = useState({
+    message: "",
+    type: "", // success, error, info
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    nim: "",
+    password: "",
+  });
+
+  console.log("Login form data:", formData);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    setToast({
+      message: "",
+      type: "",
+    });
+
+    if (!formData.nim || !formData.password) {
+      setToast({
+        message: "NIM dan password harus diisi!",
+        type: "error",
+      });
+
+      setTimeout(() => {
+        setToast({
+          message: "",
+          type: "",
+        });
+      }, 3000);
+      return;
+    }
+
+    setLoading(true);
+
+    // Simulasi proses login
+    setTimeout(() => {
+      setLoading(false);
+      if (formData.nim === "2310512" && formData.password === "password") {
+        setToast({
+          message: "Login berhasil!",
+          type: "success",
+        });
+        // Redirect ke halaman dashboard atau halaman lain
+      } else {
+        setToast({
+          message: "NIM atau password salah!",
+          type: "error",
+        });
+      }
+      setTimeout(() => {
+        setToast({
+          message: "",
+          type: "",
+        });
+      }, 3000);
+    }, 3000);
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-base-100" data-theme="light">
       <Navbar />
       <div className="flex flex-1 items-center justify-center bg-[#f8f8f8] py-12">
+        {toast.message && (
+          <div className="toast toast-top toast-center z-50">
+            <div className={`alert alert-${toast.type} shadow-lg`}>
+              <span>{toast.message}</span>
+            </div>
+          </div>
+        )}
         <div className="bg-white p-8 rounded-2xl border border-[#f1f1f2] w-full max-w-lg m-1">
           <h1 className="text-2xl font-bold text-center mb-6 text-zinc-900">
             Login
           </h1>
           <div className="flex justify-center mb-6">
-            <img src="src/assets/UPN.png" alt="UPN Logo" className="h-32 w-auto" />
+            <img
+              src="src/assets/UPN.png"
+              alt="UPN Logo"
+              className="h-32 w-auto"
+            />
           </div>
 
-
-          <form>
+          <div>
             <div className="mb-4">
               <label
-                htmlFor="username"
+                htmlFor="nim"
                 className="block mb-1 font-medium text-zinc-900"
               >
-                Username
+                NIM
               </label>
               <input
-                type="text"
-                id="username"
-                className="w-full px-4 py-2.5 border rounded-2xl focus:outline-none text-neutral-600 border-neutral-300 focus:border-neutral-500 transition-all duration-300"
-                placeholder="Enter your username"
+                type="number"
+                id="nim"
+                className="w-full px-4 py-2.5 border rounded-2xl focus:outline-none text-neutral-600 border-neutral-300 focus:border-neutral-500 transition-all duration-300 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                placeholder="Masukkan NIM"
+                onChange={(e) =>
+                  setFormData({ ...formData, nim: e.target.value })
+                }
+                required
               />
             </div>
 
@@ -40,21 +116,35 @@ function Login() {
               >
                 Password
               </label>
-              <input
-                type="password"
-                id="password"
-                className="w-full px-4 py-2.5 border rounded-2xl focus:outline-none text-neutral-600 border-neutral-300 focus:border-neutral-500 transition-all duration-300"
-                placeholder="Enter your password"
-              />
+              <div className="relative w-full">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  className="w-full px-4 py-2.5 border rounded-2xl focus:outline-none text-neutral-600 border-neutral-300 focus:border-neutral-500 transition-all duration-300"
+                  placeholder="Masukkan password"
+                  onChange={(e) =>
+                    setFormData({ ...formData, password: e.target.value })
+                  }
+                  required
+                />
+                <TogglePassword
+                  showPassword={showPassword}
+                  onToggle={() => setShowPassword((prev) => !prev)}
+                />
+              </div>
             </div>
 
             <button
-              type="submit"
-              className="w-full bg-lime-600 text-white mt-2 py-2.5 px-4 rounded-2xl hover:bg-lime-700 transition-all duration-300 cursor-pointer shadow-sm"
+              onClick={handleLogin}
+              className="btn btn-primary btn-sm md:btn-md w-full mt-2"
             >
-              Login
+              {loading ? (
+                <span className="loading loading-dots loading-sm"></span>
+              ) : (
+                "Login"
+              )}
             </button>
-          </form>
+          </div>
 
           <p className="mt-4 text-center text-sm text-zinc-900">
             Belum punya akun?{" "}
