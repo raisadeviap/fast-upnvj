@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CountUp from "react-countup";
 import Footer from "../components/Footer";
-import LogoUPN from "../assets/UPN.png"; // sesuaikan dengan file yang ada
 
 function HomePage() {
   const navigate = useNavigate();
@@ -33,11 +32,6 @@ function HomePage() {
       <main className="container mx-auto px-6 py-10">
         {/* Logo & Header */}
         <div className="flex items-center justify-center mb-6">
-          <img
-            src={LogoUPN}
-            alt="Logo Universitas Pembangunan Nasional Veteran Jakarta"
-            className="w-12 h-12 mr-3"
-          />
           <h1 className="text-2xl font-bold text-primary">Sistem Fast UPNVJ</h1>
         </div>
 
