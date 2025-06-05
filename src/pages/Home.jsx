@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import HomeIllustration from "../assets/img2.svg";
@@ -17,7 +17,8 @@ function HomePage() {
             Selamat Datang di Fast UPNVJ
           </h1>
           <p className="text-lg text-base-content/80 max-w-2xl mx-auto">
-            Satu platform terpadu untuk mengelola seluruh peminjaman fasilitas kampus dengan efisien dan transparan.
+            Satu platform terpadu untuk mengelola seluruh peminjaman fasilitas
+            kampus dengan efisien dan transparan.
           </p>
         </section>
 
@@ -66,14 +67,19 @@ function HomePage() {
               <div className="card-body items-center text-center">
                 <div className="text-5xl mb-3">📌</div>
                 <h3 className="card-title">Notifikasi & Reminder</h3>
-                <p>Dapatkan pemberitahuan terkait jadwal dan konfirmasi otomatis.</p>
+                <p>
+                  Dapatkan pemberitahuan terkait jadwal dan konfirmasi otomatis.
+                </p>
               </div>
             </div>
             <div className="card bg-base-200 shadow-md">
               <div className="card-body items-center text-center">
                 <div className="text-5xl mb-3">🔍</div>
                 <h3 className="card-title">Pencarian Cepat</h3>
-                <p>Temukan fasilitas yang tersedia sesuai kebutuhanmu hanya dalam beberapa klik.</p>
+                <p>
+                  Temukan fasilitas yang tersedia sesuai kebutuhanmu hanya dalam
+                  beberapa klik.
+                </p>
               </div>
             </div>
           </div>
