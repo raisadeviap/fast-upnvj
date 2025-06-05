@@ -2,50 +2,20 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/UPN.png";
 
-const categories = [
-  'Elektronik',
-  'Konsol Game',
-  'Aksesoris Konsol',
-  'Alat Casting',
-  'Foot Bath & Spa',
-  'Mesin Jahit & Aksesoris',
-  'Lainnya'
+const Fasilitas = [
+  { title: 'Auditorium Bhineka Tunggal Ika', kapasitas: '300 orang', gedung: 'Plaza Soedirman' },
+  { title: 'Auditorium Wahidin Sudiro Husodo', kapasitas: '100 orang', gedung: 'Wahidin Sudiro Husodo' },
+  { title: 'Auditorium Dr. Cipto Mangun Kusumo', kapasitas: '200 orang', gedung: 'Dr. Cipto Mangun Kusumo' },
+  { title: 'Auditorium MERCe', kapasitas: '100 orang', gedung: 'MERCe Kampus Limo' },
+  { title: 'Ruang Podcast FH', kapasitas: '5 orang', gedung: 'Yos Sudarso' },
+  { title: 'Ruang Podcast FIK', kapasitas: '5 orang', gedung: 'Ki Hajar Dewantara' },
+  { title: 'Ruang Podcast FIKES', kapasitas: '5 orang', gedung: 'FIKES Kampus Limo' },
+  { title: 'Lab Terpadu', kapasitas: '50 orang', gedung: 'Perpustakaan Lt. 2' },
+  { title: 'Ubin Cokelat', kapasitas: '200 orang', gedung: 'FEB Kampus Pondok Labu' },
+  { title: 'Lapangan Basket', kapasitas: '200 orang', gedung: 'Kampus Pondok Labu' }
 ];
 
-const products = [
-  {
-    title: 'Blender Chopper Daging Stainless',
-    price: 'Rp58.000',
-    image: 'https://via.placeholder.com/150',
-    discount: '52%',
-  },
-  {
-    title: 'Booster TV Penguat Sinyal Antena',
-    price: 'Rp12.999',
-    image: 'https://via.placeholder.com/150',
-    discount: '57%',
-  },
-  {
-    title: 'Bracket TV LCD LED 14 s/d 42 inch',
-    price: 'Rp33.200',
-    image: 'https://via.placeholder.com/150',
-    discount: '27%',
-  },
-  {
-    title: 'PCB LED ACR 5-40W',
-    price: 'Rp5.300',
-    image: 'https://via.placeholder.com/150',
-    discount: '',
-  },
-  {
-    title: 'Blender Kapsul Capsule Cutter',
-    price: 'Rp63.999',
-    image: 'https://via.placeholder.com/150',
-    discount: '54%',
-  }
-];
-
-// Navbar Component
+// Navbar Komponen
 function Navbar() {
   const navigate = useNavigate();
   return (
@@ -57,18 +27,9 @@ function Navbar() {
             <span className="ml-3 text-xl font-semibold">FAST UPNVJ</span>
           </Link>
           <div className="hidden md:flex space-x-8">
-            <Link to="/" className="relative group hover:text-primary transition-colors">
-              Beranda
-              <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <Link to="/" className="relative group hover:text-primary transition-colors">
-              Tentang Kami
-              <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <Link to="/" className="relative group hover:text-primary transition-colors">
-              Layanan
-              <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </Link>
+            <Link to="/" className="hover:text-primary transition-colors">Beranda</Link>
+            <Link to="/" className="hover:text-primary transition-colors">Tentang Kami</Link>
+            <Link to="/" className="hover:text-primary transition-colors">Layanan</Link>
           </div>
           <button onClick={() => navigate('/login')} className="btn btn-primary btn-sm md:btn-md">
             Login
@@ -79,7 +40,7 @@ function Navbar() {
   );
 }
 
-// Footer Component
+// Footer Komponen
 function Footer() {
   return (
     <footer className="footer sm:footer-horizontal bg-accent text-accent-content p-10 mt-16">
@@ -94,83 +55,62 @@ function Footer() {
       <nav>
         <h6 className="footer-title">Social</h6>
         <div className="grid grid-flow-col gap-4">
-          {/* Placeholder icons */}
-          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="M24 4.557..." /></svg></a>
-          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="M19.615 3.184..." /></svg></a>
-          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="M9 8h-3v4h3v12h5..." /></svg></a>
+          {/* Placeholder Social Icons */}
+          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="..." /></svg></a>
+          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="..." /></svg></a>
+          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="..." /></svg></a>
         </div>
       </nav>
     </footer>
   );
 }
 
-// Main Page Component
-export default function ProductPage() {
+// Halaman Fasilitas
+export default function FasilitasPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex flex-1">
-        {/* Sidebar */}
+      <div className="flex flex-1">
+        {/* Sidebar Filter */}
         <aside className="w-64 bg-gray-100 p-4 border-r space-y-6">
+          <h2 className="text-lg font-bold">Filter Fasilitas</h2>
+
           <div>
-            <h2 className="text-lg font-bold mb-4">Semua Kategori</h2>
-            <ul className="space-y-2">
-              {categories.map((cat, i) => (
-                <li key={i} className="text-sm text-gray-700 hover:text-orange-600 cursor-pointer">
-                  {cat === 'Elektronik' ? <strong className="text-orange-600">{cat}</strong> : cat}
-                </li>
-              ))}
-            </ul>
+            <h3 className="text-sm font-semibold mb-2">Jenis Fasilitas</h3>
+            {['Auditorium', 'Ruang Podcast', 'Lab', 'Lapangan'].map((jenis, i) => (
+              <label key={i} className="flex items-center space-x-2 text-sm text-gray-700">
+                <input type="checkbox" className="accent-orange-500" />
+                <span>{jenis}</span>
+              </label>
+            ))}
           </div>
 
-          {/* Filter Section */}
           <div>
-            <h2 className="text-lg font-bold">Filter Produk</h2>
-            {/* Kategori Filter */}
-            <div>
-              <h3 className="text-sm font-semibold mb-2">Kategori</h3>
-              {categories.map((cat, i) => (
-                <label key={i} className="flex items-center space-x-2 text-sm text-gray-700">
-                  <input type="checkbox" className="accent-orange-500" />
-                  <span>{cat}</span>
-                </label>
-              ))}
-            </div>
-            {/* Lokasi Dropdown */}
-            <div className="pt-4">
-              <h3 className="text-sm font-semibold mb-2">Lokasi</h3>
-              <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
-                <option value="">Semua Lokasi</option>
-                <option>Jakarta</option>
-                <option>Bandung</option>
-                <option>Surabaya</option>
-                <option>Yogyakarta</option>
-              </select>
-            </div>
-            {/* Reset Filter */}
-            <div className="pt-4">
-              <button className="w-full bg-orange-500 text-white text-sm py-2 rounded hover:bg-orange-600 transition">
-                Reset Filter
-              </button>
-            </div>
+            <h3 className="text-sm font-semibold mb-2">Lokasi/Gedung</h3>
+            <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
+              <option>Semua Lokasi</option>
+              <option>Plaza Soedirman</option>
+              <option>Kampus Limo</option>
+              <option>Pondok Labu</option>
+            </select>
           </div>
+
+          <button className="w-full bg-orange-500 text-white text-sm py-2 rounded hover:bg-orange-600 transition">
+            Reset Filter
+          </button>
         </aside>
 
-        {/* Product Grid */}
-        <section className="flex-1 p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-          {products.map((product, i) => (
-            <div key={i} className="relative border rounded-lg p-2 shadow hover:shadow-lg">
-              {product.discount && (
-                <span className="absolute right-2 top-2 text-red-500 text-xs">-{product.discount}</span>
-              )}
-              <img src={product.image} alt={product.title} className="w-full h-32 object-cover mb-2" />
-              <h4 className="text-sm font-semibold mb-1">{product.title}</h4>
-              <p className="text-red-500 font-bold">{product.price}</p>
-              <p className="text-xs text-gray-500">10RB+ terjual</p>
+        {/* Grid Fasilitas */}
+        <main className="flex-1 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {Fasilitas.map((item, index) => (
+            <div key={index} className="border rounded-lg p-4 shadow hover:shadow-lg transition">
+              <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
+              <p className="text-sm text-gray-600 mb-1">Kapasitas: {item.kapasitas}</p>
+              <p className="text-sm text-gray-500">Gedung: {item.gedung}</p>
             </div>
           ))}
-        </section>
-      </main>
+        </main>
+      </div>
       <Footer />
     </div>
   );
