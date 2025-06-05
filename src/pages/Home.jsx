@@ -95,7 +95,7 @@ function Navbar() {
           </Link>
          <div className="hidden md:flex space-x-8">
   <Link to="/" className="hover:text-primary transition-colors">Beranda</Link>
-  <Link to="/peminjaman" className="hover:text-primary transition-colors">
+  <Link to="/peminjaman" className="hover:#5dac00 transition-colors">
     <strong>Peminjaman</strong>
   </Link>
   <Link to="/tentang-kami" className="hover:text-primary transition-colors">Tentang Kami</Link>
