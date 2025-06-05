@@ -126,7 +126,7 @@ function HomePage() {
               {greeting} <br />
               <span className="block mt-2 text-lg text-base-content/80">
                 Sistem informasi peminjaman fasilitas UPNVJ yang cepat,
-                terintegrasi, dan mudah digunakan.
+                terintegrasi, dan mudah digunakan
               </span>
             </h1>
             <div className="flex gap-4 mt-6">
