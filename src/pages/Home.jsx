@@ -1,9 +1,9 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import HeroImage from '../assets/img1.svg';
-import AboutImage from '../assets/UPN.png';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import HeroImage from "../assets/img1.svg";
+import AboutImage from "../assets/UPN.png";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -11,94 +11,138 @@ function HomePage() {
   return (
     <div className="min-h-screen bg-base-100" data-theme="light">
       <Navbar />
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-12">
         {/* Hero Section */}
-        <section className="flex flex-col md:flex-row items-center justify-between min-h-[70vh] gap-8">
-          <div className="md:w-1/2 space-y-6">
-            <h1 className="text-5xl font-bold text-base-content leading-tight">
-              Solusi Peminjaman Fasilitas Kampus UPNVJ
+        <section className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 min-h-[80vh]">
+          <div className="md:w-1/2 text-center md:text-left">
+            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-base-content">
+              Solusi Peminjaman Fasilitas
+              <span className="block text-primary mt-2">
+                Cepat, Mudah, Terintegrasi
+              </span>
             </h1>
-            <p className="text-lg text-base-content/80">
-              Sistem peminjaman fasilitas kampus yang cepat, mudah, dan terintegrasi.
+            <p className="mt-6 text-lg text-base-content/80">
+              Kelola peminjaman gedung dan ruangan di lingkungan UPNVJ hanya
+              dalam beberapa klik.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 mt-6">
+            <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center md:justify-start">
               <button
-                className="btn btn-primary px-6 py-3 text-lg"
-                onClick={() => navigate('/login')}
+                onClick={() => navigate("/login")}
+                className="btn btn-primary text-lg px-6 py-3 shadow-md hover:scale-105 transition-transform"
               >
-                Ajukan Peminjaman
+                🚀 Ajukan Sekarang
               </button>
               <button
-                className="btn btn-outline px-6 py-3 text-lg"
-                onClick={() => navigate('/panduan')}
+                onClick={() => navigate("/panduan")}
+                className="btn btn-outline text-lg px-6 py-3 hover:scale-105 transition-transform"
               >
-                Lihat Panduan
+                📘 Lihat Panduan
               </button>
             </div>
           </div>
+
           <div className="md:w-1/2 flex justify-center">
             <img
               src={HeroImage}
-              alt="Hero Section"
-              className="w-full max-w-lg h-auto rounded-lg"
+              alt="Ilustrasi Peminjaman"
+              className="w-full max-w-md rounded-3xl shadow-xl animate-fade-in"
             />
           </div>
         </section>
 
-        {/* About Section */}
-        <section className="mt-20 bg-accent py-16 px-6 rounded-lg">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
+        {/* Tentang Section */}
+        <section className="mt-24 bg-accent text-accent-content py-16 rounded-3xl shadow-inner">
+          <div className="flex flex-col lg:flex-row items-center gap-12 container mx-auto px-6">
             <div className="lg:w-1/2">
               <img
                 src={AboutImage}
                 alt="Tentang Kami"
-                className="rounded-lg shadow-lg"
+                className="rounded-xl w-full max-w-sm mx-auto"
               />
             </div>
-            <div className="lg:w-1/2 text-accent-content">
-              <h2 className="text-4xl font-bold mb-4">Tentang Kami</h2>
-              <p className="text-lg mb-4">
-                Fast UPNVJ adalah platform digital inovatif untuk mempermudah proses peminjaman fasilitas kampus.
+            <div className="lg:w-1/2 space-y-6">
+              <h2 className="text-4xl font-bold">Tentang Fast UPNVJ</h2>
+              <p>
+                FAST UPNVJ adalah sistem digital resmi untuk mempermudah
+                peminjaman fasilitas kampus. Dirancang untuk kenyamanan dan
+                efisiensi mahasiswa serta staf akademik.
               </p>
               <ul className="space-y-3">
-                <li className="flex items-start gap-2">
-                  <span className="text-2xl">🏛️</span>
-                  <div>
-                    <strong>Visi:</strong> Sistem peminjaman terintegrasi terbaik di lingkungan UPNVJ.
-                  </div>
-                </li>
-                <li className="flex items-start gap-2">
+                <li className="flex items-start gap-3">
                   <span className="text-2xl">🎯</span>
-                  <div>
-                    <strong>Misi:</strong> Menyederhanakan proses administratif dan meningkatkan aksesibilitas fasilitas kampus.
-                  </div>
+                  <p>
+                    <strong>Misi:</strong> Meningkatkan aksesibilitas dan
+                    efektivitas pengelolaan fasilitas.
+                  </p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-2xl">🌐</span>
+                  <p>
+                    <strong>Terintegrasi:</strong> Terkoneksi langsung dengan
+                    database peminjaman kampus.
+                  </p>
                 </li>
               </ul>
             </div>
           </div>
         </section>
 
-        {/* Layanan */}
-        <section className="mt-24">
-          <h2 className="text-3xl font-bold text-center mb-12">Layanan Kami</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card icon="🏢" title="Peminjaman Gedung" desc="Untuk seminar, pelatihan, dan kegiatan besar." />
-            <Card icon="🚪" title="Peminjaman Ruangan" desc="Kelas, laboratorium, ruang rapat, dll." />
-            <Card icon="📅" title="Manajemen Jadwal" desc="Pantau dan atur jadwal peminjaman secara real-time." />
+        {/* Fitur Unggulan */}
+        <section className="mt-28 text-center">
+          <h2 className="text-4xl font-bold mb-12 text-base-content">
+            Fitur Unggulan
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+            {[
+              {
+                icon: "🏢",
+                title: "Peminjaman Gedung",
+                desc: "Ajukan pemakaian aula, auditorium, dan lainnya.",
+              },
+              {
+                icon: "🪑",
+                title: "Peminjaman Ruangan",
+                desc: "Pinjam ruang kelas dan lab dengan sistem real-time.",
+              },
+              {
+                icon: "📅",
+                title: "Jadwal Terintegrasi",
+                desc: "Cek dan kelola jadwal peminjaman secara mudah.",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="card bg-base-200 hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-transparent hover:border-primary"
+              >
+                <div className="card-body items-center text-center">
+                  <div className="text-5xl mb-4">{item.icon}</div>
+                  <h3 className="card-title text-xl font-semibold">
+                    {item.title}
+                  </h3>
+                  <p className="text-base-content/80">{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
+        </section>
+
+        {/* Call to Action */}
+        <section className="mt-28 py-16 bg-primary rounded-3xl text-white text-center shadow-lg">
+          <h3 className="text-3xl md:text-4xl font-bold mb-4">
+            Siap Mengelola Peminjaman dengan Mudah?
+          </h3>
+          <p className="text-lg mb-8">
+            Gabung sekarang dan nikmati kemudahan layanan FAST UPNVJ!
+          </p>
+          <button
+            onClick={() => navigate("/login")}
+            className="btn btn-accent text-lg px-8 py-3 font-semibold hover:scale-105 transition-transform"
+          >
+            🎉 Mulai Sekarang
+          </button>
         </section>
       </main>
       <Footer />
-    </div>
-  );
-}
-
-function Card({ icon, title, desc }) {
-  return (
-    <div className="card bg-base-200 shadow-lg text-center p-6">
-      <div className="text-5xl mb-4">{icon}</div>
-      <h3 className="card-title mb-2">{title}</h3>
-      <p className="text-base-content/80">{desc}</p>
     </div>
   );
 }
