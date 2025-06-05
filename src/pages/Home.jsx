@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import upnvjLogo from "../assets/upnvj-logo.png"; // pastikan path ini sesuai
 
 const userName = "Mahasiswa UPNVJ";
 
@@ -47,7 +48,7 @@ function Home() {
             className="bg-white text-[#1C4C59] rounded-3xl shadow-xl p-8 flex flex-col items-center text-center mb-12"
           >
             <img
-              src="/upnvj-logo.png"
+              src={upnvjLogo}
               alt="Logo UPNVJ"
               className="w-24 h-24 mb-4 object-contain"
             />
