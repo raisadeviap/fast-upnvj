@@ -141,41 +141,59 @@ export default function HomePage() {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <div className="flex flex-1">
-        <aside className="w-64 bg-gray-100 p-4 border-r space-y-6">
-          <h2 className="text-lg font-bold flex items-center space-x-2">
-            <FunnelIcon className="w-5 h-5 text-gray-600" />
+        {" "}
+        {/* Buka flex container */}
+        {/* ASIDE harus di dalam sini */}
+        <aside className="w-64 bg-white p-6 border-r rounded-tr-3xl rounded-br-3xl shadow-lg space-y-6">
+          <h2 className="text-lg font-bold flex items-center space-x-2 text-[#007E30]">
+            <FunnelIcon className="w-5 h-5 text-[#007E30]" />
             <span>Filter Fasilitas</span>
           </h2>
+
           <div>
-            <h3 className="text-sm font-semibold mb-2">Jenis Fasilitas</h3>
-            {["Auditorium", "Ruang Podcast", "Lab", "Lapangan"].map(
-              (jenis, i) => (
-                <label
-                  key={i}
-                  className="flex items-center space-x-2 text-sm text-gray-700"
-                >
-                  <input type="checkbox" className="accent-orange-500" />
-                  <span>{jenis}</span>
-                </label>
-              )
-            )}
+            <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
+              Jenis Fasilitas
+            </h3>
+            <div className="space-y-2">
+              {["Auditorium", "Ruang Podcast", "Lab", "Lapangan"].map(
+                (jenis, i) => (
+                  <label
+                    key={i}
+                    className="flex items-center space-x-2 text-sm text-gray-800"
+                  >
+                    <input
+                      type="checkbox"
+                      className="accent-[#FF8C00] w-4 h-4 transition duration-150"
+                    />
+                    <span>{jenis}</span>
+                  </label>
+                )
+              )}
+            </div>
           </div>
+
           <div>
-            <h3 className="text-sm font-semibold mb-2">Lokasi/Gedung</h3>
-            <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
+            <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
+              Lokasi/Gedung
+            </h3>
+            <select className="w-full border border-gray-300 focus:border-[#007E30] focus:ring-[#007E30] rounded-lg px-3 py-2 text-sm transition duration-150">
               <option>Semua Lokasi</option>
               <option>Kampus Limo</option>
               <option>Pondok Labu</option>
             </select>
           </div>
+
           <div>
-            <h3 className="text-sm font-semibold mb-2">Kapasitas</h3>
-            <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
+            <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
+              Kapasitas
+            </h3>
+            <select className="w-full border border-gray-300 focus:border-[#007E30] focus:ring-[#007E30] rounded-lg px-3 py-2 text-sm transition duration-150">
               <option value="lt50">&lt; 50 orang</option>
               <option value="gte50">&gt; 50 orang</option>
             </select>
           </div>
-          <button className="w-full bg-[#5dac00] text-white text-sm py-2 rounded hover:bg-[#4b8c00] transition">
+
+          <button className="w-full bg-[#5dac00] text-white text-sm py-2 rounded-lg hover:bg-[#4b8c00] transition-all duration-200 font-semibold shadow-md">
             Reset Filter
           </button>
         </aside>
@@ -206,8 +224,9 @@ export default function HomePage() {
             </div>
           ))}
         </main>
-      </div>
-      <footer className="bg-[#007E30] h-16"></footer>
+      </div>{" "}
+      {/* Tutup flex container */}
+      <Footer />
     </div>
   );
 }
