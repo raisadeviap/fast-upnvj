@@ -9,7 +9,7 @@ const Fasilitas = [
     title: 'Auditorium Bhineka Tunggal Ika',
     kapasitas: '300 orang',
     gedung: 'Plaza Soedirman',
-    image: HeroImage, // simpan hanya path atau import-nya
+    image: btiImage, // simpan hanya path atau import-nya
   },
   { title: 'Auditorium Wahidin Sudiro Husodo', kapasitas: '100 orang', gedung: 'Wahidin Sudiro Husodo' },
   { title: 'Auditorium Dr. Cipto Mangun Kusumo', kapasitas: '200 orang', gedung: 'Dr. Cipto Mangun Kusumo' },
