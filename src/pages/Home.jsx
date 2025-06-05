@@ -100,7 +100,7 @@ function Navbar() {
           </div>
           <button
   onClick={() => navigate('/login')}
-  className="bg-[#5dac00] text-white text-xs py-1 px-3 rounded hover:bg-[#4b8c00] transition"
+  className="bg-[#5dac00] text-white text-xs py-3 px-3 rounded hover:bg-[#4b8c00] transition"
 >
   Login
 </button>
