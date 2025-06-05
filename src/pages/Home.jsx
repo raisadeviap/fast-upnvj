@@ -98,9 +98,10 @@ function Navbar() {
             <Link to="/" className="hover:text-primary transition-colors">Peminjaman</Link>
             <Link to="/" className="hover:text-primary transition-colors">Tentang Kami</Link>
           </div>
-          <button onClick={() => navigate('/login')} className="btn btn-primary btn-sm md:btn-md">
-            Login
+          <button onClick={() => navigate('/login')}
+            className="w-full bg-[#5dac00] text-white text-sm md:text-base py-2 px-4 rounded hover:bg-[#4b8c00] transition"> Login
           </button>
+
         </div>
       </div>
     </nav>
