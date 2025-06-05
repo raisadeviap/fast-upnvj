@@ -207,9 +207,7 @@ export default function HomePage() {
           ))}
         </main>
       </div>
-      <div>
-         <footer className="bg-[#007E30]"></footer>
-      </div>
+      <footer className="bg-[#007E30] h-16"></footer>
     </div>
   );
 }
