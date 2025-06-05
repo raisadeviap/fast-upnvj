@@ -5,125 +5,63 @@ import Footer from "../components/Footer";
 function HomePage() {
   const navigate = useNavigate();
 
-  // Data dummy contoh statistik dan informasi ruangan
-  const stats = {
-    totalRooms: 20,
-    borrowedRooms: 8,
-    availableRooms: 12,
+  // Fungsi untuk ucapan berdasarkan jam
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 11) return "Selamat Pagi 👋";
+    if (hour < 15) return "Selamat Siang ☀️";
+    if (hour < 18) return "Selamat Sore 🌇";
+    return "Selamat Malam 🌙";
   };
 
-  const rooms = [
-    {
-      name: "Ruang Rapat A",
-      building: "Gedung Rektorat",
-      capacity: 30,
-      status: "Dipinjam",
-    },
-    {
-      name: "Lab Komputer 1",
-      building: "Gedung Fakultas Teknik",
-      capacity: 25,
-      status: "Tersedia",
-    },
-    {
-      name: "Aula Utama",
-      building: "Gedung Serbaguna",
-      capacity: 100,
-      status: "Dipinjam",
-    },
-    {
-      name: "Ruang Seminar B",
-      building: "Gedung Pascasarjana",
-      capacity: 50,
-      status: "Tersedia",
-    },
-  ];
+  // Data statistik dummy
+  const stats = {
+    total: 20,
+    borrowed: 7,
+    available: 13,
+  };
 
   return (
     <div className="min-h-screen bg-base-100" data-theme="light">
-      <main className="container mx-auto px-4 py-10">
-        {/* Sambutan */}
+      <main className="container mx-auto px-6 py-12">
+        {/* Ucapan dan Sambutan */}
         <section className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-primary mb-4">
-            Selamat Datang di Sistem Peminjaman Fasilitas UPNVJ
+          <h2 className="text-xl text-base-content/70 mb-2">{getGreeting()}</h2>
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+            Selamat Datang di Fast UPNVJ
           </h1>
           <p className="text-lg text-base-content/80 max-w-2xl mx-auto">
-            Kelola peminjaman ruangan kampus secara praktis, cepat, dan
-            transparan.
+            Platform modern dan responsif untuk peminjaman ruangan dan fasilitas
+            kampus secara praktis, aman, dan transparan.
           </p>
         </section>
 
-        {/* Statistik Ruangan */}
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="bg-base-200 rounded-xl p-6 shadow text-center">
-            <h2 className="text-2xl font-semibold text-primary mb-2">
-              Total Ruangan
-            </h2>
-            <p className="text-4xl font-bold">{stats.totalRooms}</p>
+        {/* Statistik */}
+        <section className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mb-20">
+          <div className="bg-primary text-primary-content rounded-xl p-8 shadow-md">
+            <p className="text-5xl font-bold">{stats.total}</p>
+            <p className="mt-2 text-lg">Total Ruangan</p>
           </div>
-          <div className="bg-base-200 rounded-xl p-6 shadow text-center">
-            <h2 className="text-2xl font-semibold text-warning mb-2">
-              Dipinjam
-            </h2>
-            <p className="text-4xl font-bold">{stats.borrowedRooms}</p>
+          <div className="bg-warning text-warning-content rounded-xl p-8 shadow-md">
+            <p className="text-5xl font-bold">{stats.borrowed}</p>
+            <p className="mt-2 text-lg">Dipinjam</p>
           </div>
-          <div className="bg-base-200 rounded-xl p-6 shadow text-center">
-            <h2 className="text-2xl font-semibold text-success mb-2">
-              Tersedia
-            </h2>
-            <p className="text-4xl font-bold">{stats.availableRooms}</p>
+          <div className="bg-success text-success-content rounded-xl p-8 shadow-md">
+            <p className="text-5xl font-bold">{stats.available}</p>
+            <p className="mt-2 text-lg">Tersedia</p>
           </div>
         </section>
 
-        {/* Informasi Ruangan */}
-        <section>
-          <h2 className="text-3xl font-bold text-base-content mb-8 text-center">
-            Informasi Ruangan & Gedung
-          </h2>
-          <div className="overflow-x-auto">
-            <table className="table w-full bg-base-200 rounded-xl shadow">
-              <thead>
-                <tr className="text-base-content/80">
-                  <th>Nama Ruangan</th>
-                  <th>Gedung</th>
-                  <th>Kapasitas</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rooms.map((room, index) => (
-                  <tr key={index}>
-                    <td>{room.name}</td>
-                    <td>{room.building}</td>
-                    <td>{room.capacity} orang</td>
-                    <td>
-                      <span
-                        className={`badge ${
-                          room.status === "Dipinjam"
-                            ? "badge-warning"
-                            : "badge-success"
-                        }`}
-                      >
-                        {room.status}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        {/* Aksi */}
-        <section className="mt-16 text-center">
-          <p className="text-lg mb-4">
-            Login untuk mulai melakukan peminjaman fasilitas
-          </p>
+        {/* Ajakan */}
+        <section className="text-center mb-24">
+          <h3 className="text-2xl font-semibold text-base-content mb-4">
+            Ingin mengelola peminjaman dengan lebih efisien?
+          </h3>
           <button
             onClick={() => navigate("/login")}
-            className="btn btn-primary text-lg px-8 py-3"
+            className="btn btn-primary text-lg px-10 py-3"
           >
-            Masuk ke Sistem
+            Masuk Sekarang
           </button>
         </section>
       </main>
