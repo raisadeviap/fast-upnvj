@@ -136,14 +136,14 @@ function Navbar() {
   );
 }
 
-<aside className="w-64 bg-white p-6 border-r border-gray-100 rounded-tr-3xl rounded-br-3xl shadow space-y-6">
+<aside className="w-64 bg-white p-6 border-r border-gray-900 rounded-tr-3xl rounded-br-3xl shadow space-y-6">
   <h2 className="text-lg font-bold flex items-center space-x-2 text-[#007E30]">
     <FunnelIcon className="w-5 h-5 text-[#007E30]" />
     <span>Filter Fasilitas</span>
   </h2>
 
   {/* Jenis Fasilitas */}
-  <div className="pt-2 border-t border-gray-200">
+  <div className="pt-2 border-t border-gray-900">
     <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide mt-4">
       Jenis Fasilitas
     </h3>
