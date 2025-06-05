@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/UPN.png";
 import { FunnelIcon } from '@heroicons/react/24/solid';
-import auditoriumimg from "../assets/bti"
+import auditoriumimg from "../assets/bti";
 
 const Fasilitas = [
   { title: 'Auditorium Bhineka Tunggal Ika', kapasitas: '300 orang', gedung: 'Plaza Soedirman', image: 'https://merce-fk.upnvj.ac.id/wp-content/uploads/photo-gallery/imported_from_media_libray/IMG_3839-min-scaled.jpg?bwg=1693216594' },
