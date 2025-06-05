@@ -5,82 +5,120 @@ import Footer from "../components/Footer";
 function HomePage() {
   const navigate = useNavigate();
 
+  // Data dummy contoh statistik dan informasi ruangan
+  const stats = {
+    totalRooms: 20,
+    borrowedRooms: 8,
+    availableRooms: 12,
+  };
+
+  const rooms = [
+    {
+      name: "Ruang Rapat A",
+      building: "Gedung Rektorat",
+      capacity: 30,
+      status: "Dipinjam",
+    },
+    {
+      name: "Lab Komputer 1",
+      building: "Gedung Fakultas Teknik",
+      capacity: 25,
+      status: "Tersedia",
+    },
+    {
+      name: "Aula Utama",
+      building: "Gedung Serbaguna",
+      capacity: 100,
+      status: "Dipinjam",
+    },
+    {
+      name: "Ruang Seminar B",
+      building: "Gedung Pascasarjana",
+      capacity: 50,
+      status: "Tersedia",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-base-100" data-theme="light">
-      <Navbar />
-      <main className="container mx-auto px-4 py-8">
-        {/* Header Welcome */}
-        <section className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-            Selamat Datang di Fast UPNVJ
+      <main className="container mx-auto px-4 py-10">
+        {/* Sambutan */}
+        <section className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-primary mb-4">
+            Selamat Datang di Sistem Peminjaman Fasilitas UPNVJ
           </h1>
           <p className="text-lg text-base-content/80 max-w-2xl mx-auto">
-            Satu platform terpadu untuk mengelola seluruh peminjaman fasilitas
-            kampus dengan efisien dan transparan.
+            Kelola peminjaman ruangan kampus secara praktis, cepat, dan
+            transparan.
           </p>
         </section>
 
-        {/* Deskripsi Keunggulan */}
-        <section className="mb-20">
-          <h2 className="text-3xl font-bold text-base-content mb-6 text-center">
-            Kenapa Memilih Fast UPNVJ?
-          </h2>
-          <ul className="list-disc list-inside text-lg text-base-content/80 space-y-2 max-w-3xl mx-auto">
-            <li>🕒 Hemat waktu dan proses otomatis</li>
-            <li>✅ Persetujuan online dan transparan</li>
-            <li>📱 Tampilan yang ramah pengguna dan responsif</li>
-            <li>🔒 Keamanan dan kontrol akses terjamin</li>
-          </ul>
-          <div className="text-center mt-8">
-            <button
-              onClick={() => navigate("/login")}
-              className="btn btn-primary px-8 py-3 text-lg"
-            >
-              Mulai Sekarang
-            </button>
+        {/* Statistik Ruangan */}
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div className="bg-base-200 rounded-xl p-6 shadow text-center">
+            <h2 className="text-2xl font-semibold text-primary mb-2">
+              Total Ruangan
+            </h2>
+            <p className="text-4xl font-bold">{stats.totalRooms}</p>
+          </div>
+          <div className="bg-base-200 rounded-xl p-6 shadow text-center">
+            <h2 className="text-2xl font-semibold text-warning mb-2">
+              Dipinjam
+            </h2>
+            <p className="text-4xl font-bold">{stats.borrowedRooms}</p>
+          </div>
+          <div className="bg-base-200 rounded-xl p-6 shadow text-center">
+            <h2 className="text-2xl font-semibold text-success mb-2">
+              Tersedia
+            </h2>
+            <p className="text-4xl font-bold">{stats.availableRooms}</p>
           </div>
         </section>
 
-        {/* Highlight Fitur */}
-        <section className="py-10">
-          <h2 className="text-3xl font-bold text-center mb-12 text-base-content">
-            Fitur Unggulan
+        {/* Informasi Ruangan */}
+        <section>
+          <h2 className="text-3xl font-bold text-base-content mb-8 text-center">
+            Informasi Ruangan & Gedung
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="card bg-base-200 shadow-md">
-              <div className="card-body items-center text-center">
-                <div className="text-5xl mb-3">📊</div>
-                <h3 className="card-title">Dashboard Pemantauan</h3>
-                <p>Lihat status dan riwayat peminjaman secara real-time.</p>
-              </div>
-            </div>
-            <div className="card bg-base-200 shadow-md">
-              <div className="card-body items-center text-center">
-                <div className="text-5xl mb-3">📌</div>
-                <h3 className="card-title">Notifikasi & Reminder</h3>
-                <p>
-                  Dapatkan pemberitahuan terkait jadwal dan konfirmasi otomatis.
-                </p>
-              </div>
-            </div>
-            <div className="card bg-base-200 shadow-md">
-              <div className="card-body items-center text-center">
-                <div className="text-5xl mb-3">🔍</div>
-                <h3 className="card-title">Pencarian Cepat</h3>
-                <p>
-                  Temukan fasilitas yang tersedia sesuai kebutuhanmu hanya dalam
-                  beberapa klik.
-                </p>
-              </div>
-            </div>
+          <div className="overflow-x-auto">
+            <table className="table w-full bg-base-200 rounded-xl shadow">
+              <thead>
+                <tr className="text-base-content/80">
+                  <th>Nama Ruangan</th>
+                  <th>Gedung</th>
+                  <th>Kapasitas</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rooms.map((room, index) => (
+                  <tr key={index}>
+                    <td>{room.name}</td>
+                    <td>{room.building}</td>
+                    <td>{room.capacity} orang</td>
+                    <td>
+                      <span
+                        className={`badge ${
+                          room.status === "Dipinjam"
+                            ? "badge-warning"
+                            : "badge-success"
+                        }`}
+                      >
+                        {room.status}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
 
-        {/* Call to Action */}
-        <section className="mt-24 text-center">
-          <h3 className="text-2xl font-semibold text-base-content mb-4">
-            Siap mengelola fasilitas dengan lebih mudah?
-          </h3>
+        {/* Aksi */}
+        <section className="mt-16 text-center">
+          <p className="text-lg mb-4">
+            Login untuk mulai melakukan peminjaman fasilitas
+          </p>
           <button
             onClick={() => navigate("/login")}
             className="btn btn-primary text-lg px-8 py-3"
