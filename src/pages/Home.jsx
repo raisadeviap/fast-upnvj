@@ -4,7 +4,18 @@ import Logo from "../assets/UPN.png";
 import { FunnelIcon } from '@heroicons/react/24/solid';
 
 const Fasilitas = [
-  { title: 'Auditorium Bhineka Tunggal Ika', kapasitas: '300 orang', gedung: 'Plaza Soedirman', image: 'https://merce-fk.upnvj.ac.id/wp-content/uploads/photo-gallery/imported_from_media_libray/IMG_3839-min-scaled.jpg?bwg=1693216594'  },
+  const Fasilitas = [
+  {
+    title: 'Auditorium Bhineka Tunggal Ika',
+    kapasitas: '300 orang',
+    gedung: 'Plaza Soedirman',
+    image: 'https://merce-fk.upnvj.ac.id/wp-content/uploads/photo-gallery/imported_from_media_libray/IMG_3839-min-scaled.jpg?bwg=1693216594'
+  },
+  // ...fasilitas lain tanpa gambar atau dengan gambar juga
+];
+
+const Fasilitas = [
+  { title: 'Auditorium Bhineka Tunggal Ika', kapasitas: '300 orang', gedung: 'Plaza Soedirman', image: 'https://merce-fk.upnvj.ac.id/wp-content/uploads/photo-gallery/imported_from_media_libray/IMG_3839-min-scaled.jpg?bwg=1693216594' },
   { title: 'Auditorium Wahidin Sudiro Husodo', kapasitas: '100 orang', gedung: 'Wahidin Sudiro Husodo' },
   { title: 'Auditorium Dr. Cipto Mangun Kusumo', kapasitas: '200 orang', gedung: 'Dr. Cipto Mangun Kusumo' },
   { title: 'Auditorium MERCe', kapasitas: '100 orang', gedung: 'MERCe Kampus Limo' },
@@ -15,6 +26,23 @@ const Fasilitas = [
   { title: 'Ubin Cokelat', kapasitas: '200 orang', gedung: 'FEB Kampus Pondok Labu' },
   { title: 'Lapangan Basket', kapasitas: '200 orang', gedung: 'Kampus Pondok Labu' }
 ];
+
+// Di dalam JSX (misal di return):
+<main className="flex-1 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+  {Fasilitas.map((item, index) => (
+    <div key={index} className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+      {item.image && (
+        <img src={item.image} alt={item.title} className="h-40 w-full object-cover" />
+      )}
+      <div className="p-4">
+        <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
+        <p className="text-sm text-gray-600 mb-1">Kapasitas: {item.kapasitas}</p>
+        <p className="text-sm text-gray-500">Gedung: {item.gedung}</p>
+      </div>
+    </div>
+  ))}
+</main>
+
 
 // Navbar Komponen
 function Navbar() {
