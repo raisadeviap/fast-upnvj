@@ -93,11 +93,14 @@ function Navbar() {
             <img src={Logo} alt="UPNVJ Logo" className="h-12" />
             <span className="ml-3 text-xl font-semibold">FAST UPNVJ</span>
           </Link>
-          <div className="hidden md:flex space-x-8">
-            <Link to="/" className="hover:text-primary transition-colors">Beranda</Link>
-            <Link to="/" className="hover:text-primary transition-colors">Peminjaman</Link>
-            <Link to="/" className="hover:text-primary transition-colors">Tentang Kami</Link>
-          </div>
+         <div className="hidden md:flex space-x-8">
+  <Link to="/" className="hover:text-primary transition-colors">Beranda</Link>
+  <Link to="/peminjaman" className="hover:text-primary transition-colors">
+    <strong>Peminjaman</strong>
+  </Link>
+  <Link to="/tentang-kami" className="hover:text-primary transition-colors">Tentang Kami</Link>
+</div>
+
           <button
   onClick={() => navigate('/login')}
   className="bg-[#5dac00] text-white text-xs py-2 px-3 rounded hover:bg-[#4b8c00] transition"
