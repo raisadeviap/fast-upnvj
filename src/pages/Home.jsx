@@ -102,13 +102,11 @@ function Navbar() {
   <Link to="/tentang-kami" className="hover:text-[#5dac00] transition-colors">Tentang Kami</Link>
 </div>
 
-          <button
+<button
   onClick={() => navigate('/login')}
-  className="bg-[#5dac00] text-white text-xs py-3 px-6 rounded hover:bg-[#4b8c00] transition"
->
-  <span>Login</span>
+  className="bg-[#5dac00] text-white text-xs py-3 px-6 rounded hover:bg-[#4b8c00] transition">
+  <span className="inline-block transform rotate-6">Login</span>
 </button>
-
         </div>
       </div>
     </nav>
