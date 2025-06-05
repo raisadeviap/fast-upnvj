@@ -163,9 +163,10 @@ export default function HomePage() {
               <option value="gte50">&gt;= 50 orang</option>
             </select>
           </div>
-          <button className="w-full bg-orange-500 text-white text-sm py-2 rounded hover:bg-orange-600 transition">
+          <button className="w-full bg-[#5dac00] text-white text-sm py-2 rounded hover:bg-[#4b8c00] transition">
             Reset Filter
           </button>
+
         </aside>
 
         <main className="flex-1 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
