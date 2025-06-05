@@ -10,7 +10,7 @@ function HomePage() {
   useEffect(() => {
     const hour = new Date().getHours();
     if (hour < 12) setGreeting("Selamat Pagi 👋");
-    else if (hour < 18) setGreeting("Selamat Sore ☀️");
+    else if (hour < 18) setGreeting("Selamat Siang ☀️");
     else setGreeting("Selamat Malam 🌙");
   }, []);
 
