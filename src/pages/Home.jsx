@@ -81,6 +81,7 @@ function HomePage() {
               alt="Logo UPN"
               className="w-10 h-10 object-contain"
             />
+            <h1 className="text-xl font-bold text-primary">Fast UPNVJ</h1>
           </div>
           <ul className="flex gap-6 text-base font-medium">
             <li
@@ -126,9 +127,6 @@ function HomePage() {
               <span className="block mt-2 text-lg text-base-content/80">
                 Sistem informasi peminjaman fasilitas UPNVJ yang cepat,
                 terintegrasi, dan mudah digunakan.
-              </span>
-              <span className="block text-primary text-3xl mt-4 font-extrabold">
-                Fast UPNVJ
               </span>
             </h1>
             <div className="flex gap-4 mt-6">
