@@ -168,7 +168,7 @@ export default function HomePage() {
             <h3 className="text-sm font-semibold mb-2">Kapasitas</h3>
             <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
               <option value="lt50">&lt; 50 orang</option>
-              <option value="gte50">&gt;= 50 orang</option>
+              <option value="gte50">&gt; 50 orang</option>
             </select>
           </div>
           <button className="w-full bg-[#5dac00] text-white text-sm py-2 rounded hover:bg-[#4b8c00] transition">
