@@ -4,7 +4,7 @@ import Logo from "../assets/UPN.png";
 import { FunnelIcon } from '@heroicons/react/24/solid';
 
 const Fasilitas = [
-  { title: 'Auditorium Bhineka Tunggal Ika', kapasitas: '300 orang', gedung: 'Plaza Soedirman' },
+  { title: 'Auditorium Bhineka Tunggal Ika', kapasitas: '300 orang', gedung: 'Plaza Soedirman', image: ''  },
   { title: 'Auditorium Wahidin Sudiro Husodo', kapasitas: '100 orang', gedung: 'Wahidin Sudiro Husodo' },
   { title: 'Auditorium Dr. Cipto Mangun Kusumo', kapasitas: '200 orang', gedung: 'Dr. Cipto Mangun Kusumo' },
   { title: 'Auditorium MERCe', kapasitas: '100 orang', gedung: 'MERCe Kampus Limo' },
