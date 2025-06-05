@@ -56,7 +56,7 @@ function HomePage() {
       icon: "🛋️",
       title: "Peminjaman Ruangan",
       description: "Ruang kelas, auditorium, dan ruang pertemuan lainnya",
-      link: "/layanan/ruangan",
+      link: "/layanan/Form Peminjaman",
     },
     {
       id: 3,
