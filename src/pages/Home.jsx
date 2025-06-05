@@ -4,7 +4,6 @@ import Logo from "../assets/UPN.png";
 import { FunnelIcon } from '@heroicons/react/24/solid';
 import HeroImage from "../assets/img1.svg";
 
-const Fasilitas = [
   const Fasilitas = [
   {
     title: 'Auditorium Bhineka Tunggal Ika',
