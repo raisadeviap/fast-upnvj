@@ -2,14 +2,15 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/UPN.png";
 import { FunnelIcon } from '@heroicons/react/24/solid';
-import btiImage from "../assets/btiImage";
+import HeroImage from "../assets/img1.svg";
 
 const Fasilitas = [
-   {
+  const Fasilitas = [
+  {
     title: 'Auditorium Bhineka Tunggal Ika',
     kapasitas: '300 orang',
     gedung: 'Plaza Soedirman',
-    image: btiImage, // simpan hanya path atau import-nya
+    image: 'https://merce-fk.upnvj.ac.id/wp-content/uploads/photo-gallery/imported_from_media_libray/IMG_3839-min-scaled.jpg?bwg=1693216594'
   },
   { title: 'Auditorium Wahidin Sudiro Husodo', kapasitas: '100 orang', gedung: 'Wahidin Sudiro Husodo' },
   { title: 'Auditorium Dr. Cipto Mangun Kusumo', kapasitas: '200 orang', gedung: 'Dr. Cipto Mangun Kusumo' },
@@ -38,6 +39,25 @@ function Navbar() {
             <Link to="/" className="hover:text-primary transition-colors">Tentang Kami</Link>
             <Link to="/" className="hover:text-primary transition-colors">Layanan</Link>
           </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-6">
+  {Fasilitas.map((item, index) => (
+    <div key={index} className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition text-center">
+      {item.image && (
+        <img
+          src={item.image}
+          alt={item.title}
+          className="w-full h-40 object-cover"
+        />
+      )}
+      <div className="p-4">
+        <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
+        <p className="text-sm text-gray-600 mb-1">Kapasitas: {item.kapasitas}</p>
+        <p className="text-sm text-gray-500">Gedung: {item.gedung}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
           <button onClick={() => navigate('/login')} className="btn btn-primary btn-sm md:btn-md">
             Login
           </button>
