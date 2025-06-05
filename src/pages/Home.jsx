@@ -8,17 +8,79 @@ const Fasilitas = [
     title: 'Auditorium Bhineka Tunggal Ika',
     kapasitas: '300 orang',
     gedung: 'Plaza Soedirman',
-    image: 'hhttps://www.upnvj.ac.id/en/files/large/5fe91f59d3da4d824097b0b5bb994e69'
+    image: 'https://www.upnvj.ac.id/en/files/large/5fe91f59d3da4d824097b0b5bb994e69',
   },
-  { title: 'Auditorium Wahidin Sudiro Husodo', kapasitas: '100 orang', gedung: 'Wahidin Sudiro Husodo' },
-  { title: 'Auditorium Dr. Cipto Mangun Kusumo', kapasitas: '200 orang', gedung: 'Dr. Cipto Mangun Kusumo' },
-  { title: 'Auditorium MERCe', kapasitas: '100 orang', gedung: 'MERCe Kampus Limo' },
-  { title: 'Ruang Podcast FH', kapasitas: '5 orang', gedung: 'Yos Sudarso' },
-  { title: 'Ruang Podcast FIK', kapasitas: '5 orang', gedung: 'Ki Hajar Dewantara' },
-  { title: 'Ruang Podcast FIKES', kapasitas: '5 orang', gedung: 'FIKES Kampus Limo' },
-  { title: 'Lab Terpadu', kapasitas: '50 orang', gedung: 'Perpustakaan Lt. 2' },
-  { title: 'Ubin Cokelat', kapasitas: '200 orang', gedung: 'FEB Kampus Pondok Labu' },
-  { title: 'Lapangan Basket', kapasitas: '200 orang', gedung: 'Kampus Pondok Labu' }
+  { 
+    title: 'Auditorium Wahidin Sudiro Husodo', 
+    kapasitas: '100 orang', 
+    gedung: 'Wahidin Sudiro Husodo',
+    image: 'https://fk.upnvj.ac.id/wp-content/uploads/2022/04/IMG_2038-scaled.jpg',
+  },
+  { 
+    title: 'Auditorium Dr. Cipto Mangun Kusumo', 
+    kapasitas: '200 orang', 
+    gedung: 'Dr. Cipto Mangun Kusumo',
+    image: 'https://fk.upnvj.ac.id/wp-content/uploads/2022/11/IMG_7937-scaled.jpg',
+  },
+  { 
+    title: 'Auditorium MERCe', 
+    kapasitas: '100 orang', 
+    gedung: 'MERCe Kampus Limo',
+    image: 'https://merce-fk.upnvj.ac.id/wp-content/uploads/photo-gallery/imported_from_media_libray/IMG_3839-min-scaled.jpg?bwg=1693216594'},
+  { 
+    title: 'Ruang Podcast FH', 
+    kapasitas: '5 orang', 
+    gedung: 'Yos Sudarso',
+    image: 'https://hukum.upnvj.ac.id/wp-content/uploads/2022/06/RuangPODCAST-LT-4-1024x799.jpeg' 
+  },
+  { 
+    title: 'Ruang Podcast FIK', 
+    kapasitas: '5 orang', 
+    gedung: 'Ki Hajar Dewantara',
+    image: 'https://new-fik.upnvj.ac.id/wp-content/uploads/2023/08/WhatsApp-Image-2023-08-07-at-15.44.52.jpeg'
+  },
+  { 
+    title: 'Ruang Podcast FIKES', 
+    kapasitas: '5 orang', 
+    gedung: 'FIKES Kampus Limo',
+    image: 'https://fikes.upnvj.ac.id/id/files/thumb/93ef38f7d710dc957cf1d23c2808d1da/520/fit',
+  },
+  {
+    title: 'Ruang Podcast FK',
+    kapasitas: '5 orang',
+    gedung: 'FK Kampus Pondok Labu',
+    image: 'https://fk.upnvj.ac.id/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-07-at-10.04.34.jpeg',
+  },
+  {
+    title: 'Ruang Podcast FISIP',
+    kapasitas: '5 orang',
+    gedung: 'FISIP',
+    image: 'https://fisip.upnvj.ac.id/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-12-at-15.12.39.jpeg',
+  },
+  {
+    title: 'Ruang Podcast FEB',
+    kapasitas: '5 orang',
+    gedung: 'FEB',
+    image: ' https://i.ytimg.com/vi/raX3zgh1WtE/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH0CYAC0AWKAgwIABABGHIgVCgrMA8=&rs=AOn4CLC4YIUaKil03CaPp4rsQlmzBv5P9whttps://fisip.upnvj.ac.id/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-12-at-15.12.39.jpeg',
+  },
+  { 
+    title: 'Lab Terpadu', 
+    kapasitas: '50 orang', 
+    gedung: 'Perpustakaan Lt. 2',
+    image: 'https://uptlabterpadu.upnvj.ac.id/wp-content/uploads/2023/08/Kegiatan-Perkuliahan-FIK-28-08-2023-01.jpeg'
+},
+  { 
+    title: 'Ubin Cokelat', 
+    kapasitas: '200 orang', 
+    gedung: 'FEB Kampus Pondok Labu',
+    image: 'https://feb.upnvj.ac.id/wp-content/uploads/2024/12/328.jpg',
+  },
+  { 
+    title: 'Lapangan Basket', 
+    kapasitas: '200 orang', 
+    gedung: 'Kampus Pondok Labu',
+    image: 'https://cdn.idntimes.com/content-images/community/2022/07/aironebball-150630392-1387338378274022-5515620263307717663-n-4b05e1ad11e871221e4135e0f2a9a211-6e991a6de4e6b086ea74264517fdd7a3.jpg',
+},
 ];
 
 function Navbar() {
@@ -33,8 +95,8 @@ function Navbar() {
           </Link>
           <div className="hidden md:flex space-x-8">
             <Link to="/" className="hover:text-primary transition-colors">Beranda</Link>
+            <Link to="/" className="hover:text-primary transition-colors">Peminjaman</Link>
             <Link to="/" className="hover:text-primary transition-colors">Tentang Kami</Link>
-            <Link to="/" className="hover:text-primary transition-colors">Layanan</Link>
           </div>
           <button onClick={() => navigate('/login')} className="btn btn-primary btn-sm md:btn-md">
             Login
@@ -67,7 +129,7 @@ function Footer() {
   );
 }
 
-export default function FasilitasPage() {
+export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
