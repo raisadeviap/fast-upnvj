@@ -94,11 +94,12 @@ function Navbar() {
             <span className="ml-3 text-xl font-semibold">FAST UPNVJ</span>
           </Link>
          <div className="hidden md:flex space-x-8">
-  <Link to="/" className="hover:text-primary transition-colors">Beranda</Link>
-  <Link to="/peminjaman" className="hover:#5dac00 transition-colors">
+  
+  <Link to="/" className="hover:text-[#5dac00] transition-colors">Beranda</Link>
+  <Link to="/peminjaman" className="hover:text-[#5dac00] transition-colors">
     <strong>Peminjaman</strong>
   </Link>
-  <Link to="/tentang-kami" className="hover:text-primary transition-colors">Tentang Kami</Link>
+  <Link to="/tentang-kami" className="hover:text-[#5dac00] transition-colors">Tentang Kami</Link>
 </div>
 
           <button
