@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Fasilitas } from "../data/fasilitas"; // Pindahkan data ke file terpisah jika perlu
+import { Fasilitas } from "../page/home"; // Pindahkan data ke file terpisah jika perlu
 
 export default function FasilitasDetail() {
   const { id } = useParams();
