@@ -1,107 +1,91 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
+import LogoUPN from "../assets/logo-upn.png"; // pastikan path logo sesuai
 
 function HomePage() {
   const navigate = useNavigate();
 
   const getGreeting = () => {
     const hour = new Date().getHours();
-    if (hour < 11) return "Selamat Pagi 🌤️";
-    if (hour < 15) return "Selamat Siang ☀️";
-    if (hour < 18) return "Selamat Sore 🌇";
+    if (hour < 12) return "Selamat Siang 👋";
+    if (hour < 18) return "Selamat Sore ☀️";
     return "Selamat Malam 🌙";
   };
 
   const stats = {
-    total: 20,
-    borrowed: 7,
-    available: 13,
+    gedungDipinjam: 6,
+    ruanganTersedia: 14,
+    jamTerpakai: 92,
   };
 
+  const services = [
+    { icon: "📅", title: "Peminjaman Ruangan", link: "/layanan/peminjaman" },
+    { icon: "🧾", title: "Histori Penggunaan", link: "/layanan/histori" },
+    { icon: "📊", title: "Laporan & Statistik", link: "/layanan/statistik" },
+    { icon: "📌", title: "Persetujuan", link: "/layanan/persetujuan" },
+  ];
+
   return (
-    <div className="min-h-screen bg-base-100" data-theme="light">
-      <main className="container mx-auto px-6 py-12">
-        {/* Ucapan */}
+    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-white to-blue-100" data-theme="light">
+      <main className="container mx-auto px-6 py-10">
+
+        {/* Logo + Header */}
+        <div className="flex items-center justify-center mb-4">
+          <img src={LogoUPN} alt="Logo UPN" className="w-14 h-14 mr-2" />
+          <h1 className="text-xl font-bold text-primary">Sistem Fast UPNVJ</h1>
+        </div>
+
+        {/* Greeting */}
         <section className="text-center mb-12">
-          <h2 className="text-xl text-base-content/70 mb-2">{getGreeting()}</h2>
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-            Selamat Datang di Fast UPNVJ
-          </h1>
-          <p className="text-lg text-base-content/80 max-w-2xl mx-auto">
-            Kelola peminjaman ruangan kampus dengan lebih cepat, mudah, dan transparan hanya dalam satu platform.
+          <h2 className="text-3xl font-semibold text-base-content mb-2">
+            {getGreeting()}
+          </h2>
+          <p className="text-lg text-base-content/70">
+            Selamat datang di platform peminjaman fasilitas kampus yang modern dan efisien.
           </p>
         </section>
 
-        {/* Statistik Ruangan */}
-        <section className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mb-20">
-          <div className="bg-primary text-primary-content rounded-xl p-8 shadow-lg">
-            <div className="text-4xl mb-2">🏫</div>
-            <p className="text-5xl font-bold">{stats.total}</p>
-            <p className="mt-2 text-lg">Total Ruangan</p>
+        {/* Statistik */}
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 text-center">
+          <div className="bg-yellow-100 p-6 rounded-xl shadow-md hover:scale-105 transition">
+            <div className="text-5xl mb-2">🏢</div>
+            <h3 className="text-3xl font-bold">{stats.gedungDipinjam}</h3>
+            <p className="text-base text-yellow-900 mt-1">Gedung Dipinjam</p>
           </div>
-          <div className="bg-warning text-warning-content rounded-xl p-8 shadow-lg">
-            <div className="text-4xl mb-2">📅</div>
-            <p className="text-5xl font-bold">{stats.borrowed}</p>
-            <p className="mt-2 text-lg">Dipinjam</p>
+          <div className="bg-green-100 p-6 rounded-xl shadow-md hover:scale-105 transition">
+            <div className="text-5xl mb-2">🛋️</div>
+            <h3 className="text-3xl font-bold">{stats.ruanganTersedia}</h3>
+            <p className="text-base text-green-900 mt-1">Ruangan Tersedia</p>
           </div>
-          <div className="bg-success text-success-content rounded-xl p-8 shadow-lg">
-            <div className="text-4xl mb-2">✅</div>
-            <p className="text-5xl font-bold">{stats.available}</p>
-            <p className="mt-2 text-lg">Tersedia</p>
+          <div className="bg-blue-100 p-6 rounded-xl shadow-md hover:scale-105 transition">
+            <div className="text-5xl mb-2">⏰</div>
+            <h3 className="text-3xl font-bold">{stats.jamTerpakai} Jam</h3>
+            <p className="text-base text-blue-900 mt-1">Waktu Terpakai</p>
           </div>
         </section>
 
-        {/* Panduan Peminjaman */}
+        {/* Layanan */}
         <section className="mb-24">
-          <h2 className="text-3xl font-bold text-center text-base-content mb-10">
-            Cara Meminjam Ruangan
+          <h2 className="text-3xl font-bold text-center mb-10 text-base-content">
+            Layanan Sistem Fast UPNVJ
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center p-6 bg-base-200 rounded-xl shadow">
-              <div className="text-4xl mb-2">🔍</div>
-              <h3 className="font-semibold text-lg">1. Telusuri Ruangan</h3>
-              <p className="text-base-content/80">
-                Cari ruangan yang sesuai dengan kebutuhan dan ketersediaan.
-              </p>
-            </div>
-            <div className="text-center p-6 bg-base-200 rounded-xl shadow">
-              <div className="text-4xl mb-2">📝</div>
-              <h3 className="font-semibold text-lg">2. Isi Formulir</h3>
-              <p className="text-base-content/80">
-                Lengkapi data peminjaman dengan mudah melalui sistem.
-              </p>
-            </div>
-            <div className="text-center p-6 bg-base-200 rounded-xl shadow">
-              <div className="text-4xl mb-2">⏳</div>
-              <h3 className="font-semibold text-lg">3. Tunggu Persetujuan</h3>
-              <p className="text-base-content/80">
-                Admin akan meninjau dan memberikan konfirmasi secara online.
-              </p>
-            </div>
-            <div className="text-center p-6 bg-base-200 rounded-xl shadow">
-              <div className="text-4xl mb-2">📩</div>
-              <h3 className="font-semibold text-lg">4. Dapatkan Notifikasi</h3>
-              <p className="text-base-content/80">
-                Notifikasi akan dikirimkan langsung ke akunmu saat disetujui.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {services.map((svc, index) => (
+              <div
+                key={index}
+                onClick={() => navigate(svc.link)}
+                className="cursor-pointer bg-base-200 hover:bg-base-300 p-6 rounded-xl text-center shadow transition"
+              >
+                <div className="text-4xl mb-3">{svc.icon}</div>
+                <h3 className="text-lg font-semibold text-base-content">{svc.title}</h3>
+              </div>
+            ))}
           </div>
-        </section>
-
-        {/* CTA */}
-        <section className="text-center mb-10">
-          <h3 className="text-2xl font-semibold text-base-content mb-4">
-            Siap mulai meminjam ruangan dengan cepat dan mudah?
-          </h3>
-          <button
-            onClick={() => navigate("/login")}
-            className="btn btn-primary text-lg px-10 py-3"
-          >
-            Masuk Sekarang
-          </button>
         </section>
       </main>
+
+      {/* Footer */}
       <Footer />
     </div>
   );
