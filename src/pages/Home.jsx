@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import CountUp from "react-countup";
 import Footer from "../components/Footer";
 import HeroImage from "../assets/img1.svg";
+import LogoUPN from "../assets/logo-upn.png"; // Pastikan file ini ada
 
 function HomePage() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [greeting, setGreeting] = useState("");
   useEffect(() => {
@@ -40,42 +42,69 @@ function HomePage() {
   ];
 
   const services = [
-    { id: 1, icon: "🏢", title: "Peminjaman Gedung", link: "/layanan/gedung" },
+    {
+      id: 1,
+      icon: "🏢",
+      title: "Peminjaman Gedung",
+      description:
+        "Fasilitas gedung kampus untuk kegiatan akademik dan non-akademik",
+      link: "/layanan/gedung",
+    },
     {
       id: 2,
       icon: "🛋️",
       title: "Peminjaman Ruangan",
+      description: "Ruang kelas, auditorium, dan ruang pertemuan lainnya",
       link: "/layanan/ruangan",
     },
-    { id: 3, icon: "🗓️", title: "Manajemen Jadwal", link: "/layanan/jadwal" },
+    {
+      id: 3,
+      icon: "🗓️",
+      title: "Manajemen Jadwal",
+      description: "Sistem penjadwalan terintegrasi untuk peminjaman fasilitas",
+      link: "/layanan/jadwal",
+    },
   ];
 
   return (
     <div className="min-h-screen bg-base-100" data-theme="light">
-      {/* Navbar langsung di sini */}
-      <nav className="bg-base-200 shadow-md py-4">
+      {/* Navbar */}
+      <nav className="bg-base-200 shadow-md py-4 border-b border-base-content/20">
         <div className="container mx-auto px-4 flex items-center justify-between">
-          <h1
-            className="text-xl font-bold cursor-pointer text-primary"
+          <div
+            className="flex items-center gap-3 cursor-pointer"
             onClick={() => navigate("/")}
           >
-            Fast UPNVJ
-          </h1>
-          <ul className="flex gap-6 text-base font-medium text-base-content">
+            <img src={LogoUPN} alt="Logo UPN" className="w-10 h-10" />
+            <h1 className="text-xl font-bold text-primary">Fast UPNVJ</h1>
+          </div>
+          <ul className="flex gap-6 text-base font-medium">
             <li
-              className="cursor-pointer hover:text-primary"
+              className={`cursor-pointer pb-1 border-b-2 transition ${
+                location.pathname === "/"
+                  ? "border-primary"
+                  : "border-transparent hover:border-primary"
+              }`}
               onClick={() => navigate("/")}
             >
               Beranda
             </li>
             <li
-              className="cursor-pointer hover:text-primary"
+              className={`cursor-pointer pb-1 border-b-2 transition ${
+                location.pathname === "/tentang"
+                  ? "border-primary"
+                  : "border-transparent hover:border-primary"
+              }`}
               onClick={() => navigate("/tentang")}
             >
               Tentang Kami
             </li>
             <li
-              className="cursor-pointer hover:text-primary"
+              className={`cursor-pointer pb-1 border-b-2 transition ${
+                location.pathname.startsWith("/layanan")
+                  ? "border-primary"
+                  : "border-transparent hover:border-primary"
+              }`}
               onClick={() => navigate("/layanan")}
             >
               Layanan
@@ -85,7 +114,7 @@ function HomePage() {
       </nav>
 
       <main className="container mx-auto px-4 py-10">
-        {/* Hero Section */}
+        {/* Hero */}
         <section className="flex flex-col md:flex-row items-center justify-between min-h-[60vh] gap-8">
           <div className="md:w-1/2 space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold text-base-content leading-tight">
@@ -121,7 +150,7 @@ function HomePage() {
           </div>
         </section>
 
-        {/* Statistik Section */}
+        {/* Statistik */}
         <section className="mt-20">
           <h2 className="text-3xl font-bold text-center mb-10">
             Statistik Penggunaan
@@ -146,16 +175,17 @@ function HomePage() {
         <section className="mt-20">
           <h2 className="text-3xl font-bold text-center mb-10">Layanan Kami</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {services.map(({ id, icon, title, link }) => (
+            {services.map(({ id, icon, title, description, link }) => (
               <button
                 key={id}
                 onClick={() => navigate(link)}
-                className="card bg-base-200 hover:shadow-lg transition shadow p-6 flex flex-col items-center"
+                className="card bg-base-200 hover:shadow-lg transition shadow p-6 flex flex-col items-center text-center"
               >
                 <div className="text-4xl mb-3">{icon}</div>
-                <h3 className="text-lg font-semibold text-base-content">
+                <h3 className="text-lg font-semibold text-base-content mb-2">
                   {title}
                 </h3>
+                <p className="text-sm text-base-content/70">{description}</p>
               </button>
             ))}
           </div>
