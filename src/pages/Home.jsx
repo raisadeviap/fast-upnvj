@@ -1,64 +1,36 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import Footer from "../components/Footer";
-import UpnLogo from "../assets/UPN.png";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import HeroImage from '../assets/img1.svg';
+import AboutImage from '../assets/UPN.png';
 
-const layanan = [
-  {
-    icon: "🏢",
-    title: "Peminjaman Gedung",
-    desc: "Ajukan peminjaman aula, auditorium, atau gedung kampus lainnya.",
-    link: "/gedung",
-    detail:
-      "Lihat pilihan gedung kampus untuk seminar, pelatihan, dan lainnya.",
-  },
-  {
-    icon: "🚪",
-    title: "Peminjaman Ruangan",
-    desc: "Pinjam ruang kelas, ruang rapat, atau laboratorium dengan mudah.",
-    link: "/ruangan",
-    detail: "Ajukan ruang sesuai kapasitas dan kebutuhan acara kamu.",
-  },
-  {
-    icon: "🗓️",
-    title: "Jadwal Peminjaman",
-    desc: "Lihat jadwal fasilitas yang tersedia dan hindari bentrok.",
-    link: "/jadwal",
-    detail: "Pantau ketersediaan ruang/gedung secara real-time.",
-  },
-];
-
-function LandingPage() {
+function HomePage() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#d9f0e6] to-[#f0faf7] text-gray-900 font-sans">
-      <main className="max-w-7xl mx-auto px-6 py-14">
+    <div className="min-h-screen bg-base-100" data-theme="light">
+      <Navbar />
+      <main className="container mx-auto px-4 py-8">
         {/* Hero Section */}
-        <section className="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-20 mb-20">
-          <div className="md:w-1/2 text-center md:text-left">
-            <img
-              src={UpnLogo}
-              alt="Logo UPNVJ"
-              className="w-28 mx-auto md:mx-0 mb-8 rounded-xl shadow-lg"
-            />
-            <h1 className="text-5xl font-extrabold mb-5 leading-tight tracking-tight text-[#176753]">
-              Selamat Datang, Mahasiswa UPNVJ!
+        <section className="flex flex-col md:flex-row items-center justify-between min-h-[70vh] gap-8">
+          <div className="md:w-1/2 space-y-6">
+            <h1 className="text-5xl font-bold text-base-content leading-tight">
+              Solusi Peminjaman Fasilitas Kampus UPNVJ
             </h1>
-            <p className="mb-8 text-lg max-w-lg mx-auto md:mx-0 text-[#2d4b42]">
-              Kelola peminjaman fasilitas kampus dengan mudah, cepat, dan
-              transparan. Semua dalam genggaman.
+            <p className="text-lg text-base-content/80">
+              Sistem peminjaman fasilitas kampus yang cepat, mudah, dan terintegrasi.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-5 max-w-xs mx-auto md:mx-0">
+            <div className="flex flex-col sm:flex-row gap-4 mt-6">
               <button
-                onClick={() => navigate("/login")}
-                className="bg-[#1a6f53] hover:bg-[#145438] text-white font-semibold px-7 py-3 rounded-lg shadow-lg transition-transform transform hover:scale-105"
+                className="btn btn-primary px-6 py-3 text-lg"
+                onClick={() => navigate('/login')}
               >
                 Ajukan Peminjaman
               </button>
               <button
-                onClick={() => navigate("/panduan")}
-                className="border-2 border-[#1a6f53] text-[#1a6f53] hover:bg-[#1a6f53] hover:text-white font-semibold px-7 py-3 rounded-lg transition-colors"
+                className="btn btn-outline px-6 py-3 text-lg"
+                onClick={() => navigate('/panduan')}
               >
                 Lihat Panduan
               </button>
@@ -66,95 +38,69 @@ function LandingPage() {
           </div>
           <div className="md:w-1/2 flex justify-center">
             <img
-              src={UpnLogo}
-              alt="Ilustrasi peminjaman"
-              className="w-72 h-auto rounded-3xl shadow-xl"
+              src={HeroImage}
+              alt="Hero Section"
+              className="w-full max-w-lg h-auto rounded-lg"
             />
           </div>
         </section>
 
-        {/* Statistik */}
-        <section className="grid grid-cols-1 sm:grid-cols-3 gap-10 mb-20">
-          <StatBox title="Total Peminjaman" value="128" icon="📋" />
-          <StatBox title="Gedung Tersedia" value="8" icon="🏢" />
-          <StatBox title="Ruangan Tersedia" value="21" icon="🚪" />
-        </section>
-
-        {/* Layanan Cepat */}
-        <section className="mb-24">
-          <h2 className="text-4xl font-bold text-center text-[#176753] mb-14">
-            Layanan Cepat
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {layanan.map((item, i) => (
-              <div
-                key={i}
-                onClick={() => navigate(item.link)}
-                className="cursor-pointer bg-white rounded-3xl shadow-xl p-8 text-center
-                  transition-transform transform hover:scale-105 hover:shadow-2xl
-                  border border-transparent hover:border-[#1a6f53]"
-              >
-                <div className="bg-[#d9f0e6] text-6xl w-24 h-24 mx-auto flex items-center justify-center rounded-full mb-6">
-                  {item.icon}
-                </div>
-                <h3 className="text-2xl font-semibold mb-3 text-[#1a6f53]">
-                  {item.title}
-                </h3>
-                <p className="text-md mb-3 text-[#375a4a]">{item.desc}</p>
-                <p className="text-sm italic text-[#4ca585]">{item.detail}</p>
-              </div>
-            ))}
+        {/* About Section */}
+        <section className="mt-20 bg-accent py-16 px-6 rounded-lg">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <div className="lg:w-1/2">
+              <img
+                src={AboutImage}
+                alt="Tentang Kami"
+                className="rounded-lg shadow-lg"
+              />
+            </div>
+            <div className="lg:w-1/2 text-accent-content">
+              <h2 className="text-4xl font-bold mb-4">Tentang Kami</h2>
+              <p className="text-lg mb-4">
+                Fast UPNVJ adalah platform digital inovatif untuk mempermudah proses peminjaman fasilitas kampus.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2">
+                  <span className="text-2xl">🏛️</span>
+                  <div>
+                    <strong>Visi:</strong> Sistem peminjaman terintegrasi terbaik di lingkungan UPNVJ.
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-2xl">🎯</span>
+                  <div>
+                    <strong>Misi:</strong> Menyederhanakan proses administratif dan meningkatkan aksesibilitas fasilitas kampus.
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
 
-        {/* Aktivitas Terbaru */}
-        <section className="mb-24 max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-[#176753] mb-8 text-center">
-            Aktivitas Terbaru
-          </h2>
-          <ul className="space-y-6">
-            <li className="bg-white p-7 rounded-2xl border border-[#a3c4b3] shadow-md flex items-center gap-5 text-[#264d3e] text-lg">
-              <span className="text-3xl">📝</span>
-              Anda mengajukan peminjaman ruang Rapat 203 pada 4 Juni 2025.
-            </li>
-            <li className="bg-white p-7 rounded-2xl border border-[#a3c4b3] shadow-md flex items-center gap-5 text-[#264d3e] text-lg">
-              <span className="text-3xl">✅</span>
-              Admin menyetujui peminjaman Aula Utama untuk kegiatan ORMAWA.
-            </li>
-          </ul>
-        </section>
-
-        {/* Bantuan */}
-        <section className="bg-white p-12 rounded-3xl border border-[#a3c4b3] shadow-lg text-center text-[#176753] max-w-xl mx-auto mb-16">
-          <h3 className="text-3xl font-semibold mb-5">Butuh Bantuan?</h3>
-          <p className="text-lg mb-7">
-            Jika mengalami kendala atau ingin melihat panduan penggunaan sistem,
-            klik tombol berikut.
-          </p>
-          <button
-            onClick={() => navigate("/panduan")}
-            className="bg-[#1a6f53] hover:bg-[#145438] text-white px-8 py-3 rounded-full text-xl font-semibold transition-transform transform hover:scale-105"
-          >
-            📘 Lihat Panduan
-          </button>
+        {/* Layanan */}
+        <section className="mt-24">
+          <h2 className="text-3xl font-bold text-center mb-12">Layanan Kami</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card icon="🏢" title="Peminjaman Gedung" desc="Untuk seminar, pelatihan, dan kegiatan besar." />
+            <Card icon="🚪" title="Peminjaman Ruangan" desc="Kelas, laboratorium, ruang rapat, dll." />
+            <Card icon="📅" title="Manajemen Jadwal" desc="Pantau dan atur jadwal peminjaman secara real-time." />
+          </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );
 }
 
-function StatBox({ title, value, icon }) {
+function Card({ icon, title, desc }) {
   return (
-    <div className="bg-white text-[#176753] rounded-3xl p-8 text-center shadow-lg border border-transparent hover:border-[#1a6f53] transition-all duration-300">
-      <div className="bg-[#d9f0e6] w-20 h-20 mx-auto flex items-center justify-center rounded-full text-5xl mb-4">
-        {icon}
-      </div>
-      <h4 className="text-lg font-medium mb-2">{title}</h4>
-      <p className="text-4xl font-extrabold text-[#4ca585]">{value}</p>
+    <div className="card bg-base-200 shadow-lg text-center p-6">
+      <div className="text-5xl mb-4">{icon}</div>
+      <h3 className="card-title mb-2">{title}</h3>
+      <p className="text-base-content/80">{desc}</p>
     </div>
   );
 }
 
-export default LandingPage;
+export default HomePage;
