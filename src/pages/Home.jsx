@@ -4,17 +4,6 @@ import Logo from "../assets/UPN.png";
 import { FunnelIcon } from '@heroicons/react/24/solid';
 
 const Fasilitas = [
-  const Fasilitas = [
-  {
-    title: 'Auditorium Bhineka Tunggal Ika',
-    kapasitas: '300 orang',
-    gedung: 'Plaza Soedirman',
-    image: 'https://merce-fk.upnvj.ac.id/wp-content/uploads/photo-gallery/imported_from_media_libray/IMG_3839-min-scaled.jpg?bwg=1693216594'
-  },
-  // ...fasilitas lain tanpa gambar atau dengan gambar juga
-];
-
-const Fasilitas = [
   { title: 'Auditorium Bhineka Tunggal Ika', kapasitas: '300 orang', gedung: 'Plaza Soedirman', image: 'https://merce-fk.upnvj.ac.id/wp-content/uploads/photo-gallery/imported_from_media_libray/IMG_3839-min-scaled.jpg?bwg=1693216594' },
   { title: 'Auditorium Wahidin Sudiro Husodo', kapasitas: '100 orang', gedung: 'Wahidin Sudiro Husodo' },
   { title: 'Auditorium Dr. Cipto Mangun Kusumo', kapasitas: '200 orang', gedung: 'Dr. Cipto Mangun Kusumo' },
