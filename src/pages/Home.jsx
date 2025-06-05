@@ -45,7 +45,7 @@ const products = [
   }
 ];
 
-// Navbar Komponen
+// Navbar Component
 function Navbar() {
   const navigate = useNavigate();
   return (
@@ -79,7 +79,7 @@ function Navbar() {
   );
 }
 
-// Footer Komponen
+// Footer Component
 function Footer() {
   return (
     <footer className="footer sm:footer-horizontal bg-accent text-accent-content p-10 mt-16">
@@ -94,79 +94,83 @@ function Footer() {
       <nav>
         <h6 className="footer-title">Social</h6>
         <div className="grid grid-flow-col gap-4">
-          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="M24 4.557c..."/></svg></a>
-          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="M19.615 3.184c..."/></svg></a>
-          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="M9 8h-3v4h3v12h5..."/></svg></a>
+          {/* Placeholder icons */}
+          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="M24 4.557..." /></svg></a>
+          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="M19.615 3.184..." /></svg></a>
+          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="M9 8h-3v4h3v12h5..." /></svg></a>
         </div>
       </nav>
     </footer>
   );
 }
 
-// Halaman Utama
+// Main Page Component
 export default function ProductPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="flex flex-1">
-        <aside className="w-64 bg-gray-100 p-4 border-r">
-          <h2 className="text-lg font-bold mb-4">Semua Kategori</h2>
-          <ul className="space-y-2">
-            {categories.map((cat, i) => (
-              <li key={i} className="text-sm text-gray-700 hover:text-orange-600 cursor-pointer">
-                {cat === 'Elektronik' ? <strong className="text-orange-600">{cat}</strong> : cat}
-              </li>
-            ))}
-          </ul>
-          <aside className="w-64 bg-gray-50 p-4 border-r space-y-6">
-  <h2 className="text-lg font-bold">Filter Produk</h2>
-
-  {/* Kategori */}
-  <div>
-    <h3 className="text-sm font-semibold mb-2">Kategori</h3>
-    {categories.map((cat, i) => (
-      <label key={i} className="flex items-center space-x-2 text-sm text-gray-700">
-        <input type="checkbox" className="accent-orange-500" />
-        <span>{cat}</span>
-      </label>
-    ))}
-  </div>
-
-  {/* Lokasi Dropdown */}
-  <div>
-    <h3 className="text-sm font-semibold mb-2">Lokasi</h3>
-    <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
-      <option value="">Semua Lokasi</option>
-      <option>Jakarta</option>
-      <option>Bandung</option>
-      <option>Surabaya</option>
-      <option>Yogyakarta</option>
-    </select>
-  </div>
-
-  {/* Tombol Reset */}
-  <div className="pt-4">
-    <button className="w-full bg-orange-500 text-white text-sm py-2 rounded hover:bg-orange-600 transition">
-      Reset Filter
-    </button>
-  </div>
-</aside>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-            {products.map((product, i) => (
-              <div key={i} className="relative border rounded-lg p-2 shadow hover:shadow-lg">
-                {product.discount && (
-                  <span className="absolute right-2 top-2 text-red-500 text-xs">-{product.discount}</span>
-                )}
-                <img src={product.image} alt={product.title} className="w-full h-32 object-cover mb-2" />
-                <h4 className="text-sm font-semibold mb-1">{product.title}</h4>
-                <p className="text-red-500 font-bold">{product.price}</p>
-                <p className="text-xs text-gray-500">10RB+ terjual</p>
-              </div>
-            ))}
+      <main className="flex flex-1">
+        {/* Sidebar */}
+        <aside className="w-64 bg-gray-100 p-4 border-r space-y-6">
+          <div>
+            <h2 className="text-lg font-bold mb-4">Semua Kategori</h2>
+            <ul className="space-y-2">
+              {categories.map((cat, i) => (
+                <li key={i} className="text-sm text-gray-700 hover:text-orange-600 cursor-pointer">
+                  {cat === 'Elektronik' ? <strong className="text-orange-600">{cat}</strong> : cat}
+                </li>
+              ))}
+            </ul>
           </div>
-        </main>
-      </div>
+
+          {/* Filter Section */}
+          <div>
+            <h2 className="text-lg font-bold">Filter Produk</h2>
+            {/* Kategori Filter */}
+            <div>
+              <h3 className="text-sm font-semibold mb-2">Kategori</h3>
+              {categories.map((cat, i) => (
+                <label key={i} className="flex items-center space-x-2 text-sm text-gray-700">
+                  <input type="checkbox" className="accent-orange-500" />
+                  <span>{cat}</span>
+                </label>
+              ))}
+            </div>
+            {/* Lokasi Dropdown */}
+            <div className="pt-4">
+              <h3 className="text-sm font-semibold mb-2">Lokasi</h3>
+              <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
+                <option value="">Semua Lokasi</option>
+                <option>Jakarta</option>
+                <option>Bandung</option>
+                <option>Surabaya</option>
+                <option>Yogyakarta</option>
+              </select>
+            </div>
+            {/* Reset Filter */}
+            <div className="pt-4">
+              <button className="w-full bg-orange-500 text-white text-sm py-2 rounded hover:bg-orange-600 transition">
+                Reset Filter
+              </button>
+            </div>
+          </div>
+        </aside>
+
+        {/* Product Grid */}
+        <section className="flex-1 p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          {products.map((product, i) => (
+            <div key={i} className="relative border rounded-lg p-2 shadow hover:shadow-lg">
+              {product.discount && (
+                <span className="absolute right-2 top-2 text-red-500 text-xs">-{product.discount}</span>
+              )}
+              <img src={product.image} alt={product.title} className="w-full h-32 object-cover mb-2" />
+              <h4 className="text-sm font-semibold mb-1">{product.title}</h4>
+              <p className="text-red-500 font-bold">{product.price}</p>
+              <p className="text-xs text-gray-500">10RB+ terjual</p>
+            </div>
+          ))}
+        </section>
+      </main>
       <Footer />
     </div>
   );
