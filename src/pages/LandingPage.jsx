@@ -1,155 +1,150 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import HeroImage from "../assets/img1.svg";
-import AboutImage from "../assets/UPN.png";
+import { Link, useNavigate } from "react-router-dom";
+import Logo from "../assets/UPN.png";
 
-function LandingPage() {
+const categories = [
+  'Elektronik',
+  'Konsol Game',
+  'Aksesoris Konsol',
+  'Alat Casting',
+  'Foot Bath & Spa',
+  'Mesin Jahit & Aksesoris',
+  'Lainnya'
+];
+
+const products = [
+  {
+    title: 'Blender Chopper Daging Stainless',
+    price: 'Rp58.000',
+    image: 'https://via.placeholder.com/150',
+    discount: '52%',
+  },
+  {
+    title: 'Booster TV Penguat Sinyal Antena',
+    price: 'Rp12.999',
+    image: 'https://via.placeholder.com/150',
+    discount: '57%',
+  },
+  {
+    title: 'Bracket TV LCD LED 14 s/d 42 inch',
+    price: 'Rp33.200',
+    image: 'https://via.placeholder.com/150',
+    discount: '27%',
+  },
+  {
+    title: 'PCB LED ACR 5-40W',
+    price: 'Rp5.300',
+    image: 'https://via.placeholder.com/150',
+    discount: '',
+  },
+  {
+    title: 'Blender Kapsul Capsule Cutter',
+    price: 'Rp63.999',
+    image: 'https://via.placeholder.com/150',
+    discount: '54%',
+  }
+];
+
+// Navbar Komponen
+function Navbar() {
   const navigate = useNavigate();
   return (
-    <div className="min-h-screen bg-base-100" data-theme="light">
-      <Navbar />
-      <main className="container mx-auto px-4 py-8">
-        {/* Hero Section dengan gambar di sebelah kanan */}
-        <section className="flex flex-col md:flex-row items-center justify-between min-h-[70vh] gap-8">
-          {/* Teks di sebelah kiri */}
-          <div className="md:w-1/2 space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-base-content leading-tight">
-              <span className="block">Kami menyediakan</span>
-              <span className="block">solusi peminjaman</span>
-              <span className="block">fasilitas kampus</span>
-            </h1>
-
-            <p className="text-lg md:text-xl text-base-content/80 mt-6">
-              Sistem peminjaman fasilitas kampus UPNVJ yang cepat, mudah, dan
-              terintegrasi
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 mt-8">
-              <button
-                className="btn btn-primary px-6 py-3 text-lg"
-                onClick={() => navigate("/login")}
-              >
-                Ajukan Peminjaman
-              </button>
-              <button className="btn btn-outline px-6 py-3 text-lg">
-                Lihat Panduan
-              </button>
-            </div>
+    <nav className="bg-base-100 shadow-sm sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-3">
+        <div className="flex justify-between items-center">
+          <Link to="/" className="flex items-center">
+            <img src={Logo} alt="UPNVJ Logo" className="h-12" />
+            <span className="ml-3 text-xl font-semibold">FAST UPNVJ</span>
+          </Link>
+          <div className="hidden md:flex space-x-8">
+            <Link to="/" className="relative group hover:text-primary transition-colors">
+              Beranda
+              <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link to="/" className="relative group hover:text-primary transition-colors">
+              Tentang Kami
+              <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link to="/" className="relative group hover:text-primary transition-colors">
+              Layanan
+              <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
           </div>
-
-          {/* Gambar di sebelah kanan */}
-          <div className="md:w-1/2 flex justify-center">
-            <img
-              src={HeroImage}
-              alt="Fast UPNVJ - Peminjaman Fasilitas Kampus"
-              className="w-120 h-auto rounded-lg ml-1"
-            />
-          </div>
-        </section>
-
-        {/* Tentang Kami*/}
-        <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mt-20 bg-accent">
-          <div className="container mx-auto px-6 py-16">
-            <div className="flex flex-col lg:flex-row items-center gap-12">
-              {/* Gambar */}
-              <div className="lg:w-1/2">
-                <img
-                  src={AboutImage}
-                  alt="Tentang Fast UPNVJ"
-                  className="rounded-lg w-9/10 h-auto"
-                />
-              </div>
-
-              {/* Konten */}
-              <div className="lg:w-1/2 text-accent-content">
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  Tentang Fast UPNVJ
-                </h2>
-                <p className="text-lg mb-4">
-                  Fast UPNVJ adalah platform digital inovatif yang dikembangkan
-                  untuk mempermudah proses peminjaman fasilitas kampus di
-                  Universitas Pembangunan Nasional Veteran Jakarta.
-                </p>
-                <p className="text-lg mb-6">
-                  Kami berkomitmen untuk menyediakan sistem yang efisien,
-                  transparan, dan mudah digunakan bagi seluruh civitas akademika
-                  UPNVJ.
-                </p>
-
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4">
-                    <div className="mt-1 text-2xl">🏛️</div>
-                    <div>
-                      <h3 className="font-semibold text-xl">Visi</h3>
-                      <p>
-                        Menjadi sistem peminjaman fasilitas terintegrasi terbaik
-                        di lingkungan UPNVJ
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="mt-1 text-2xl">🎯</div>
-                    <div>
-                      <h3 className="font-semibold text-xl">Misi</h3>
-                      <p>
-                        Menyederhanakan proses administratif dan meningkatkan
-                        aksesibilitas fasilitas kampus
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-accent-content/20">
-                  <p className="text-lg font-medium">
-                    UNIVERSITAS PEMBANGUNAN NASIONAL "VETERAN" JAKARTA
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <button onClick={() => navigate('/login')} className="btn btn-primary btn-sm md:btn-md">
+            Login
+          </button>
         </div>
+      </div>
+    </nav>
+  );
+}
 
-        {/* Fitur Layanan */}
-        <section className="mt-20 py-10">
-          <h2 className="text-3xl font-bold text-center mb-12">Layanan Kami</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="card bg-base-200 shadow-lg">
-              <div className="card-body items-center text-center">
-                <div className="text-4xl mb-4">🏢</div>
-                <h3 className="card-title">Peminjaman Gedung</h3>
-                <p>
-                  Fasilitas gedung kampus untuk kegiatan akademik dan
-                  non-akademik
-                </p>
-              </div>
-            </div>
+// Footer Komponen
+function Footer() {
+  return (
+    <footer className="footer sm:footer-horizontal bg-accent text-accent-content p-10 mt-16">
+      <aside>
+        <img src={Logo} alt="UPN Logo" width={50} height={50} className="mb-2" />
+        <p>
+          FAST UPNVJ
+          <br />
+          Website Peminjaman Fasilitas Kampus UPNVJ
+        </p>
+      </aside>
+      <nav>
+        <h6 className="footer-title">Social</h6>
+        <div className="grid grid-flow-col gap-4">
+          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="M24 4.557c..."/></svg></a>
+          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="M19.615 3.184c..."/></svg></a>
+          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="M9 8h-3v4h3v12h5..."/></svg></a>
+        </div>
+      </nav>
+    </footer>
+  );
+}
 
-            <div className="card bg-base-200 shadow-lg">
-              <div className="card-body items-center text-center">
-                <div className="text-4xl mb-4">🪑</div>
-                <h3 className="card-title">Peminjaman Ruangan</h3>
-                <p>Ruang kelas, auditorium, dan ruang pertemuan lainnya</p>
-              </div>
-            </div>
-
-            <div className="card bg-base-200 shadow-lg">
-              <div className="card-body items-center text-center">
-                <div className="text-4xl mb-4">📅</div>
-                <h3 className="card-title">Manajemen Jadwal</h3>
-                <p>
-                  Sistem penjadwalan terintegrasi untuk peminjaman fasilitas
-                </p>
-              </div>
-            </div>
+// Halaman Utama
+export default function ProductPage() {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <div className="flex flex-1">
+        <aside className="w-64 bg-gray-100 p-4 border-r">
+          <h2 className="text-lg font-bold mb-4">Semua Kategori</h2>
+          <ul className="space-y-2">
+            {categories.map((cat, i) => (
+              <li key={i} className="text-sm text-gray-700 hover:text-orange-600 cursor-pointer">
+                {cat === 'Elektronik' ? <strong className="text-orange-600">{cat}</strong> : cat}
+              </li>
+            ))}
+          </ul>
+          <h3 className="mt-8 mb-2 text-sm font-semibold">FILTER</h3>
+          <p className="text-xs text-gray-500">Lokasi</p>
+        </aside>
+        <main className="flex-1 p-6">
+          <div className="flex gap-2 mb-4">
+            <button className="px-3 py-1 bg-gray-200 rounded">Urutkan</button>
+            <button className="px-3 py-1 bg-orange-500 text-white rounded">Populer</button>
+            <button className="px-3 py-1 bg-gray-200 rounded">Terbaru</button>
+            <button className="px-3 py-1 bg-gray-200 rounded">Terlaris</button>
+            <button className="px-3 py-1 bg-gray-200 rounded">Harga ▼</button>
           </div>
-        </section>
-      </main>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+            {products.map((product, i) => (
+              <div key={i} className="relative border rounded-lg p-2 shadow hover:shadow-lg">
+                {product.discount && (
+                  <span className="absolute right-2 top-2 text-red-500 text-xs">-{product.discount}</span>
+                )}
+                <img src={product.image} alt={product.title} className="w-full h-32 object-cover mb-2" />
+                <h4 className="text-sm font-semibold mb-1">{product.title}</h4>
+                <p className="text-red-500 font-bold">{product.price}</p>
+                <p className="text-xs text-gray-500">10RB+ terjual</p>
+              </div>
+            ))}
+          </div>
+        </main>
+      </div>
       <Footer />
     </div>
   );
 }
-
-export default LandingPage;
