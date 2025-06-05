@@ -81,7 +81,6 @@ function HomePage() {
               alt="Logo UPN"
               className="w-10 h-10 object-contain"
             />
-            <h1 className="text-xl font-bold text-primary">Fast UPNVJ</h1>
           </div>
           <ul className="flex gap-6 text-base font-medium">
             <li
