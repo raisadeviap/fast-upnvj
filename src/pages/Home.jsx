@@ -4,7 +4,83 @@ import Logo from "../assets/UPN.png";
 import { FunnelIcon } from '@heroicons/react/24/solid';
 
 const Fasilitas = [
-  // ... (data fasilitas tetap sama)
+  {
+    title: 'Auditorium Bhineka Tunggal Ika',
+    kapasitas: '300 orang',
+    gedung: 'Plaza Soedirman',
+    image: 'https://www.upnvj.ac.id/en/files/large/5fe91f59d3da4d824097b0b5bb994e69',
+  },
+  { 
+    title: 'Auditorium Wahidin Sudiro Husodo', 
+    kapasitas: '100 orang', 
+    gedung: 'Wahidin Sudiro Husodo',
+    image: 'https://fk.upnvj.ac.id/wp-content/uploads/2022/04/IMG_2038-scaled.jpg',
+  },
+  { 
+    title: 'Auditorium Dr. Cipto Mangun Kusumo', 
+    kapasitas: '200 orang', 
+    gedung: 'Dr. Cipto Mangun Kusumo',
+    image: 'https://fk.upnvj.ac.id/wp-content/uploads/2022/11/IMG_7937-scaled.jpg',
+  },
+  { 
+    title: 'Auditorium MERCe', 
+    kapasitas: '100 orang', 
+    gedung: 'MERCe Kampus Limo',
+    image: 'https://merce-fk.upnvj.ac.id/wp-content/uploads/photo-gallery/imported_from_media_libray/IMG_3839-min-scaled.jpg?bwg=1693216594'},
+  { 
+    title: 'Ruang Podcast FH', 
+    kapasitas: '5 orang', 
+    gedung: 'Yos Sudarso',
+    image: 'https://hukum.upnvj.ac.id/wp-content/uploads/2022/06/RuangPODCAST-LT-4-1024x799.jpeg' 
+  },
+  { 
+    title: 'Ruang Podcast FIK', 
+    kapasitas: '5 orang', 
+    gedung: 'Ki Hajar Dewantara',
+    image: 'https://new-fik.upnvj.ac.id/wp-content/uploads/2023/08/WhatsApp-Image-2023-08-07-at-15.44.52.jpeg'
+  },
+  { 
+    title: 'Ruang Podcast FIKES', 
+    kapasitas: '5 orang', 
+    gedung: 'FIKES Kampus Limo',
+    image: 'https://fikes.upnvj.ac.id/id/files/thumb/93ef38f7d710dc957cf1d23c2808d1da/520/fit',
+  },
+  {
+    title: 'Ruang Podcast FK',
+    kapasitas: '5 orang',
+    gedung: 'FK Kampus Pondok Labu',
+    image: 'https://fk.upnvj.ac.id/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-07-at-10.04.34.jpeg',
+  },
+  {
+    title: 'Ruang Podcast FISIP',
+    kapasitas: '5 orang',
+    gedung: 'FISIP',
+    image: 'https://fisip.upnvj.ac.id/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-12-at-15.12.39.jpeg',
+  },
+  {
+    title: 'Ruang Podcast FEB',
+    kapasitas: '5 orang',
+    gedung: 'FEB',
+    image: ' https://i.ytimg.com/vi/raX3zgh1WtE/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH0CYAC0AWKAgwIABABGHIgVCgrMA8=&rs=AOn4CLC4YIUaKil03CaPp4rsQlmzBv5P9whttps://fisip.upnvj.ac.id/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-12-at-15.12.39.jpeg',
+  },
+  { 
+    title: 'Lab Terpadu', 
+    kapasitas: '50 orang', 
+    gedung: 'Perpustakaan Lt. 2',
+    image: 'https://uptlabterpadu.upnvj.ac.id/wp-content/uploads/2023/08/Kegiatan-Perkuliahan-FIK-28-08-2023-01.jpeg'
+},
+  { 
+    title: 'Ubin Cokelat', 
+    kapasitas: '200 orang', 
+    gedung: 'FEB Kampus Pondok Labu',
+    image: 'https://feb.upnvj.ac.id/wp-content/uploads/2024/12/328.jpg',
+  },
+  { 
+    title: 'Lapangan Basket', 
+    kapasitas: '200 orang', 
+    gedung: 'Kampus Pondok Labu',
+    image: 'https://cdn.idntimes.com/content-images/community/2022/07/aironebball-150630392-1387338378274022-5515620263307717663-n-4b05e1ad11e871221e4135e0f2a9a211-6e991a6de4e6b086ea74264517fdd7a3.jpg',
+},
 ];
 
 function Navbar() {
@@ -17,17 +93,22 @@ function Navbar() {
             <img src={Logo} alt="UPNVJ Logo" className="h-12" />
             <span className="ml-3 text-xl font-semibold">FAST UPNVJ</span>
           </Link>
-          <div className="hidden md:flex space-x-8">
-            <Link to="/" className="hover:text-[#5dac00] transition-colors">Beranda</Link>
-            <Link to="/peminjaman" className="hover:text-[#5dac00] transition-colors font-bold">Peminjaman</Link>
-            <Link to="/tentang-kami" className="hover:text-[#5dac00] transition-colors">Tentang Kami</Link>
-          </div>
-          <button
-            onClick={() => navigate('/login')}
-            className="bg-[#5dac00] text-white text-base font-semibold px-5 py-3 rounded-full shadow-md hover:bg-[#4b8c00] transition"
-          >
-            Login
-          </button>
+         <div className="hidden md:flex space-x-8">
+  
+  <Link to="/" className="hover:text-[#5dac00] transition-colors">Beranda</Link>
+  <Link to="/peminjaman" className="hover:text-[#5dac00] transition-colors">
+    <strong>Peminjaman</strong>
+  </Link>
+  <Link to="/tentang-kami" className="hover:text-[#5dac00] transition-colors">Tentang Kami</Link>
+</div>
+
+<button
+  onClick={() => navigate('/login')}
+  className="bg-[#5dac00] text-white text-base font-semibold px-5 py-3 rounded-full shadow-md hover:bg-[#4b8c00] transition">
+  Login
+</button>
+
+
         </div>
       </div>
     </nav>
@@ -93,36 +174,39 @@ export default function HomePage() {
           <button className="w-full bg-[#5dac00] text-white text-sm py-2 rounded hover:bg-[#4b8c00] transition">
             Reset Filter
           </button>
+
         </aside>
 
         <main className="flex-1 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {Fasilitas.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-            >
-              {item.image && (
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-40 object-cover"
-                />
-              )}
-              <div className="p-4 space-y-2">
-                <h3 className="text-lg font-bold text-[#5dac00]">{item.title}</h3>
-                <p className="text-sm text-gray-600 flex items-center gap-2">
-                  📍 <span className="text-gray-700">{item.gedung}</span>
-                </p>
-                <p className="text-sm text-gray-600 flex items-center gap-2">
-                  👥 <span>{item.kapasitas}</span>
-                </p>
-                <button className="mt-2 w-full bg-[#5dac00] text-white text-sm py-1.5 rounded-full hover:bg-[#4b8c00] transition">
-                  Lihat Detail
-                </button>
-              </div>
-            </div>
-          ))}
-        </main>
+  {Fasilitas.map((item, index) => (
+    <div
+      key={index}
+      className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 group"
+    >
+      <div className="relative">
+        {item.image && (
+          <img
+            src={item.image}
+            alt={item.title}
+            className="w-full h-44 object-cover"
+          />
+        )}
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-2">
+          <p className="text-xs text-white text-left truncate">{item.gedung}</p>
+        </div>
+        <span className="absolute top-2 right-2 bg-[#5dac00] text-white text-xs font-semibold px-2 py-1 rounded-full shadow">
+          {item.kapasitas}
+        </span>
+      </div>
+      <div className="p-4 text-center">
+        <h3 className="text-lg font-bold text-gray-800 group-hover:text-[#5dac00] transition">
+          {item.title}
+        </h3>
+      </div>
+    </div>
+  ))}
+</main>
+
       </div>
       <Footer />
     </div>
