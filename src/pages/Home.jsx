@@ -132,7 +132,7 @@ function HomePage() {
             <div className="flex gap-4 mt-6">
               <button
                 className="btn btn-primary"
-                onClick={() => navigate("/layanan/ruangan")}
+                onClick={() => navigate("/layanan/Form Peminjaman")}
               >
                 Ajukan Peminjaman
               </button>
