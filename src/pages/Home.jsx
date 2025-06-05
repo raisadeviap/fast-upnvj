@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/UPN.png";
 import { FunnelIcon } from '@heroicons/react/24/solid';
-import HeroImage from "../assets/img1.svg";
+import btiImage from "../assets/btiImage";
 
 const Fasilitas = [
    {
