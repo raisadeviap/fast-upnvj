@@ -75,7 +75,14 @@ export default function FasilitasPage() {
       <div className="flex flex-1">
         {/* Sidebar Filter */}
         <aside className="w-64 bg-gray-100 p-4 border-r space-y-6">
-          <h2 className="text-lg font-bold">Filter Fasilitas <FunnelIcon className="w-5 h-5 text-gray-600 mr-2" /> </h2>
+          <h2 className="text-lg font-bold flex items-center space-x-2">
+          <FunnelIcon className="w-5 h-5 text-gray-600" />
+          <span>Filter Fasilitas</span>
+           </h2>
+
+  {/* Konten filter lainnya di sini */}
+</aside>
+
 
           <div>
             <h3 className="text-sm font-semibold mb-2">Jenis Fasilitas</h3>
@@ -99,7 +106,6 @@ export default function FasilitasPage() {
          <div>
             <h3 className="text-sm font-semibold mb-2">Kapasitas</h3>
               <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
-                <option value="">Semua Kapasitas</option>
                 <option value="lt50">&lt; 50 orang</option>
                 <option value="gte50">&gt;= 50 orang</option>
               </select>
