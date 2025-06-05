@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/UPN.png";
 import { FunnelIcon } from "@heroicons/react/24/solid";
+import Footer from "../components/Footer";
 
 const Fasilitas = [
   {
@@ -132,72 +133,6 @@ function Navbar() {
         </div>
       </div>
     </nav>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="bg-[#008037] text-white px-8 py-10 mt-16">
-      <div className="flex flex-col md:flex-row justify-between items-center md:items-start w-full max-w-6xl mx-auto space-y-6 md:space-y-0">
-        <aside className="flex flex-col items-center md:items-start text-center md:text-left">
-          <img
-            src={Logo}
-            alt="UPN Logo"
-            width={50}
-            height={50}
-            className="mb-2"
-          />
-          <p className="font-semibold">FAST UPNVJ</p>
-          <p className="text-sm">Website Peminjaman Fasilitas Kampus UPNVJ</p>
-        </aside>
-        <div className="flex flex-col items-center text-center">
-          <h6 className="uppercase text-sm text-white font-semibold mb-3">
-            Social
-          </h6>
-          <div className="flex space-x-10 justify-center">
-            <a
-              href="#"
-              aria-label="Twitter"
-              className="hover:text-gray-200 transition"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6 fill-current"
-                viewBox="0 0 24 24"
-              >
-                <path d="M24 4.557a9.93 9.93 0 01-2.828.775..." />
-              </svg>
-            </a>
-            <a
-              href="#"
-              aria-label="YouTube"
-              className="hover:text-gray-200 transition"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6 fill-current"
-                viewBox="0 0 24 24"
-              >
-                <path d="M19.615 3.184A3.16 3.16 0 00..." />
-              </svg>
-            </a>
-            <a
-              href="#"
-              aria-label="Facebook"
-              className="hover:text-gray-200 transition"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6 fill-current"
-                viewBox="0 0 24 24"
-              >
-                <path d="M22.675 0h-21.35C.597 0 0 .6..." />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
   );
 }
 
