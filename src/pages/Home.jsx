@@ -136,97 +136,60 @@ function Navbar() {
   );
 }
 
-export default function HomePage() {
-  return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      <div className="flex flex-1">
-        {" "}
-        {/* Buka flex container */}
-        {/* ASIDE harus di dalam sini */}
-        <aside className="w-64 bg-white p-6 border-r rounded-tr-3xl rounded-br-3xl shadow-lg space-y-6">
-          <h2 className="text-lg font-bold flex items-center space-x-2 text-[#007E30]">
-            <FunnelIcon className="w-5 h-5 text-[#007E30]" />
-            <span>Filter Fasilitas</span>
-          </h2>
+<aside className="w-64 bg-white p-6 border-r border-gray-100 rounded-tr-3xl rounded-br-3xl shadow space-y-6">
+  <h2 className="text-lg font-bold flex items-center space-x-2 text-[#007E30]">
+    <FunnelIcon className="w-5 h-5 text-[#007E30]" />
+    <span>Filter Fasilitas</span>
+  </h2>
 
-          <div>
-            <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
-              Jenis Fasilitas
-            </h3>
-            <div className="space-y-2">
-              {["Auditorium", "Ruang Podcast", "Lab", "Lapangan"].map(
-                (jenis, i) => (
-                  <label
-                    key={i}
-                    className="flex items-center space-x-2 text-sm text-gray-800"
-                  >
-                    <input
-                      type="checkbox"
-                      className="accent-[#FF8C00] w-4 h-4 transition duration-150"
-                    />
-                    <span>{jenis}</span>
-                  </label>
-                )
-              )}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
-              Lokasi/Gedung
-            </h3>
-            <select className="w-full border border-gray-300 focus:border-[#007E30] focus:ring-[#007E30] rounded-lg px-3 py-2 text-sm transition duration-150">
-              <option>Semua Lokasi</option>
-              <option>Kampus Limo</option>
-              <option>Pondok Labu</option>
-            </select>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
-              Kapasitas
-            </h3>
-            <select className="w-full border border-gray-300 focus:border-[#007E30] focus:ring-[#007E30] rounded-lg px-3 py-2 text-sm transition duration-150">
-              <option value="lt50">&lt; 50 orang</option>
-              <option value="gte50">&gt; 50 orang</option>
-            </select>
-          </div>
-
-          <button className="w-full bg-[#5dac00] text-white text-sm py-2 rounded-lg hover:bg-[#4b8c00] transition-all duration-200 font-semibold shadow-md">
-            Reset Filter
-          </button>
-        </aside>
-        <main className="flex-1 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {Fasilitas.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 group"
-            >
-              <div className="relative">
-                {item.image && (
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-44 object-cover"
-                  />
-                )}
-                <div className="absolute top-2 left-2 bg-[#5dac00] text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
-                  {item.kapasitas}
-                </div>
-              </div>
-              <div className="p-4 text-center">
-                <h3 className="text-lg font-bold text-gray-800 group-hover:text-[#5dac00] transition">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-gray-600 mb-1">{item.gedung}</p>
-              </div>
-            </div>
-          ))}
-        </main>
-      </div>{" "}
-      {/* Tutup flex container */}
-      <Footer />
+  {/* Jenis Fasilitas */}
+  <div className="pt-2 border-t border-gray-200">
+    <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide mt-4">
+      Jenis Fasilitas
+    </h3>
+    <div className="space-y-2">
+      {["Auditorium", "Ruang Podcast", "Lab", "Lapangan"].map((jenis, i) => (
+        <label
+          key={i}
+          className="flex items-center space-x-2 text-sm text-gray-800"
+        >
+          <input
+            type="checkbox"
+            className="accent-[#FF8C00] w-4 h-4 transition duration-150"
+          />
+          <span>{jenis}</span>
+        </label>
+      ))}
     </div>
-  );
-}
+  </div>
+
+  {/* Lokasi */}
+  <div className="pt-4 border-t border-gray-200">
+    <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide mt-4">
+      Lokasi/Gedung
+    </h3>
+    <select className="w-full border border-gray-300 focus:border-[#007E30] focus:ring-[#007E30] rounded-lg px-3 py-2 text-sm transition duration-150">
+      <option>Semua Lokasi</option>
+      <option>Kampus Limo</option>
+      <option>Pondok Labu</option>
+    </select>
+  </div>
+
+  {/* Kapasitas */}
+  <div className="pt-4 border-t border-gray-200">
+    <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide mt-4">
+      Kapasitas
+    </h3>
+    <select className="w-full border border-gray-300 focus:border-[#007E30] focus:ring-[#007E30] rounded-lg px-3 py-2 text-sm transition duration-150">
+      <option value="lt50">&lt; 50 orang</option>
+      <option value="gte50">&gt; 50 orang</option>
+    </select>
+  </div>
+
+  {/* Tombol Reset */}
+  <div className="pt-4 border-t border-gray-200">
+    <button className="w-full bg-[#5dac00] text-white text-sm py-2 rounded-lg hover:bg-[#4b8c00] transition-all duration-200 font-semibold shadow-md mt-4">
+      Reset Filter
+    </button>
+  </div>
+</aside>
