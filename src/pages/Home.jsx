@@ -8,7 +8,7 @@ const Fasilitas = [
     title: 'Auditorium Bhineka Tunggal Ika',
     kapasitas: '300 orang',
     gedung: 'Plaza Soedirman',
-    image: 'https://merce-fk.upnvj.ac.id/wp-content/uploads/photo-gallery/imported_from_media_libray/IMG_3839-min-scaled.jpg?bwg=1693216594'
+    image: 'hhttps://www.upnvj.ac.id/en/files/large/5fe91f59d3da4d824097b0b5bb994e69'
   },
   { title: 'Auditorium Wahidin Sudiro Husodo', kapasitas: '100 orang', gedung: 'Wahidin Sudiro Husodo' },
   { title: 'Auditorium Dr. Cipto Mangun Kusumo', kapasitas: '200 orang', gedung: 'Dr. Cipto Mangun Kusumo' },
