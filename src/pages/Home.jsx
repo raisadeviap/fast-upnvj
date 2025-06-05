@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/UPN.png";
 import { FunnelIcon } from '@heroicons/react/24/solid';
 
-
 const Fasilitas = [
   { title: 'Auditorium Bhineka Tunggal Ika', kapasitas: '300 orang', gedung: 'Plaza Soedirman' },
   { title: 'Auditorium Wahidin Sudiro Husodo', kapasitas: '100 orang', gedung: 'Wahidin Sudiro Husodo' },
@@ -57,7 +56,6 @@ function Footer() {
       <nav>
         <h6 className="footer-title">Social</h6>
         <div className="grid grid-flow-col gap-4">
-          {/* Placeholder Social Icons */}
           <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="..." /></svg></a>
           <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="..." /></svg></a>
           <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="..." /></svg></a>
@@ -76,13 +74,9 @@ export default function FasilitasPage() {
         {/* Sidebar Filter */}
         <aside className="w-64 bg-gray-100 p-4 border-r space-y-6">
           <h2 className="text-lg font-bold flex items-center space-x-2">
-          <FunnelIcon className="w-5 h-5 text-gray-600" />
-          <span>Filter Fasilitas</span>
-           </h2>
-
-  {/* Konten filter lainnya di sini */}
-</aside>
-
+            <FunnelIcon className="w-5 h-5 text-gray-600" />
+            <span>Filter Fasilitas</span>
+          </h2>
 
           <div>
             <h3 className="text-sm font-semibold mb-2">Jenis Fasilitas</h3>
@@ -103,14 +97,13 @@ export default function FasilitasPage() {
             </select>
           </div>
 
-         <div>
+          <div>
             <h3 className="text-sm font-semibold mb-2">Kapasitas</h3>
-              <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
-                <option value="lt50">&lt; 50 orang</option>
-                <option value="gte50">&gt;= 50 orang</option>
-              </select>
-        </div>
-
+            <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
+              <option value="lt50">&lt; 50 orang</option>
+              <option value="gte50">&gt;= 50 orang</option>
+            </select>
+          </div>
 
           <button className="w-full bg-orange-500 text-white text-sm py-2 rounded hover:bg-orange-600 transition">
             Reset Filter
