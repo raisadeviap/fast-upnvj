@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import CountUp from "react-countup";
 import Footer from "../components/Footer";
 import HeroImage from "../assets/img1.svg";
-import LogoUPN from "../assets/logo-upn.png"; // Pastikan file ini ada
+import AboutImage from "../assets/UPN.png"; // logo UPN sesuai permintaan
 
 function HomePage() {
   const navigate = useNavigate();
@@ -12,9 +12,10 @@ function HomePage() {
   const [greeting, setGreeting] = useState("");
   useEffect(() => {
     const hour = new Date().getHours();
-    if (hour < 12) setGreeting("Selamat Pagi 👋");
-    else if (hour < 18) setGreeting("Selamat Siang ☀️");
-    else setGreeting("Selamat Malam 🌙");
+    if (hour < 12) setGreeting("Selamat Pagi! ☀️ Semoga harimu menyenangkan.");
+    else if (hour < 18)
+      setGreeting("Selamat Siang! 🌤️ Selamat datang di Fast UPNVJ.");
+    else setGreeting("Selamat Malam! 🌙 Terima kasih sudah berkunjung.");
   }, []);
 
   const stats = [
@@ -75,7 +76,11 @@ function HomePage() {
             className="flex items-center gap-3 cursor-pointer"
             onClick={() => navigate("/")}
           >
-            <img src={LogoUPN} alt="Logo UPN" className="w-10 h-10" />
+            <img
+              src={AboutImage}
+              alt="Logo UPN"
+              className="w-10 h-10 object-contain"
+            />
             <h1 className="text-xl font-bold text-primary">Fast UPNVJ</h1>
           </div>
           <ul className="flex gap-6 text-base font-medium">
@@ -119,13 +124,14 @@ function HomePage() {
           <div className="md:w-1/2 space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold text-base-content leading-tight">
               {greeting} <br />
-              <span className="block">Selamat datang di</span>
-              <span className="block text-primary">Sistem Fast UPNVJ</span>
+              <span className="block mt-2 text-lg text-base-content/80">
+                Sistem informasi peminjaman fasilitas UPNVJ yang cepat,
+                terintegrasi, dan mudah digunakan.
+              </span>
+              <span className="block text-primary text-3xl mt-4 font-extrabold">
+                Fast UPNVJ
+              </span>
             </h1>
-            <p className="text-lg text-base-content/80 mt-4">
-              Sistem informasi peminjaman fasilitas UPNVJ yang cepat,
-              terintegrasi, dan user-friendly.
-            </p>
             <div className="flex gap-4 mt-6">
               <button
                 className="btn btn-primary"
