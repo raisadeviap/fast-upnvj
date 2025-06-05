@@ -191,17 +191,20 @@ export default function HomePage() {
             className="w-full h-44 object-cover"
           />
         )}
+        <div className="absolute top-2 left-2 bg-[#5dac00] text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+          {item.kapasitas}
+        </div>
       </div>
       <div className="p-4 text-center">
         <h3 className="text-lg font-bold text-gray-800 group-hover:text-[#5dac00] transition">
           {item.title}
         </h3>
-        <p className="text-sm text-gray-600 mb-1">Gedung: {item.gedung}</p>
-        <p className="text-sm text-gray-500">Kapasitas: {item.kapasitas}</p>
+        <p className="text-sm text-gray-600 mb-1">{item.gedung}</p>
       </div>
     </div>
   ))}
 </main>
+
 
       </div>
       <Footer />
