@@ -40,31 +40,52 @@ function HomePage() {
   ];
 
   const services = [
-    {
-      id: 1,
-      icon: "📅",
-      title: "Peminjaman Ruangan",
-      link: "/layanan/peminjaman",
-    },
+    { id: 1, icon: "🏢", title: "Peminjaman Gedung", link: "/layanan/gedung" },
     {
       id: 2,
-      icon: "🧾",
-      title: "Histori Penggunaan",
-      link: "/layanan/histori",
+      icon: "🛋️",
+      title: "Peminjaman Ruangan",
+      link: "/layanan/ruangan",
     },
-    {
-      id: 3,
-      icon: "📊",
-      title: "Laporan & Statistik",
-      link: "/layanan/statistik",
-    },
-    { id: 4, icon: "📌", title: "Persetujuan", link: "/layanan/persetujuan" },
+    { id: 3, icon: "🗓️", title: "Manajemen Jadwal", link: "/layanan/jadwal" },
   ];
 
   return (
     <div className="min-h-screen bg-base-100" data-theme="light">
+      {/* Navbar langsung di sini */}
+      <nav className="bg-base-200 shadow-md py-4">
+        <div className="container mx-auto px-4 flex items-center justify-between">
+          <h1
+            className="text-xl font-bold cursor-pointer text-primary"
+            onClick={() => navigate("/")}
+          >
+            Fast UPNVJ
+          </h1>
+          <ul className="flex gap-6 text-base font-medium text-base-content">
+            <li
+              className="cursor-pointer hover:text-primary"
+              onClick={() => navigate("/")}
+            >
+              Beranda
+            </li>
+            <li
+              className="cursor-pointer hover:text-primary"
+              onClick={() => navigate("/tentang")}
+            >
+              Tentang Kami
+            </li>
+            <li
+              className="cursor-pointer hover:text-primary"
+              onClick={() => navigate("/layanan")}
+            >
+              Layanan
+            </li>
+          </ul>
+        </div>
+      </nav>
+
       <main className="container mx-auto px-4 py-10">
-        {/* Hero */}
+        {/* Hero Section */}
         <section className="flex flex-col md:flex-row items-center justify-between min-h-[60vh] gap-8">
           <div className="md:w-1/2 space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold text-base-content leading-tight">
@@ -79,15 +100,15 @@ function HomePage() {
             <div className="flex gap-4 mt-6">
               <button
                 className="btn btn-primary"
-                onClick={() => navigate("/layanan/peminjaman")}
+                onClick={() => navigate("/layanan/ruangan")}
               >
                 Ajukan Peminjaman
               </button>
               <button
                 className="btn btn-outline"
-                onClick={() => navigate("/layanan/statistik")}
+                onClick={() => navigate("/layanan/jadwal")}
               >
-                Lihat Statistik
+                Lihat Jadwal
               </button>
             </div>
           </div>
@@ -100,7 +121,7 @@ function HomePage() {
           </div>
         </section>
 
-        {/* Statistik */}
+        {/* Statistik Section */}
         <section className="mt-20">
           <h2 className="text-3xl font-bold text-center mb-10">
             Statistik Penggunaan
@@ -121,10 +142,10 @@ function HomePage() {
           </div>
         </section>
 
-        {/* Layanan */}
+        {/* Layanan Kami */}
         <section className="mt-20">
           <h2 className="text-3xl font-bold text-center mb-10">Layanan Kami</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {services.map(({ id, icon, title, link }) => (
               <button
                 key={id}
@@ -140,6 +161,7 @@ function HomePage() {
           </div>
         </section>
       </main>
+
       <Footer />
     </div>
   );
