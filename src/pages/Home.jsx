@@ -1,66 +1,63 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import React from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import UpnLogo from "../assets/UPN.png"; // pastikan path ini benar
 
-function HomePage() {
+function Home() {
   return (
-    <div className="min-h-screen bg-base-100" data-theme="light">
+    <div className="flex flex-col min-h-screen bg-base-100" data-theme="light">
       <Navbar />
-      <main className="container mx-auto px-4 py-10">
+      <div className="flex flex-1 items-center justify-center bg-[#f8f8f8] py-12 px-4">
+        <div className="bg-white p-8 rounded-2xl border border-[#f1f1f2] w-full max-w-4xl">
+          {/* Logo dan Judul */}
+          <div className="flex flex-col items-center mb-8">
+            <img src={UpnLogo} alt="Logo UPNVJ" className="h-24 w-auto mb-4" />
+            <h1 className="text-3xl font-bold text-center text-zinc-900">
+              Selamat Datang di FAST UPNVJ
+            </h1>
+            <p className="mt-2 text-center text-neutral-600 text-base max-w-xl">
+              Sistem informasi peminjaman fasilitas kampus yang cepat, efisien, dan terintegrasi untuk seluruh civitas akademika Universitas Pembangunan Nasional "Veteran" Jakarta.
+            </p>
+          </div>
 
-        {/* Judul */}
-        <h1 className="text-4xl font-bold text-center mb-10">
-          Selamat Datang di FAST UPNVJ
-        </h1>
-
-        {/* Info Sistem */}
-        <section className="mb-16">
-          <p className="text-lg text-center max-w-3xl mx-auto">
-            FAST (Fasilitas Sistem Terpadu) UPN "Veteran" Jakarta adalah platform resmi untuk mengelola peminjaman gedung dan ruangan kampus. 
-            Sistem ini dirancang untuk memudahkan civitas akademika dalam melakukan peminjaman secara efisien dan transparan.
-          </p>
-        </section>
-
-        {/* Fitur Utama */}
-        <section className="mb-20">
-          <h2 className="text-2xl font-bold mb-6 text-center">Fitur Unggulan</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="card bg-base-200 shadow-lg p-6 text-center">
-              <div className="text-4xl mb-4">🏢</div>
-              <h3 className="text-xl font-semibold mb-2">Peminjaman Gedung</h3>
-              <p>Ajukan peminjaman gedung untuk kegiatan kampus dengan sistem terintegrasi.</p>
+          {/* Konten Informasi */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+            <div className="bg-base-200 rounded-xl p-6 text-center shadow-sm">
+              <div className="text-3xl mb-3">🏢</div>
+              <h3 className="text-xl font-semibold text-zinc-800">Fasilitas Kampus</h3>
+              <p className="text-neutral-600 mt-2 text-sm">
+                Peminjaman gedung, aula, ruangan kelas, dan fasilitas pendukung kegiatan akademik & organisasi.
+              </p>
             </div>
-            <div className="card bg-base-200 shadow-lg p-6 text-center">
-              <div className="text-4xl mb-4">📆</div>
-              <h3 className="text-xl font-semibold mb-2">Manajemen Jadwal</h3>
-              <p>Periksa ketersediaan ruangan dan kelola jadwal kegiatan secara real-time.</p>
+
+            <div className="bg-base-200 rounded-xl p-6 text-center shadow-sm">
+              <div className="text-3xl mb-3">📅</div>
+              <h3 className="text-xl font-semibold text-zinc-800">Manajemen Jadwal</h3>
+              <p className="text-neutral-600 mt-2 text-sm">
+                Sistem terintegrasi untuk pengecekan ketersediaan dan penjadwalan fasilitas.
+              </p>
             </div>
-            <div className="card bg-base-200 shadow-lg p-6 text-center">
-              <div className="text-4xl mb-4">📚</div>
-              <h3 className="text-xl font-semibold mb-2">Panduan & Bantuan</h3>
-              <p>Akses informasi dan tata cara penggunaan sistem melalui panduan yang tersedia.</p>
+
+            <div className="bg-base-200 rounded-xl p-6 text-center shadow-sm">
+              <div className="text-3xl mb-3">📘</div>
+              <h3 className="text-xl font-semibold text-zinc-800">Panduan & Dokumentasi</h3>
+              <p className="text-neutral-600 mt-2 text-sm">
+                Panduan lengkap penggunaan sistem dan alur permohonan peminjaman.
+              </p>
             </div>
           </div>
-        </section>
 
-        {/* Jadwal atau Informasi Umum */}
-        <section className="mb-20">
-          <h2 className="text-2xl font-bold mb-6 text-center">Informasi Terbaru</h2>
-          <div className="bg-warning text-warning-content p-6 rounded-xl text-center shadow-md max-w-2xl mx-auto">
-            🔔 Pemeliharaan sistem dijadwalkan pada 10 Juni 2025 pukul 22.00 – 23.00 WIB. Mohon tidak melakukan peminjaman selama waktu tersebut.
+          {/* Info Tambahan */}
+          <div className="mt-12 border-t pt-6 text-center">
+            <p className="text-neutral-600 text-sm">
+              FAST dikembangkan oleh UPT TIK UPN "Veteran" Jakarta untuk mendukung transparansi dan efektivitas dalam tata kelola fasilitas kampus.
+            </p>
           </div>
-        </section>
-
-        {/* CTA Umum */}
-        <section className="text-center">
-          <h3 className="text-xl font-semibold mb-4">Ingin meminjam fasilitas kampus?</h3>
-          <a href="/login" className="btn btn-primary text-lg px-6 py-3">Ajukan Sekarang</a>
-        </section>
-
-      </main>
+        </div>
+      </div>
       <Footer />
     </div>
   );
 }
 
-export default HomePage;
+export default Home;
