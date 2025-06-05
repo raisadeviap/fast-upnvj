@@ -1,8 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import AboutImage from "../assets/UPN.png";
+import { Link, useNavigate } from "react-router-dom";
+import Logo from "../assets/UPN.png";
 
 const categories = [
   'Elektronik',
@@ -47,43 +45,129 @@ const products = [
   }
 ];
 
+// Navbar Komponen
+function Navbar() {
+  const navigate = useNavigate();
+  return (
+    <nav className="bg-base-100 shadow-sm sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-3">
+        <div className="flex justify-between items-center">
+          <Link to="/" className="flex items-center">
+            <img src={Logo} alt="UPNVJ Logo" className="h-12" />
+            <span className="ml-3 text-xl font-semibold">FAST UPNVJ</span>
+          </Link>
+          <div className="hidden md:flex space-x-8">
+            <Link to="/" className="relative group hover:text-primary transition-colors">
+              Beranda
+              <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link to="/" className="relative group hover:text-primary transition-colors">
+              Tentang Kami
+              <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link to="/" className="relative group hover:text-primary transition-colors">
+              Layanan
+              <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+          </div>
+          <button onClick={() => navigate('/login')} className="btn btn-primary btn-sm md:btn-md">
+            Login
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+// Footer Komponen
+function Footer() {
+  return (
+    <footer className="footer sm:footer-horizontal bg-accent text-accent-content p-10 mt-16">
+      <aside>
+        <img src={Logo} alt="UPN Logo" width={50} height={50} className="mb-2" />
+        <p>
+          FAST UPNVJ
+          <br />
+          Website Peminjaman Fasilitas Kampus UPNVJ
+        </p>
+      </aside>
+      <nav>
+        <h6 className="footer-title">Social</h6>
+        <div className="grid grid-flow-col gap-4">
+          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="M24 4.557c..."/></svg></a>
+          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="M19.615 3.184c..."/></svg></a>
+          <a><svg xmlns="http://www.w3.org/2000/svg" className="fill-current" viewBox="0 0 24 24" width="24" height="24"><path d="M9 8h-3v4h3v12h5..."/></svg></a>
+        </div>
+      </nav>
+    </footer>
+  );
+}
+
+// Halaman Utama
 export default function ProductPage() {
   return (
-    <div className="flex">
-      <aside className="w-64 bg-gray-100 p-4 border-r">
-        <h2 className="text-lg font-bold mb-4">Semua Kategori</h2>
-        <ul className="space-y-2">
-          {categories.map((cat, i) => (
-            <li key={i} className="text-sm text-gray-700 hover:text-orange-600 cursor-pointer">
-              {cat === 'Elektronik' ? <strong className="text-orange-600">{cat}</strong> : cat}
-            </li>
-          ))}
-        </ul>
-        <h3 className="mt-8 mb-2 text-sm font-semibold">FILTER</h3>
-        <p className="text-xs text-gray-500">Lokasi</p>
-      </aside>
-      <main className="flex-1 p-6">
-        <div className="flex gap-2 mb-4">
-          <button className="px-3 py-1 bg-gray-200 rounded">Urutkan</button>
-          <button className="px-3 py-1 bg-orange-500 text-white rounded">Populer</button>
-          <button className="px-3 py-1 bg-gray-200 rounded">Terbaru</button>
-          <button className="px-3 py-1 bg-gray-200 rounded">Terlaris</button>
-          <button className="px-3 py-1 bg-gray-200 rounded">Harga ▼</button>
-        </div>
-        <div className="grid grid-cols-5 gap-4">
-          {products.map((product, i) => (
-            <div key={i} className="border rounded-lg p-2 shadow hover:shadow-lg">
-              <img src={product.image} alt={product.title} className="w-full h-32 object-cover mb-2" />
-              {product.discount && (
-                <span className="text-red-500 text-xs absolute right-2 top-2">-{product.discount}</span>
-              )}
-              <h4 className="text-sm font-semibold mb-1">{product.title}</h4>
-              <p className="text-red-500 font-bold">{product.price}</p>
-              <p className="text-xs text-gray-500">10RB+ terjual</p>
-            </div>
-          ))}
-        </div>
-      </main>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <div className="flex flex-1">
+        <aside className="w-64 bg-gray-100 p-4 border-r">
+          <h2 className="text-lg font-bold mb-4">Semua Kategori</h2>
+          <ul className="space-y-2">
+            {categories.map((cat, i) => (
+              <li key={i} className="text-sm text-gray-700 hover:text-orange-600 cursor-pointer">
+                {cat === 'Elektronik' ? <strong className="text-orange-600">{cat}</strong> : cat}
+              </li>
+            ))}
+          </ul>
+          <aside className="w-64 bg-gray-50 p-4 border-r space-y-6">
+  <h2 className="text-lg font-bold">Filter Produk</h2>
+
+  {/* Kategori */}
+  <div>
+    <h3 className="text-sm font-semibold mb-2">Kategori</h3>
+    {categories.map((cat, i) => (
+      <label key={i} className="flex items-center space-x-2 text-sm text-gray-700">
+        <input type="checkbox" className="accent-orange-500" />
+        <span>{cat}</span>
+      </label>
+    ))}
+  </div>
+
+  {/* Lokasi Dropdown */}
+  <div>
+    <h3 className="text-sm font-semibold mb-2">Lokasi</h3>
+    <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
+      <option value="">Semua Lokasi</option>
+      <option>Jakarta</option>
+      <option>Bandung</option>
+      <option>Surabaya</option>
+      <option>Yogyakarta</option>
+    </select>
+  </div>
+
+  {/* Tombol Reset */}
+  <div className="pt-4">
+    <button className="w-full bg-orange-500 text-white text-sm py-2 rounded hover:bg-orange-600 transition">
+      Reset Filter
+    </button>
+  </div>
+</aside>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+            {products.map((product, i) => (
+              <div key={i} className="relative border rounded-lg p-2 shadow hover:shadow-lg">
+                {product.discount && (
+                  <span className="absolute right-2 top-2 text-red-500 text-xs">-{product.discount}</span>
+                )}
+                <img src={product.image} alt={product.title} className="w-full h-32 object-cover mb-2" />
+                <h4 className="text-sm font-semibold mb-1">{product.title}</h4>
+                <p className="text-red-500 font-bold">{product.price}</p>
+                <p className="text-xs text-gray-500">10RB+ terjual</p>
+              </div>
+            ))}
+          </div>
+        </main>
+      </div>
+      <Footer />
     </div>
   );
 }
