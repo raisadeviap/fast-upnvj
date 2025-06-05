@@ -1,99 +1,66 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import HeroImage from '../assets/img1.svg';
-import AboutImage from '../assets/UPN.png';
 
-function LandingPage() {
-  const navigate = useNavigate();
+function HomePage() {
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Selamat pagi';
+    if (hour < 17) return 'Selamat siang';
+    return 'Selamat malam';
+  };
 
   return (
     <div className="min-h-screen bg-base-100" data-theme="light">
       <Navbar />
-      <main className="container mx-auto px-4 py-8">
-        {/* Hero Section */}
-        <section className="flex flex-col md:flex-row items-center justify-between min-h-[70vh] gap-8">
-          <div className="md:w-1/2 space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-base-content leading-tight">
-              <span className="block">Kami menyediakan</span>
-              <span className="block">solusi peminjaman</span>
-              <span className="block">fasilitas kampus</span>
-            </h1>
-            <p className="text-lg md:text-xl text-base-content/80 mt-6">
-              Sistem peminjaman fasilitas kampus UPNVJ yang cepat, mudah, dan terintegrasi
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 mt-8">
-              <button className="btn btn-primary px-6 py-3 text-lg" onClick={() => navigate('/login')}>
-                Ajukan Peminjaman
-              </button>
-              <button className="btn btn-outline px-6 py-3 text-lg">
-                Lihat Panduan
-              </button>
-            </div>
-          </div>
-          <div className="md:w-1/2 flex justify-center">
-            <img src={HeroImage} alt="Fast UPNVJ" className="w-120 h-auto rounded-lg ml-1" />
-          </div>
+      <main className="container mx-auto px-4 py-10">
+        <h1 className="text-3xl font-bold mb-6">
+          {getGreeting()}, 👋 Selamat datang di FAST UPNVJ!
+        </h1>
+
+        {/* Navigasi Cepat */}
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {[
+            { label: 'Ajukan Peminjaman', icon: '📝', link: '/peminjaman' },
+            { label: 'Riwayat Peminjaman', icon: '📜', link: '/riwayat' },
+            { label: 'Status Peminjaman', icon: '📊', link: '/status' },
+            { label: 'Profil Saya', icon: '👤', link: '/profil' }
+          ].map((item, index) => (
+            <a
+              href={item.link}
+              key={index}
+              className="bg-base-200 hover:bg-base-300 transition-all rounded-xl p-6 shadow-md flex flex-col items-center text-center"
+            >
+              <div className="text-4xl mb-3">{item.icon}</div>
+              <div className="text-lg font-semibold">{item.label}</div>
+            </a>
+          ))}
         </section>
 
-        {/* Tentang Kami */}
-        <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mt-20 bg-accent">
-          <div className="container mx-auto px-6 py-16">
-            <div className="flex flex-col lg:flex-row items-center gap-12">
-              <div className="lg:w-1/2">
-                <img src={AboutImage} alt="Tentang Fast UPNVJ" className="rounded-lg w-9/10 h-auto" />
-              </div>
-              <div className="lg:w-1/2 text-accent-content">
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">Tentang Fast UPNVJ</h2>
-                <p className="text-lg mb-4">
-                  Fast UPNVJ adalah platform digital inovatif yang dikembangkan untuk mempermudah proses peminjaman fasilitas kampus di Universitas Pembangunan Nasional Veteran Jakarta.
-                </p>
-                <p className="text-lg mb-6">
-                  Kami berkomitmen untuk menyediakan sistem yang efisien, transparan, dan mudah digunakan bagi seluruh civitas akademika UPNVJ.
-                </p>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4">
-                    <div className="mt-1 text-2xl">🏛️</div>
-                    <div>
-                      <h3 className="font-semibold text-xl">Visi</h3>
-                      <p>Menjadi sistem peminjaman fasilitas terintegrasi terbaik di lingkungan UPNVJ</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="mt-1 text-2xl">🎯</div>
-                    <div>
-                      <h3 className="font-semibold text-xl">Misi</h3>
-                      <p>Menyederhanakan proses administratif dan meningkatkan aksesibilitas fasilitas kampus</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-8 pt-6 border-t border-accent-content/20">
-                  <p className="text-lg font-medium">UNIVERSITAS PEMBANGUNAN NASIONAL "VETERAN" JAKARTA</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Fitur */}
-        <section className="mt-20 py-10">
-          <h2 className="text-3xl font-bold text-center mb-12">Layanan Kami</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Status Ringkasan */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold mb-4">Ringkasan Peminjaman Anda</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: '🏢', title: 'Peminjaman Gedung', desc: 'Fasilitas gedung kampus untuk kegiatan akademik dan non-akademik' },
-              { icon: '🪑', title: 'Peminjaman Ruangan', desc: 'Ruang kelas, auditorium, dan ruang pertemuan lainnya' },
-              { icon: '📅', title: 'Manajemen Jadwal', desc: 'Sistem penjadwalan terintegrasi untuk peminjaman fasilitas' }
-            ].map((fitur, idx) => (
-              <div key={idx} className="card bg-base-200 shadow-lg">
-                <div className="card-body items-center text-center">
-                  <div className="text-4xl mb-4">{fitur.icon}</div>
-                  <h3 className="card-title">{fitur.title}</h3>
-                  <p>{fitur.desc}</p>
-                </div>
+              { title: 'Total Peminjaman', count: 5 },
+              { title: 'Menunggu Persetujuan', count: 1 },
+              { title: 'Sedang Berlangsung', count: 2 }
+            ].map((card, i) => (
+              <div key={i} className="bg-primary text-primary-content p-6 rounded-xl shadow-md">
+                <h3 className="text-xl font-semibold">{card.title}</h3>
+                <p className="text-3xl font-bold mt-2">{card.count}</p>
               </div>
             ))}
           </div>
+        </section>
+
+        {/* Pengumuman */}
+        <section className="bg-warning p-6 rounded-xl">
+          <h2 className="text-xl font-bold mb-2">📢 Pengumuman</h2>
+          <p className="text-base">
+            Sistem akan mengalami pemeliharaan pada tanggal <strong>10 Juni 2025</strong> pukul 22.00 - 23.00 WIB. 
+            Harap tidak melakukan proses peminjaman selama waktu tersebut.
+          </p>
         </section>
       </main>
       <Footer />
@@ -101,4 +68,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+export default HomePage;
