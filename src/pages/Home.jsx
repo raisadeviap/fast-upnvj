@@ -56,7 +56,7 @@ function HomePage() {
       icon: "🛋️",
       title: "Peminjaman Ruangan",
       description: "Ruang kelas, auditorium, dan ruang pertemuan lainnya",
-      link: "/layanan/Form Peminjaman",
+      link: "/Form Peminjaman",
     },
     {
       id: 3,
@@ -132,7 +132,7 @@ function HomePage() {
             <div className="flex gap-4 mt-6">
               <button
                 className="btn btn-primary"
-                onClick={() => navigate("/layanan/Form Peminjaman")}
+                onClick={() => navigate("/Form Peminjaman")}
               >
                 Ajukan Peminjaman
               </button>
