@@ -117,36 +117,59 @@ function Navbar() {
 
 function Footer() {
   return (
-    <footer className="bg-green-700 text-white px-10 py-10 mt-16 flex flex-col md:flex-row justify-between items-center">
-      {/* Kiri: Logo dan teks */}
+    <footer className="bg-[#008037] text-white px-8 py-10 mt-16 flex flex-col md:flex-row justify-between items-start">
+      
+      {/* Kiri: Logo dan deskripsi */}
       <div className="flex items-start space-x-4 mb-6 md:mb-0">
         <img src={Logo} alt="UPN Logo" width={60} height={60} className="shrink-0" />
         <div>
-          <p className="font-semibold">FAST UPNVJ</p>
+          <p className="font-semibold text-lg">FAST UPNVJ</p>
           <p className="text-sm">Website Peminjaman Fasilitas Kampus UPNVJ</p>
         </div>
       </div>
 
-      {/* Tengah: kosong untuk spacing (optional) */}
-      <div className="hidden md:block flex-1" />
+      {/* Tengah: Social media */}
+      <div className="flex flex-col items-center w-full md:w-auto">
+        <h6 className="uppercase text-sm text-white font-semibold mb-3">Social</h6>
+        <div className="flex space-x-4">
+          {/* Twitter */}
+          <a href="#" aria-label="Twitter" className="hover:text-gray-200 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+              <path d="M24 4.557a9.93 9.93 0 01-2.828.775 4.932 4.932 0 002.165-2.724 
+                       9.864 9.864 0 01-3.127 1.195 4.916 4.916 0 00-8.38 4.482A13.945 
+                       13.945 0 011.671 3.149a4.916 4.916 0 001.523 6.573A4.902 4.902 0 
+                       01.964 9.1v.062a4.918 4.918 0 003.946 4.827 4.902 4.902 0 
+                       01-2.212.084 4.922 4.922 0 004.596 3.417A9.867 9.867 0 
+                       010 19.54a13.945 13.945 0 007.548 2.212c9.056 0 
+                       14.01-7.496 14.01-13.986 0-.213-.004-.425-.014-.637A10.012 
+                       10.012 0 0024 4.557z" />
+            </svg>
+          </a>
 
-      {/* Kanan: Social media */}
-      <div className="text-center">
-        <h6 className="uppercase text-sm text-gray-300 mb-2">Social</h6>
-        <div className="flex justify-center space-x-4">
-          <a href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-6 h-6" viewBox="0 0 24 24">
-              <path d="M24 4.557a9.93 9.93 0 0 1-2.828.775..." />
+          {/* YouTube */}
+          <a href="#" aria-label="YouTube" className="hover:text-gray-200 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+              <path d="M19.615 3.184A3.16 3.16 0 0017.49 2.1C15.388 1.95 12 
+                       1.95 12 1.95s-3.388 0-5.49.15a3.16 3.16 0 00-2.125 1.084C3.539 
+                       4.27 3.3 6.098 3.3 7.733v4.534c0 1.635.239 3.463.965 4.549a3.16 
+                       3.16 0 002.125 1.084C8.612 18.05 12 18.05 12 18.05s3.388 0 
+                       5.49-.15a3.16 3.16 0 002.125-1.084c.726-1.086.965-2.914.965-4.549V7.733c0-1.635-.239-3.463-.965-4.549zM9.75 
+                       14.25V7.75l6 3.25-6 3.25z" />
             </svg>
           </a>
-          <a href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-6 h-6" viewBox="0 0 24 24">
-              <path d="M19.615 3.184A3.16 3.16 0 0 0..." />
-            </svg>
-          </a>
-          <a href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-6 h-6" viewBox="0 0 24 24">
-              <path d="M22.675 0h-21.35C.597 0 0..." />
+
+          {/* Facebook */}
+          <a href="#" aria-label="Facebook" className="hover:text-gray-200 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+              <path d="M22.675 0h-21.35C.597 0 0 .6 0 
+                       1.342v21.317C0 23.4.597 24 1.325 
+                       24h11.497v-9.294H9.692V11.01h3.13V8.41c0-3.1 
+                       1.894-4.788 4.659-4.788 1.325 
+                       0 2.464.097 2.794.142v3.24l-1.918.001c-1.504 
+                       0-1.796.716-1.796 1.765v2.31h3.587l-.467 
+                       3.696h-3.12V24h6.116c.728 0 
+                       1.325-.6 1.325-1.341V1.342C24 
+                       .6 23.403 0 22.675 0z" />
             </svg>
           </a>
         </div>
