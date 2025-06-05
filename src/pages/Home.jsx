@@ -63,7 +63,6 @@ function HomePage() {
 
   return (
     <div className="min-h-screen bg-base-100" data-theme="light">
-      <Navbar />
       <main className="container mx-auto px-4 py-10">
         {/* Hero */}
         <section className="flex flex-col md:flex-row items-center justify-between min-h-[60vh] gap-8">
