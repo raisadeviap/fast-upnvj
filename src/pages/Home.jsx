@@ -2,9 +2,8 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/UPN.png";
 import { FunnelIcon } from '@heroicons/react/24/solid';
-import HeroImage from "../assets/img1.svg";
 
-  const Fasilitas = [
+const Fasilitas = [
   {
     title: 'Auditorium Bhineka Tunggal Ika',
     kapasitas: '300 orang',
@@ -22,7 +21,6 @@ import HeroImage from "../assets/img1.svg";
   { title: 'Lapangan Basket', kapasitas: '200 orang', gedung: 'Kampus Pondok Labu' }
 ];
 
-// Navbar Komponen
 function Navbar() {
   const navigate = useNavigate();
   return (
@@ -38,25 +36,6 @@ function Navbar() {
             <Link to="/" className="hover:text-primary transition-colors">Tentang Kami</Link>
             <Link to="/" className="hover:text-primary transition-colors">Layanan</Link>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-6">
-  {Fasilitas.map((item, index) => (
-    <div key={index} className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition text-center">
-      {item.image && (
-        <img
-          src={item.image}
-          alt={item.title}
-          className="w-full h-40 object-cover"
-        />
-      )}
-      <div className="p-4">
-        <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
-        <p className="text-sm text-gray-600 mb-1">Kapasitas: {item.kapasitas}</p>
-        <p className="text-sm text-gray-500">Gedung: {item.gedung}</p>
-      </div>
-    </div>
-  ))}
-</div>
-
           <button onClick={() => navigate('/login')} className="btn btn-primary btn-sm md:btn-md">
             Login
           </button>
@@ -66,15 +45,13 @@ function Navbar() {
   );
 }
 
-// Footer Komponen
 function Footer() {
   return (
     <footer className="footer sm:footer-horizontal bg-accent text-accent-content p-10 mt-16">
       <aside>
         <img src={Logo} alt="UPN Logo" width={50} height={50} className="mb-2" />
         <p>
-          FAST UPNVJ
-          <br />
+          FAST UPNVJ<br />
           Website Peminjaman Fasilitas Kampus UPNVJ
         </p>
       </aside>
@@ -90,19 +67,16 @@ function Footer() {
   );
 }
 
-// Halaman Fasilitas
 export default function FasilitasPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <div className="flex flex-1">
-        {/* Sidebar Filter */}
         <aside className="w-64 bg-gray-100 p-4 border-r space-y-6">
           <h2 className="text-lg font-bold flex items-center space-x-2">
             <FunnelIcon className="w-5 h-5 text-gray-600" />
             <span>Filter Fasilitas</span>
           </h2>
-
           <div>
             <h3 className="text-sm font-semibold mb-2">Jenis Fasilitas</h3>
             {['Auditorium', 'Ruang Podcast', 'Lab', 'Lapangan'].map((jenis, i) => (
@@ -112,7 +86,6 @@ export default function FasilitasPage() {
               </label>
             ))}
           </div>
-
           <div>
             <h3 className="text-sm font-semibold mb-2">Lokasi/Gedung</h3>
             <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
@@ -121,7 +94,6 @@ export default function FasilitasPage() {
               <option>Pondok Labu</option>
             </select>
           </div>
-
           <div>
             <h3 className="text-sm font-semibold mb-2">Kapasitas</h3>
             <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
@@ -129,19 +101,26 @@ export default function FasilitasPage() {
               <option value="gte50">&gt;= 50 orang</option>
             </select>
           </div>
-
           <button className="w-full bg-orange-500 text-white text-sm py-2 rounded hover:bg-orange-600 transition">
             Reset Filter
           </button>
         </aside>
 
-        {/* Grid Fasilitas */}
-        <main className="flex-1 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <main className="flex-1 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {Fasilitas.map((item, index) => (
-            <div key={index} className="border rounded-lg p-4 shadow hover:shadow-lg transition">
-              <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
-              <p className="text-sm text-gray-600 mb-1">Kapasitas: {item.kapasitas}</p>
-              <p className="text-sm text-gray-500">Gedung: {item.gedung}</p>
+            <div key={index} className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition bg-white">
+              {item.image && (
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-40 object-cover"
+                />
+              )}
+              <div className="p-4 text-center">
+                <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
+                <p className="text-sm text-gray-600 mb-1">Kapasitas: {item.kapasitas}</p>
+                <p className="text-sm text-gray-500">Gedung: {item.gedung}</p>
+              </div>
             </div>
           ))}
         </main>
