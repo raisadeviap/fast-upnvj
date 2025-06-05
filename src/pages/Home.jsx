@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/UPN.png";
+import { FunnelIcon } from '@heroicons/react/24/solid';
+
 
 const Fasilitas = [
   { title: 'Auditorium Bhineka Tunggal Ika', kapasitas: '300 orang', gedung: 'Plaza Soedirman' },
@@ -73,7 +75,7 @@ export default function FasilitasPage() {
       <div className="flex flex-1">
         {/* Sidebar Filter */}
         <aside className="w-64 bg-gray-100 p-4 border-r space-y-6">
-          <h2 className="text-lg font-bold">Filter Fasilitas</h2>
+          <h2 className="text-lg font-bold">Filter Fasilitas <FunnelIcon className="w-5 h-5 text-gray-600 mr-2" /> </h2>
 
           <div>
             <h3 className="text-sm font-semibold mb-2">Jenis Fasilitas</h3>
@@ -89,11 +91,20 @@ export default function FasilitasPage() {
             <h3 className="text-sm font-semibold mb-2">Lokasi/Gedung</h3>
             <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
               <option>Semua Lokasi</option>
-              <option>Plaza Soedirman</option>
               <option>Kampus Limo</option>
               <option>Pondok Labu</option>
             </select>
           </div>
+
+         <div>
+            <h3 className="text-sm font-semibold mb-2">Kapasitas</h3>
+              <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
+                <option value="">Semua Kapasitas</option>
+                <option value="lt50">&lt; 50 orang</option>
+                <option value="gte50">&gt;= 50 orang</option>
+              </select>
+        </div>
+
 
           <button className="w-full bg-orange-500 text-white text-sm py-2 rounded hover:bg-orange-600 transition">
             Reset Filter
