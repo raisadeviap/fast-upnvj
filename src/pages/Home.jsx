@@ -7,25 +7,6 @@ import HeroImage from "../assets/img1.svg";
 function HomePage() {
   const navigate = useNavigate();
 
-  function Navbar() {
-    return (
-      <div className="navbar bg-white shadow-md px-4">
-        <div className="flex-1">
-          <Link to="/" className="text-xl font-bold text-primary">
-            FAST UPNVJ
-          </Link>
-        </div>
-        <div className="hidden md:flex gap-4 text-base font-medium text-base-content">
-          <Link to="/">Beranda</Link>
-          <Link to="/layanan/peminjaman">Peminjaman</Link>
-          <Link to="/layanan/histori">Histori</Link>
-          <Link to="/layanan/statistik">Statistik</Link>
-          <Link to="/layanan/persetujuan">Persetujuan</Link>
-        </div>
-      </div>
-    );
-  }
-
   const [greeting, setGreeting] = useState("");
   useEffect(() => {
     const hour = new Date().getHours();
