@@ -1,0 +1,70 @@
+import React from "react";
+import { useParams, Link } from "react-router-dom";
+import { Fasilitas } from "./dataFasilitas"; // pastikan ini array fasilitas dengan {slug, title, image, gedung, kapasitas}
+
+export default function FasilitasPage() {
+  const { slug } = useParams();
+
+  // 📌 Jika tidak ada slug → tampilkan daftar
+  if (!slug) {
+    return (
+      <div className="p-10 max-w-4xl mx-auto">
+        <h1 className="text-3xl font-bold text-[#5dac00] mb-6 text-center">Daftar Fasilitas Kampus</h1>
+        <div className="grid md:grid-cols-2 gap-6">
+          {Fasilitas.map((f) => (
+            <Link
+              to={`/fasilitas/${f.slug}`}
+              key={f.slug}
+              className="block border rounded-xl overflow-hidden hover:shadow-lg transition"
+            >
+              <img src={f.image} alt={f.title} className="w-full h-48 object-cover" />
+              <div className="p-4">
+                <h2 className="text-xl font-bold mb-2">{f.title}</h2>
+                <p className="text-sm text-gray-600">Gedung: {f.gedung}</p>
+                <p className="text-sm text-gray-600">Kapasitas: {f.kapasitas}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // 📌 Jika slug ada → tampilkan detail
+  const fasilitas = Fasilitas.find((f) => f.slug === slug);
+
+  if (!fasilitas) {
+    return (
+      <div className="p-10 text-center">
+        <h1 className="text-2xl font-bold mb-4">
+          Fasilitas tidak ditemukan 😔
+        </h1>
+        <Link to="/fasilitas" className="text-blue-600 underline">
+          Kembali ke Daftar Fasilitas
+        </Link>
+      </div>
+    );
+  }
+
+  return (
+    <div className="p-6 max-w-4xl mx-auto">
+      <img
+        src={fasilitas.image}
+        alt={fasilitas.title}
+        className="w-full h-64 object-cover rounded-xl mb-6"
+      />
+      <h1 className="text-3xl font-bold text-[#5dac00] mb-4">
+        {fasilitas.title}
+      </h1>
+      <p className="mb-1">
+        <strong>Gedung:</strong> {fasilitas.gedung}
+      </p>
+      <p className="mb-6">
+        <strong>Kapasitas:</strong> {fasilitas.kapasitas}
+      </p>
+      <Link to="/fasilitas" className="text-blue-600 underline">
+        ← Kembali ke Daftar
+      </Link>
+    </div>
+  );
+}
