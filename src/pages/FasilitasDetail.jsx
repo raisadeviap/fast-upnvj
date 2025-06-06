@@ -1,8 +1,12 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { Fasilitas } from "./dataFasilitas";
 
 export default function FasilitasList() {
+    const { slug } = useParams();
+    const fasilitas = Fasilitas.find((f) => f.slug === slug);
+
   return (
     <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {Fasilitas.map((item) => (
@@ -27,8 +31,6 @@ export default function FasilitasList() {
             <strong>Kapasitas:</strong> {item.kapasitas}
           </p>
 
-          {/* CTA */}
-          <span className="text-blue-600 underline">Lihat Detail →</span>
         </Link>
       ))}
     </div>
