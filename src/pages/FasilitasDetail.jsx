@@ -2,7 +2,6 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { Fasilitas } from "./dataFasilitas";
 
-
 export default function FasilitasDetail() {
   const { slug } = useParams(); // ← ambil slug dari URL
   const fasilitas = Fasilitas.find((f) => f.slug === slug);
