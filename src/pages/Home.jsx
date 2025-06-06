@@ -1,206 +1,235 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import CountUp from "react-countup";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Logo from "../assets/UPN.png";
+import { FunnelIcon } from "@heroicons/react/24/solid";
 import Footer from "../components/Footer";
-import HeroImage from "../assets/img1.svg";
-import AboutImage from "../assets/UPN.png"; // logo UPN sesuai permintaan
 
-function HomePage() {
+const Fasilitas = [
+  {
+    title: "Auditorium Bhineka Tunggal Ika",
+    kapasitas: "300 orang",
+    gedung: "Plaza Soedirman",
+    image:
+      "https://www.upnvj.ac.id/en/files/large/5fe91f59d3da4d824097b0b5bb994e69",
+  },
+  {
+    title: "Auditorium Wahidin Sudiro Husodo",
+    kapasitas: "100 orang",
+    gedung: "Wahidin Sudiro Husodo",
+    image:
+      "https://fk.upnvj.ac.id/wp-content/uploads/2022/04/IMG_2038-scaled.jpg",
+  },
+  {
+    title: "Auditorium Dr. Cipto Mangun Kusumo",
+    kapasitas: "200 orang",
+    gedung: "Dr. Cipto Mangun Kusumo",
+    image:
+      "https://fk.upnvj.ac.id/wp-content/uploads/2022/11/IMG_7937-scaled.jpg",
+  },
+  {
+    title: "Auditorium MERCe",
+    kapasitas: "100 orang",
+    gedung: "MERCe Kampus Limo",
+    image:
+      "https://merce-fk.upnvj.ac.id/wp-content/uploads/photo-gallery/imported_from_media_libray/IMG_3839-min-scaled.jpg?bwg=1693216594",
+  },
+  {
+    title: "Ruang Podcast FH",
+    kapasitas: "5 orang",
+    gedung: "Yos Sudarso",
+    image:
+      "https://hukum.upnvj.ac.id/wp-content/uploads/2022/06/RuangPODCAST-LT-4-1024x799.jpeg",
+  },
+  {
+    title: "Ruang Podcast FIK",
+    kapasitas: "5 orang",
+    gedung: "Ki Hajar Dewantara",
+    image:
+      "https://new-fik.upnvj.ac.id/wp-content/uploads/2023/08/WhatsApp-Image-2023-08-07-at-15.44.52.jpeg",
+  },
+  {
+    title: "Ruang Podcast FIKES",
+    kapasitas: "5 orang",
+    gedung: "FIKES Kampus Limo",
+    image:
+      "https://fikes.upnvj.ac.id/id/files/thumb/93ef38f7d710dc957cf1d23c2808d1da/520/fit",
+  },
+  {
+    title: "Ruang Podcast FK",
+    kapasitas: "5 orang",
+    gedung: "FK Kampus Pondok Labu",
+    image:
+      "https://fk.upnvj.ac.id/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-07-at-10.04.34.jpeg",
+  },
+  {
+    title: "Ruang Podcast FISIP",
+    kapasitas: "5 orang",
+    gedung: "FISIP",
+    image:
+      "https://fisip.upnvj.ac.id/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-12-at-15.12.39.jpeg",
+  },
+  {
+    title: "Ruang Podcast FEB",
+    kapasitas: "5 orang",
+    gedung: "FEB",
+    image:
+      "https://i.ytimg.com/vi/raX3zgh1WtE/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH0CYAC0AWKAgwIABABGHIgVCgrMA8=&rs=AOn4CLC4YIUaKil03CaPp4rsQlmzBv5P9w",
+  },
+  {
+    title: "Lab Terpadu",
+    kapasitas: "50 orang",
+    gedung: "Perpustakaan Lt. 2",
+    image:
+      "https://uptlabterpadu.upnvj.ac.id/wp-content/uploads/2023/08/Kegiatan-Perkuliahan-FIK-28-08-2023-01.jpeg",
+  },
+  {
+    title: "Ubin Cokelat",
+    kapasitas: "200 orang",
+    gedung: "FEB Kampus Pondok Labu",
+    image: "https://feb.upnvj.ac.id/wp-content/uploads/2024/12/328.jpg",
+  },
+  {
+    title: "Lapangan Basket",
+    kapasitas: "200 orang",
+    gedung: "Kampus Pondok Labu",
+    image:
+      "https://cdn.idntimes.com/content-images/community/2022/07/aironebball-150630392-1387338378274022-5515620263307717663-n-4b05e1ad11e871221e4135e0f2a9a211-6e991a6de4e6b086ea74264517fdd7a3.jpg",
+  },
+];
+
+function Navbar() {
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const [greeting, setGreeting] = useState("");
-  useEffect(() => {
-    const hour = new Date().getHours();
-    if (hour < 12) setGreeting("Selamat Pagi! ☀️ Semoga harimu menyenangkan.");
-    else if (hour < 18)
-      setGreeting("Selamat Siang! 🌤️ Selamat datang di Fast UPNVJ.");
-    else setGreeting("Selamat Malam! 🌙 Terima kasih sudah berkunjung.");
-  }, []);
-
-  const stats = [
-    {
-      id: 1,
-      icon: "🏢",
-      label: "Gedung Dipinjam",
-      value: 6,
-      color: "text-primary",
-    },
-    {
-      id: 2,
-      icon: "🛋️",
-      label: "Ruangan Tersedia",
-      value: 14,
-      color: "text-secondary",
-    },
-    {
-      id: 3,
-      icon: "⏰",
-      label: "Jam Terpakai",
-      value: 92,
-      color: "text-accent",
-    },
-  ];
-
-  const services = [
-    {
-      id: 1,
-      icon: "🏢",
-      title: "Peminjaman Gedung",
-      description:
-        "Fasilitas gedung kampus untuk kegiatan akademik dan non-akademik",
-      link: "/layanan/gedung",
-    },
-    {
-      id: 2,
-      icon: "🛋️",
-      title: "Peminjaman Ruangan",
-      description: "Ruang kelas, auditorium, dan ruang pertemuan lainnya",
-      link: "/Form Peminjaman",
-    },
-    {
-      id: 3,
-      icon: "🗓️",
-      title: "Manajemen Jadwal",
-      description: "Sistem penjadwalan terintegrasi untuk peminjaman fasilitas",
-      link: "/layanan/jadwal",
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-base-100" data-theme="light">
-      {/* Navbar */}
-      <nav className="bg-base-200 shadow-md py-4 border-b border-base-content/20">
-        <div className="container mx-auto px-4 flex items-center justify-between">
-          <div
-            className="flex items-center gap-3 cursor-pointer"
-            onClick={() => navigate("/")}
-          >
-            <img
-              src={AboutImage}
-              alt="Logo UPN"
-              className="w-10 h-10 object-contain"
-            />
-            <h1 className="text-xl font-bold text-primary">Fast UPNVJ</h1>
-          </div>
-          <ul className="flex gap-6 text-base font-medium">
-            <li
-              className={`cursor-pointer pb-1 border-b-2 transition ${
-                location.pathname === "/"
-                  ? "border-primary"
-                  : "border-transparent hover:border-primary"
-              }`}
-              onClick={() => navigate("/")}
-            >
+    <nav className="bg-base-100 shadow-sm sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-3">
+        <div className="flex justify-between items-center">
+          <Link to="/" className="flex items-center">
+            <img src={Logo} alt="UPNVJ Logo" className="h-12" />
+            <span className="ml-3 text-xl font-semibold">FAST UPNVJ</span>
+          </Link>
+          <div className="hidden md:flex space-x-8">
+            <Link to="/" className="hover:text-[#5dac00] transition-colors">
               Beranda
-            </li>
-            <li
-              className={`cursor-pointer pb-1 border-b-2 transition ${
-                location.pathname === "/tentang"
-                  ? "border-primary"
-                  : "border-transparent hover:border-primary"
-              }`}
-              onClick={() => navigate("/tentang")}
+            </Link>
+            <Link
+              to="/peminjaman"
+              className="hover:text-[#5dac00] transition-colors"
+            >
+              <strong>Peminjaman</strong>
+            </Link>
+            <Link
+              to="/tentang-kami"
+              className="hover:text-[#5dac00] transition-colors"
             >
               Tentang Kami
-            </li>
-            <li
-              className={`cursor-pointer pb-1 border-b-2 transition ${
-                location.pathname.startsWith("/layanan")
-                  ? "border-primary"
-                  : "border-transparent hover:border-primary"
-              }`}
-              onClick={() => navigate("/layanan")}
-            >
-              Layanan
-            </li>
-          </ul>
+            </Link>
+          </div>
+          <button
+            onClick={() => navigate("/login")}
+            className="bg-[#5dac00] text-white text-base font-semibold px-5 py-3 rounded-full shadow-md hover:bg-[#4b8c00] transition"
+          >
+            Login
+          </button>
         </div>
-      </nav>
+      </div>
+    </nav>
+  );
+}
 
-      <main className="container mx-auto px-4 py-10">
-        {/* Hero */}
-        <section className="flex flex-col md:flex-row items-center justify-between min-h-[60vh] gap-8">
-          <div className="md:w-1/2 space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-base-content leading-tight">
-              {greeting} <br />
-              <span className="block mt-2 text-lg text-base-content/80">
-                Sistem informasi peminjaman fasilitas UPNVJ yang cepat,
-                terintegrasi, dan mudah digunakan
-              </span>
-            </h1>
-            <div className="flex gap-4 mt-6">
-              <button
-                className="btn btn-primary"
-                onClick={() => navigate("/Form Peminjaman")}
-              >
-                Ajukan Peminjaman
-              </button>
-              <button
-                className="btn btn-outline"
-                onClick={() => navigate("/layanan/jadwal")}
-              >
-                Lihat Jadwal
-              </button>
+export default function HomePage() {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <div className="flex flex-1">
+        {" "}
+        {/* Buka flex container */}
+        {/* ASIDE harus di dalam sini */}
+        <aside className="w-64 bg-white p-6 border-r rounded-tr-3xl rounded-br-3xl shadow-lg space-y-6">
+          <h2 className="text-lg font-bold flex items-center space-x-2 text-[#007E30]">
+            <FunnelIcon className="w-5 h-5 text-[#007E30]" />
+            <span>Filter Fasilitas</span>
+          </h2>
+
+          <div>
+            <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
+              Jenis Fasilitas
+            </h3>
+            <div className="space-y-2">
+              {["Auditorium", "Ruang Podcast", "Lab", "Lapangan"].map(
+                (jenis, i) => (
+                  <label
+                    key={i}
+                    className="flex items-center space-x-2 text-sm text-gray-800"
+                  >
+                    <input
+                      type="checkbox"
+                      className="accent-[#FF8C00] w-4 h-4 transition duration-150"
+                    />
+                    <span>{jenis}</span>
+                  </label>
+                )
+              )}
             </div>
           </div>
-          <div className="md:w-1/2 flex justify-center">
-            <img
-              src={HeroImage}
-              alt="Ilustrasi"
-              className="w-full max-w-md rounded-lg"
-            />
-          </div>
-        </section>
 
-        {/* Statistik */}
-        <section className="mt-20">
-          <h2 className="text-3xl font-bold text-center mb-10">
-            Statistik Penggunaan
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {stats.map(({ id, icon, label, value, color }) => (
-              <div
-                key={id}
-                className="card bg-base-200 shadow-xl p-6 text-center"
-              >
-                <div className={`text-5xl mb-3 ${color}`}>{icon}</div>
-                <div className="text-3xl font-bold">
-                  <CountUp end={value} duration={2} />
+          <div>
+            <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
+              Lokasi/Gedung
+            </h3>
+            <select className="w-full border border-gray-300 focus:border-[#007E30] focus:ring-[#007E30] rounded-lg px-3 py-2 text-sm transition duration-150">
+              <option>Kampus Limo</option>
+              <option>Pondok Labu</option>
+            </select>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
+              Kapasitas
+            </h3>
+            <select className="w-full border border-gray-300 focus:border-[#007E30] focus:ring-[#007E30] rounded-lg px-3 py-2 text-sm transition duration-150">
+              <option value="lt50">&lt; 50 orang</option>
+              <option value="gte50">&gt; 50 orang</option>
+            </select>
+          </div>
+
+          <button className="w-full bg-[#5dac00] text-white text-sm py-2 rounded-lg hover:bg-[#4b8c00] transition-all duration-200 font-semibold shadow-md">
+            Reset Filter
+          </button>
+        </aside>
+        <main className="flex-1 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {Fasilitas.map((item, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 group"
+            >
+              <div className="relative">
+                {item.image && (
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-44 object-cover"
+                  />
+                )}
+                <div className="absolute top-2 left-2 bg-[#5dac00] text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+                  {item.kapasitas}
                 </div>
-                <p className="mt-2 text-base-content/70">{label}</p>
               </div>
-            ))}
-          </div>
-        </section>
+              <div className="p-4 text-center">
+               <Link
+  to={`/fasilitas/${index}`} // atau sesuaikan dengan rute detail
+  className="text-lg font-bold text-gray-800 group-hover:text-[#5dac00] transition hover:underline"
+>
+  {item.title}
+</Link>
 
-        {/* Layanan Kami */}
-        <section className="mt-20">
-          <h2 className="text-3xl font-bold text-center mb-10">Layanan Kami</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {services.map(({ id, icon, title, description, link }) => (
-              <button
-                key={id}
-                onClick={() => navigate(link)}
-                className="card bg-base-200 hover:shadow-lg transition shadow p-6 flex flex-col items-center text-center"
-              >
-                <div className="text-4xl mb-3">{icon}</div>
-                <h3 className="text-lg font-semibold text-base-content mb-2">
-                  {title}
-                </h3>
-                <p className="text-sm text-base-content/70">{description}</p>
-              </button>
-            ))}
-          </div>
-        </section>
-      </main>
-
+                <p className="text-sm text-gray-600 mb-1">{item.gedung}</p>
+              </div>
+            </div>
+          ))}
+        </main>
+      </div>{" "}
+      {/* Tutup flex container */}
       <Footer />
     </div>
   );
 }
-
-export default HomePage;
-
-  
-    

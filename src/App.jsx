@@ -5,7 +5,8 @@ import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import Home from './pages/Home.jsx';
 import Dashboard from './pages/Dashboard.jsx';
-import Admin from './pages/Admin.jsx'
+import Admin from './pages/Admin.jsx';
+import FasilitasDetail from './pages/FasilitasDetail';
 
 function App() {
   return (
