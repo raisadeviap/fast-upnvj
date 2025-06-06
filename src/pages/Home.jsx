@@ -9,7 +9,7 @@ const fasilitasData = [
     title: "Auditorium Bhineka Tunggal Ika",
     slug: "auditorium-bhineka-tunggal-ika",
     kapasitas: "300 orang",
-    gedung: "Plaza Soedirman2",
+    gedung: "Plaza Soedirman",
     image:
       "https://www.upnvj.ac.id/en/files/large/5fe91f59d3da4d824097b0b5bb994e69",
   },
