@@ -6,7 +6,7 @@ import Register from './pages/Register.jsx';
 import Home from './pages/Home.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Admin from './pages/Admin.jsx';
-import FasilitasDetail from "./pages/FasilitasDetail";
+import FasilitasPage from "./pages/FasilitasPage";
 
 function App() {
   return (
@@ -18,8 +18,8 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path='/admin' element={<Admin />} />
-        <Route path="/fasilitas" element={<FasilitasDetail />} />
-        <Route path="/fasilitas/:slug" element={<FasilitasDetail />} />
+        <Route path="/fasilitas" element={<FasilitasPage />} />
+        <Route path="/fasilitas/:slug" element={<FasilitasPage />} />
       </Routes>
     </BrowserRouter>
   );
