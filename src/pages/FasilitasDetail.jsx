@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { Fasilitas } from "../data/dataFasilitas";
+import { Fasilitas } from "./data/dataFasilitas";
 
 export default function FasilitasDetail() {
   const { slug } = useParams(); // ← ambil slug dari URL
