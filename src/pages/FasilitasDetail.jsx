@@ -6,19 +6,6 @@ export default function FasilitasDetail() {
   const { slug } = useParams();
   const data = Fasilitas.find((f) => f.slug === slug);
 
-  if (!data) {
-    return (
-      <div className="p-10 text-center">
-        <h1 className="text-2xl font-bold mb-4">
-          Fasilitas tidak ditemukan 😔
-        </h1>
-        <Link to="/" className="text-blue-600 underline">
-          Kembali ke beranda
-        </Link>
-      </div>
-    );
-  }
-
   return (
     <div className="p-6 max-w-4xl mx-auto">
       <img
