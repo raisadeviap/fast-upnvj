@@ -1,10 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Fasilitas } from "pages/dataFasilitas";
+import { Fasilitas } from "./datafasilitas";
 
 export default function FasilitasDetail() {
   const { id } = useParams();
-  const fasilitas = Fasilitas.find((item) => item.slug === id);
+  const fasilitas = Fasilitas[id];
 
   if (!fasilitas) {
     return <div className="p-6">Fasilitas tidak ditemukan.</div>;
@@ -12,23 +12,10 @@ export default function FasilitasDetail() {
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
-      <img
-        src={fasilitas.image || "/images/default.jpg"}
-        alt={fasilitas.title || "Fasilitas"}
-        className="w-full h-64 object-cover rounded-xl mb-4"
-      />
-      <h1 className="text-2xl font-bold text-[#5dac00] mb-2">
-        {fasilitas.title}
-      </h1>
+      <img src={fasilitas.image} alt={fasilitas.title} className="w-full h-64 object-cover rounded-xl mb-4" />
+      <h1 className="text-2xl font-bold text-[#5dac00] mb-2">{fasilitas.title}</h1>
       <p className="text-gray-700">Gedung: {fasilitas.gedung}</p>
       <p className="text-gray-700">Kapasitas: {fasilitas.kapasitas}</p>
-
-      <button
-        onClick={() => window.history.back()}
-        className="mt-4 text-blue-500 hover:underline"
-      >
-        ← Kembali
-      </button>
     </div>
   );
 }
