@@ -19,6 +19,7 @@ export default function FasilitasPage() {
         </div>
       );
     }
+      console.log("Slug dari URL:", slug);
 
     return (
       <div className="max-w-xl mx-auto p-6 bg-white border rounded-xl shadow">
