@@ -1,5 +1,3 @@
-// src/pages/dataFasilitas.js
-
 export const Fasilitas = [
   {
     slug: "auditorium-bhineka-tunggal-ika",
@@ -15,5 +13,4 @@ export const Fasilitas = [
     gedung: "Wahidin Sudiro Husodo",
     image: "https://fk.upnvj.ac.id/wp-content/uploads/2022/04/IMG_2038-scaled.jpg",
   },
-  // ... lanjutkan data lainnya
 ];
