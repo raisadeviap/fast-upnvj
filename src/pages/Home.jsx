@@ -2,8 +2,6 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/UPN.png";
 import { FunnelIcon } from "@heroicons/react/24/solid";
-import { Fasilitas } from "./dataFasilitas"; // sudah benar
-
 
 const Fasilitas = [
   {
