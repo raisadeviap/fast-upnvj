@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/UPN.png";
 import { FunnelIcon } from "@heroicons/react/24/solid";
-import Footer from "../components/Footer";
 
 const Fasilitas = [
   {
@@ -73,7 +72,7 @@ const Fasilitas = [
     kapasitas: "5 orang",
     gedung: "FEB",
     image:
-      "https://i.ytimg.com/vi/raX3zgh1WtE/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH0CYAC0AWKAgwIABABGHIgVCgrMA8=&rs=AOn4CLC4YIUaKil03CaPp4rsQlmzBv5P9w",
+      " https://i.ytimg.com/vi/raX3zgh1WtE/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH0CYAC0AWKAgwIABABGHIgVCgrMA8=&rs=AOn4CLC4YIUaKil03CaPp4rsQlmzBv5P9whttps://fisip.upnvj.ac.id/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-12-at-15.12.39.jpeg",
   },
   {
     title: "Lab Terpadu",
@@ -108,25 +107,19 @@ function Navbar() {
             <span className="ml-3 text-xl font-semibold">FAST UPNVJ</span>
           </Link>
           <div className="hidden md:flex space-x-8">
-            <Link to="/" className="hover:text-[#5dac00] transition-colors">
+            <Link to="/" className="hover:text-primary transition-colors">
               Beranda
             </Link>
-            <Link
-              to="/peminjaman"
-              className="hover:text-[#5dac00] transition-colors"
-            >
-              <strong>Peminjaman</strong>
+            <Link to="/" className="hover:text-primary transition-colors">
+              Peminjaman
             </Link>
-            <Link
-              to="/tentang-kami"
-              className="hover:text-[#5dac00] transition-colors"
-            >
+            <Link to="/" className="hover:text-primary transition-colors">
               Tentang Kami
             </Link>
           </div>
           <button
             onClick={() => navigate("/login")}
-            className="bg-[#5dac00] text-white text-base font-semibold px-5 py-3 rounded-full shadow-md hover:bg-[#4b8c00] transition"
+            className="btn btn-primary btn-sm md:btn-md"
           >
             Login
           </button>
@@ -136,99 +129,133 @@ function Navbar() {
   );
 }
 
+function Footer() {
+  return (
+    <footer className="footer sm:footer-horizontal bg-accent text-accent-content p-10 mt-16">
+      <aside>
+        <img
+          src={Logo}
+          alt="UPN Logo"
+          width={50}
+          height={50}
+          className="mb-2"
+        />
+        <p>
+          FAST UPNVJ
+          <br />
+          Website Peminjaman Fasilitas Kampus UPNVJ
+        </p>
+      </aside>
+      <nav>
+        <h6 className="footer-title">Social</h6>
+        <div className="grid grid-flow-col gap-4">
+          <a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="fill-current"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+            >
+              <path d="..." />
+            </svg>
+          </a>
+          <a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="fill-current"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+            >
+              <path d="..." />
+            </svg>
+          </a>
+          <a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="fill-current"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+            >
+              <path d="..." />
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </footer>
+  );
+}
+
 export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <div className="flex flex-1">
-        {" "}
-        {/* Buka flex container */}
-        {/* ASIDE harus di dalam sini */}
-        <aside className="w-64 bg-white p-6 border-r rounded-tr-3xl rounded-br-3xl shadow-lg space-y-6">
-          <h2 className="text-lg font-bold flex items-center space-x-2 text-[#007E30]">
-            <FunnelIcon className="w-5 h-5 text-[#007E30]" />
+        <aside className="w-64 bg-gray-100 p-4 border-r space-y-6">
+          <h2 className="text-lg font-bold flex items-center space-x-2">
+            <FunnelIcon className="w-5 h-5 text-gray-600" />
             <span>Filter Fasilitas</span>
           </h2>
-
           <div>
-            <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
-              Jenis Fasilitas
-            </h3>
-            <div className="space-y-2">
-              {["Auditorium", "Ruang Podcast", "Lab", "Lapangan"].map(
-                (jenis, i) => (
-                  <label
-                    key={i}
-                    className="flex items-center space-x-2 text-sm text-gray-800"
-                  >
-                    <input
-                      type="checkbox"
-                      className="accent-[#FF8C00] w-4 h-4 transition duration-150"
-                    />
-                    <span>{jenis}</span>
-                  </label>
-                )
-              )}
-            </div>
+            <h3 className="text-sm font-semibold mb-2">Jenis Fasilitas</h3>
+            {["Auditorium", "Ruang Podcast", "Lab", "Lapangan"].map(
+              (jenis, i) => (
+                <label
+                  key={i}
+                  className="flex items-center space-x-2 text-sm text-gray-700"
+                >
+                  <input type="checkbox" className="accent-orange-500" />
+                  <span>{jenis}</span>
+                </label>
+              )
+            )}
           </div>
-
           <div>
-            <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
-              Lokasi/Gedung
-            </h3>
-            <select className="w-full border border-gray-300 focus:border-[#007E30] focus:ring-[#007E30] rounded-lg px-3 py-2 text-sm transition duration-150">
+            <h3 className="text-sm font-semibold mb-2">Lokasi/Gedung</h3>
+            <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
+              <option>Semua Lokasi</option>
               <option>Kampus Limo</option>
               <option>Pondok Labu</option>
             </select>
           </div>
-
           <div>
-            <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
-              Kapasitas
-            </h3>
-            <select className="w-full border border-gray-300 focus:border-[#007E30] focus:ring-[#007E30] rounded-lg px-3 py-2 text-sm transition duration-150">
+            <h3 className="text-sm font-semibold mb-2">Kapasitas</h3>
+            <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
               <option value="lt50">&lt; 50 orang</option>
-              <option value="gte50">&gt; 50 orang</option>
+              <option value="gte50">&gt;= 50 orang</option>
             </select>
           </div>
-
-          <button className="w-full bg-[#5dac00] text-white text-sm py-2 rounded-lg hover:bg-[#4b8c00] transition-all duration-200 font-semibold shadow-md">
+          <button className="w-full bg-orange-500 text-white text-sm py-2 rounded hover:bg-orange-600 transition">
             Reset Filter
           </button>
         </aside>
+
         <main className="flex-1 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {Fasilitas.map((item, index) => (
             <div
               key={index}
-              className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 group"
+              className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition bg-white"
             >
-              <div className="relative">
-                {item.image && (
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-44 object-cover"
-                  />
-                )}
-                <div className="absolute top-2 left-2 bg-[#5dac00] text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
-                  {item.kapasitas}
-                </div>
-              </div>
+              {item.image && (
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-40 object-cover"
+                />
+              )}
               <div className="p-4 text-center">
-               <Link
-  to={`/fasilitas/${index}`} // atau sesuaikan dengan rute detail
-  className="text-lg font-bold text-gray-800 group-hover:text-[#5dac00] transition hover:underline"
->
-  {item.title}
-</Link>
-
-                <p className="text-sm text-gray-600 mb-1">{item.gedung}</p>
+                <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
+                <p className="text-sm text-gray-600 mb-1">
+                  Kapasitas: {item.kapasitas}
+                </p>
+                <p className="text-sm text-gray-500">Gedung: {item.gedung}</p>
               </div>
             </div>
           ))}
         </main>
-      </div>{" "}
-      {/* Tutup flex container */}
+      </div>
       <Footer />
     </div>
   );
