@@ -177,7 +177,6 @@ export default function HomePage() {
               Lokasi/Gedung
             </h3>
             <select className="w-full border border-gray-300 focus:border-[#007E30] focus:ring-[#007E30] rounded-lg px-3 py-2 text-sm transition duration-150">
-              <option>Semua Lokasi</option>
               <option>Kampus Limo</option>
               <option>Pondok Labu</option>
             </select>
