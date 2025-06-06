@@ -19,8 +19,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/fasilitas" element={<FasilitasList />} />
-        <Route path="/fasilitas/:slug" element={<FasilitasDetail />} />
-        <Route path="/ajukan-peminjaman" element={<AjukanPeminjaman />} />
+      
       </Routes>
     </BrowserRouter>
   );
