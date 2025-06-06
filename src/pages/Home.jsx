@@ -2,12 +2,10 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/UPN.png";
 import { FunnelIcon } from "@heroicons/react/24/solid";
-import Footer from "../components/Footer";
 
-const fasilitasData = [
+const Fasilitas = [
   {
     title: "Auditorium Bhineka Tunggal Ika",
-    slug: "auditorium-bhineka-tunggal-ika",
     kapasitas: "300 orang",
     gedung: "Plaza Soedirman",
     image:
@@ -15,7 +13,6 @@ const fasilitasData = [
   },
   {
     title: "Auditorium Wahidin Sudiro Husodo",
-    slug: "auditorium-wahidin-sudiro-husodo",
     kapasitas: "100 orang",
     gedung: "Wahidin Sudiro Husodo",
     image:
@@ -23,7 +20,6 @@ const fasilitasData = [
   },
   {
     title: "Auditorium Dr. Cipto Mangun Kusumo",
-    slug: "auditorium-dr-cipto-mangun-kusumo",
     kapasitas: "200 orang",
     gedung: "Dr. Cipto Mangun Kusumo",
     image:
@@ -31,7 +27,6 @@ const fasilitasData = [
   },
   {
     title: "Auditorium MERCe",
-    slug: "auditorium-merce",
     kapasitas: "100 orang",
     gedung: "MERCe Kampus Limo",
     image:
@@ -39,7 +34,6 @@ const fasilitasData = [
   },
   {
     title: "Ruang Podcast FH",
-    slug: "ruang-podcast-fh",
     kapasitas: "5 orang",
     gedung: "Yos Sudarso",
     image:
@@ -47,7 +41,6 @@ const fasilitasData = [
   },
   {
     title: "Ruang Podcast FIK",
-    slug: "ruang-podcast-fik",
     kapasitas: "5 orang",
     gedung: "Ki Hajar Dewantara",
     image:
@@ -55,7 +48,6 @@ const fasilitasData = [
   },
   {
     title: "Ruang Podcast FIKES",
-    slug: "ruang-podcast-fikes",
     kapasitas: "5 orang",
     gedung: "FIKES Kampus Limo",
     image:
@@ -63,7 +55,6 @@ const fasilitasData = [
   },
   {
     title: "Ruang Podcast FK",
-    slug: "ruang-podcast-fk",
     kapasitas: "5 orang",
     gedung: "FK Kampus Pondok Labu",
     image:
@@ -71,7 +62,6 @@ const fasilitasData = [
   },
   {
     title: "Ruang Podcast FISIP",
-    slug: "ruang-podcast-fisip",
     kapasitas: "5 orang",
     gedung: "FISIP",
     image:
@@ -79,14 +69,13 @@ const fasilitasData = [
   },
   {
     title: "Ruang Podcast FEB",
-    slug: "ruang-podcast-feb",
     kapasitas: "5 orang",
     gedung: "FEB",
-    image: "https://i.ytimg.com/vi/raX3zgh1WtE/maxresdefault.jpg",
+    image:
+      " https://i.ytimg.com/vi/raX3zgh1WtE/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH0CYAC0AWKAgwIABABGHIgVCgrMA8=&rs=AOn4CLC4YIUaKil03CaPp4rsQlmzBv5P9whttps://fisip.upnvj.ac.id/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-12-at-15.12.39.jpeg",
   },
   {
     title: "Lab Terpadu",
-    slug: "lab-terpadu",
     kapasitas: "50 orang",
     gedung: "Perpustakaan Lt. 2",
     image:
@@ -94,18 +83,16 @@ const fasilitasData = [
   },
   {
     title: "Ubin Cokelat",
-    slug: "ubin-cokelat",
     kapasitas: "200 orang",
     gedung: "FEB Kampus Pondok Labu",
     image: "https://feb.upnvj.ac.id/wp-content/uploads/2024/12/328.jpg",
   },
   {
     title: "Lapangan Basket",
-    slug: "lapangan-basket",
     kapasitas: "200 orang",
     gedung: "Kampus Pondok Labu",
     image:
-      "https://cdn.idntimes.com/content-images/community/2022/07/aironebball-150630392-1387338378274022-5515620263307717663-n.jpg",
+      "https://cdn.idntimes.com/content-images/community/2022/07/aironebball-150630392-1387338378274022-5515620263307717663-n-4b05e1ad11e871221e4135e0f2a9a211-6e991a6de4e6b086ea74264517fdd7a3.jpg",
   },
 ];
 
@@ -120,25 +107,19 @@ function Navbar() {
             <span className="ml-3 text-xl font-semibold">FAST UPNVJ</span>
           </Link>
           <div className="hidden md:flex space-x-8">
-            <Link to="/" className="hover:text-[#5dac00] transition-colors">
+            <Link to="/" className="hover:text-primary transition-colors">
               Beranda
             </Link>
-            <Link
-              to="/peminjaman"
-              className="hover:text-[#5dac00] transition-colors font-bold"
-            >
+            <Link to="/" className="hover:text-primary transition-colors">
               Peminjaman
             </Link>
-            <Link
-              to="/tentang-kami"
-              className="hover:text-[#5dac00] transition-colors"
-            >
+            <Link to="/" className="hover:text-primary transition-colors">
               Tentang Kami
             </Link>
           </div>
           <button
             onClick={() => navigate("/login")}
-            className="bg-[#5dac00] text-white text-base font-semibold px-5 py-3 rounded-full shadow-md hover:bg-[#4b8c00] transition"
+            className="btn btn-primary btn-sm md:btn-md"
           >
             Login
           </button>
@@ -148,144 +129,131 @@ function Navbar() {
   );
 }
 
+function Footer() {
+  return (
+    <footer className="footer sm:footer-horizontal bg-accent text-accent-content p-10 mt-16">
+      <aside>
+        <img
+          src={Logo}
+          alt="UPN Logo"
+          width={50}
+          height={50}
+          className="mb-2"
+        />
+        <p>
+          FAST UPNVJ
+          <br />
+          Website Peminjaman Fasilitas Kampus UPNVJ
+        </p>
+      </aside>
+      <nav>
+        <h6 className="footer-title">Social</h6>
+        <div className="grid grid-flow-col gap-4">
+          <a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="fill-current"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+            >
+              <path d="..." />
+            </svg>
+          </a>
+          <a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="fill-current"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+            >
+              <path d="..." />
+            </svg>
+          </a>
+          <a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="fill-current"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+            >
+              <path d="..." />
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </footer>
+  );
+}
+
 export default function HomePage() {
-  const [selectedJenis, setSelectedJenis] = useState([]);
-  const [lokasi, setLokasi] = useState("");
-  const [kapasitas, setKapasitas] = useState("");
-
-  const handleJenisChange = (jenis) => {
-    setSelectedJenis((prev) =>
-      prev.includes(jenis)
-        ? prev.filter((j) => j !== jenis)
-        : [...prev, jenis]
-    );
-  };
-
-  const resetFilter = () => {
-    setSelectedJenis([]);
-    setLokasi("");
-    setKapasitas("");
-  };
-
-  const filteredFasilitas = fasilitasData.filter((item) => {
-    const cocokJenis =
-      selectedJenis.length === 0 || selectedJenis.includes(item.jenis);
-    const cocokLokasi =
-      lokasi === "" || item.gedung.toLowerCase().includes(lokasi.toLowerCase());
-    const cocokKapasitas =
-      kapasitas === "" ||
-      (kapasitas === "lt50" && item.kapasitas < 50) ||
-      (kapasitas === "gte50" && item.kapasitas >= 50);
-    return cocokJenis && cocokLokasi && cocokKapasitas;
-  });
-
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <div className="flex flex-1">
-        {/* Sidebar Filter */}
-        <aside className="w-64 bg-white p-6 border-r rounded-tr-3xl rounded-br-3xl shadow-lg space-y-6">
-          <h2 className="text-lg font-bold flex items-center space-x-2 text-[#007E30]">
-            <FunnelIcon className="w-5 h-5 text-[#007E30]" />
+        <aside className="w-64 bg-gray-100 p-4 border-r space-y-6">
+          <h2 className="text-lg font-bold flex items-center space-x-2">
+            <FunnelIcon className="w-5 h-5 text-gray-600" />
             <span>Filter Fasilitas</span>
           </h2>
-
           <div>
-            <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
-              Jenis Fasilitas
-            </h3>
-            <div className="space-y-2">
-              {["Auditorium", "Ruang Podcast", "Lab", "Lapangan"].map(
-                (jenis, i) => (
-                  <label
-                    key={i}
-                    className="flex items-center space-x-2 text-sm text-gray-800"
-                  >
-                    <input
-                      type="checkbox"
-                      className="accent-[#FF8C00] w-4 h-4"
-                      checked={selectedJenis.includes(jenis)}
-                      onChange={() => handleJenisChange(jenis)}
-                    />
-                    <span>{jenis}</span>
-                  </label>
-                )
-              )}
-            </div>
+            <h3 className="text-sm font-semibold mb-2">Jenis Fasilitas</h3>
+            {["Auditorium", "Ruang Podcast", "Lab", "Lapangan"].map(
+              (jenis, i) => (
+                <label
+                  key={i}
+                  className="flex items-center space-x-2 text-sm text-gray-700"
+                >
+                  <input type="checkbox" className="accent-orange-500" />
+                  <span>{jenis}</span>
+                </label>
+              )
+            )}
           </div>
-
           <div>
-            <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
-              Lokasi/Gedung
-            </h3>
-            <select
-              value={lokasi}
-              onChange={(e) => setLokasi(e.target.value)}
-              className="w-full border border-gray-300 focus:border-[#007E30] focus:ring-[#007E30] rounded-lg px-3 py-2 text-sm"
-            >
-              <option value="">Semua Lokasi</option>
-              <option value="Kampus Limo">Kampus Limo</option>
-              <option value="Pondok Labu">Pondok Labu</option>
+            <h3 className="text-sm font-semibold mb-2">Lokasi/Gedung</h3>
+            <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
+              <option>Semua Lokasi</option>
+              <option>Kampus Limo</option>
+              <option>Pondok Labu</option>
             </select>
           </div>
-
           <div>
-            <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
-              Kapasitas
-            </h3>
-            <select
-              value={kapasitas}
-              onChange={(e) => setKapasitas(e.target.value)}
-              className="w-full border border-gray-300 focus:border-[#007E30] focus:ring-[#007E30] rounded-lg px-3 py-2 text-sm"
-            >
-              <option value="">Semua Kapasitas</option>
+            <h3 className="text-sm font-semibold mb-2">Kapasitas</h3>
+            <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
               <option value="lt50">&lt; 50 orang</option>
-              <option value="gte50">&ge; 50 orang</option>
+              <option value="gte50">&gt;= 50 orang</option>
             </select>
           </div>
-
-          <button
-            onClick={resetFilter}
-            className="w-full bg-[#5dac00] text-white text-sm py-2 rounded-lg hover:bg-[#4b8c00] font-semibold shadow-md"
-          >
+          <button className="w-full bg-orange-500 text-white text-sm py-2 rounded hover:bg-orange-600 transition">
             Reset Filter
           </button>
         </aside>
 
-        {/* Daftar Fasilitas */}
         <main className="flex-1 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredFasilitas.length > 0 ? (
-            filteredFasilitas.map((item) => (
-              <Link
-                key={item.slug}
-                to={`/fasilitas/${item.slug}`}
-                className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 group"
-              >
-                <div className="relative">
-                  {item.image && (
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-44 object-cover"
-                    />
-                  )}
-                  <div className="absolute top-2 left-2 bg-[#5dac00] text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
-                    {item.kapasitas} orang
-                  </div>
-                </div>
-                <div className="p-4 text-center">
-                  <h3 className="text-lg font-bold text-gray-800 group-hover:text-[#5dac00] transition hover:underline">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-1">{item.gedung}</p>
-                </div>
-              </Link>
-            ))
-          ) : (
-            <p className="col-span-full text-center text-gray-500">
-              Tidak ada fasilitas yang cocok dengan filter.
-            </p>
-          )}
+          {Fasilitas.map((item, index) => (
+            <div
+              key={index}
+              className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition bg-white"
+            >
+              {item.image && (
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-40 object-cover"
+                />
+              )}
+              <div className="p-4 text-center">
+                <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
+                <p className="text-sm text-gray-600 mb-1">
+                  Kapasitas: {item.kapasitas}
+                </p>
+                <p className="text-sm text-gray-500">Gedung: {item.gedung}</p>
+              </div>
+            </div>
+          ))}
         </main>
       </div>
       <Footer />
