@@ -35,6 +35,7 @@ const fasilitasData = [
     jenis: "Ruang Podcast",
     lokasi: "Pondok Labu",
   },
+  // Tambahkan data lain dengan struktur yang sama
 ];
 
 function Navbar() {
@@ -148,7 +149,6 @@ export default function HomePage() {
               onChange={(e) => setLokasi(e.target.value)}
               className="w-full border border-gray-300 focus:border-[#007E30] focus:ring-[#007E30] rounded-lg px-3 py-2 text-sm"
             >
-              <option value="">Semua Lokasi</option>
               <option value="Kampus Limo">Kampus Limo</option>
               <option value="Pondok Labu">Pondok Labu</option>
             </select>
@@ -163,7 +163,6 @@ export default function HomePage() {
               onChange={(e) => setKapasitasFilter(e.target.value)}
               className="w-full border border-gray-300 focus:border-[#007E30] focus:ring-[#007E30] rounded-lg px-3 py-2 text-sm"
             >
-              <option value="">Semua Kapasitas</option>
               <option value="lt50">&lt; 50 orang</option>
               <option value="gte50">&gt;= 50 orang</option>
             </select>
@@ -202,6 +201,7 @@ export default function HomePage() {
               </div>
             </Link>
           ))}
+          
         </main>
       </div>
       <Footer />
