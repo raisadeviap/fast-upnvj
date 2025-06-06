@@ -2,8 +2,8 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { Fasilitas } from "./dataFasilitas";
 
-export default function FasilitasPage() {
-  const { slug } = useParams(); // ← ambil slug dari URL
+export default function FasilitasDetail() {
+  const { slug } = useParams();
   const fasilitas = Fasilitas.find((f) => f.slug === slug);
 
   if (!fasilitas) {
@@ -12,8 +12,8 @@ export default function FasilitasPage() {
         <h1 className="text-2xl font-bold mb-4">
           Fasilitas tidak ditemukan 😔
         </h1>
-        <Link to="/" className="text-blue-600 underline">
-          Kembali ke Beranda
+        <Link to="/fasilitas" className="text-blue-600 underline">
+          Kembali ke Daftar Fasilitas
         </Link>
       </div>
     );
@@ -35,8 +35,8 @@ export default function FasilitasPage() {
       <p className="mb-6">
         <strong>Kapasitas:</strong> {fasilitas.kapasitas}
       </p>
-      <Link to="/" className="text-blue-600 underline">
-        ← Kembali
+      <Link to="/fasilitas" className="text-blue-600 underline">
+        ← Kembali ke Daftar
       </Link>
     </div>
   );
