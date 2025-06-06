@@ -13,6 +13,8 @@ function Register() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
+    nama: "",
+    nim: "",
     email: "",
     password: "",
     confirm_password: "",
@@ -27,9 +29,15 @@ function Register() {
       type: "",
     });
 
-    if (!formData.email || !formData.password || !formData.confirm_password) {
+    if (
+      !formData.nama.trim() ||
+      !formData.nim.trim() ||
+      !formData.email.trim() ||
+      !formData.password.trim() ||
+      !formData.confirm_password.trim()
+    ) {
       setToast({
-        message: "Email dan password harus diisi!",
+        message: "Semua field wajib diisi!",
         type: "error",
       });
 
@@ -41,6 +49,7 @@ function Register() {
       }, 3000);
       return;
     }
+    
 
     if (formData.password !== formData.confirm_password) {
       setToast({
@@ -96,6 +105,44 @@ function Register() {
               src="src/assets/UPN.png"
               alt="UPN Logo"
               className="h-32 w-auto"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="nama"
+              className="block mb-1 font-medium text-zinc-900"
+            >
+              Nama
+            </label>
+            <input
+              type="text"
+              id="nama"
+              className="w-full px-4 py-2.5 border rounded-2xl focus:outline-none text-neutral-600 border-neutral-300 focus:border-neutral-500 transition-all duration-300"
+              placeholder="Masukkan nama lengkap"
+              onChange={(e) =>
+                setFormData({ ...formData, nama: e.target.value })
+              }
+              required
+            />
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="nim"
+              className="block mb-1 font-medium text-zinc-900"
+            >
+              NIM
+            </label>
+            <input
+              type="text"
+              id="nim"
+              className="w-full px-4 py-2.5 border rounded-2xl focus:outline-none text-neutral-600 border-neutral-300 focus:border-neutral-500 transition-all duration-300"
+              placeholder="Masukkan NIM"
+              onChange={(e) =>
+                setFormData({ ...formData, nim: e.target.value })
+              }
+              required
             />
           </div>
 
@@ -207,5 +254,3 @@ function Register() {
 }
 
 export default Register;
-
-// Clipboard
