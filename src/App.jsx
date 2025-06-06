@@ -18,6 +18,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path='/admin' element={<Admin />} />
+        <Route path="/fasilitas" element={<FasilitasDetail />} />
         <Route path="/fasilitas/:slug" element={<FasilitasDetail />} />  {/* ← ini */}
       </Routes>
     </BrowserRouter>
