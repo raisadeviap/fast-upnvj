@@ -4,97 +4,108 @@ import Logo from "../assets/UPN.png";
 import { FunnelIcon } from "@heroicons/react/24/solid";
 import Footer from "../components/Footer";
 
-const Fasilitas = [
+const fasilitasData = [
   {
     title: "Auditorium Bhineka Tunggal Ika",
     slug: "auditorium-bhineka-tunggal-ika",
     kapasitas: "300 orang",
     gedung: "Plaza Soedirman",
-    image:"https://www.upnvj.ac.id/en/files/large/5fe91f59d3da4d824097b0b5bb994e69",
+    image:
+      "https://www.upnvj.ac.id/en/files/large/5fe91f59d3da4d824097b0b5bb994e69",
   },
   {
     title: "Auditorium Wahidin Sudiro Husodo",
     slug: "auditorium-wahidin-sudiro-husodo",
     kapasitas: "100 orang",
     gedung: "Wahidin Sudiro Husodo",
-    image:"https://fk.upnvj.ac.id/wp-content/uploads/2022/04/IMG_2038-scaled.jpg",
+    image:
+      "https://fk.upnvj.ac.id/wp-content/uploads/2022/04/IMG_2038-scaled.jpg",
   },
   {
     title: "Auditorium Dr. Cipto Mangun Kusumo",
-     slug: "auditorium-dr-cipto-mangun-kusumo",
+    slug: "auditorium-dr-cipto-mangun-kusumo",
     kapasitas: "200 orang",
     gedung: "Dr. Cipto Mangun Kusumo",
-    image:"https://fk.upnvj.ac.id/wp-content/uploads/2022/11/IMG_7937-scaled.jpg",
+    image:
+      "https://fk.upnvj.ac.id/wp-content/uploads/2022/11/IMG_7937-scaled.jpg",
   },
   {
     title: "Auditorium MERCe",
-     slug: "auditorium-merce",
+    slug: "auditorium-merce",
     kapasitas: "100 orang",
     gedung: "MERCe Kampus Limo",
-    image: "https://merce-fk.upnvj.ac.id/wp-content/uploads/photo-gallery/imported_from_media_libray/IMG_3839-min-scaled.jpg?bwg=1693216594",
+    image:
+      "https://merce-fk.upnvj.ac.id/wp-content/uploads/photo-gallery/imported_from_media_libray/IMG_3839-min-scaled.jpg?bwg=1693216594",
   },
   {
     title: "Ruang Podcast FH",
-     slug: "ruang-podcast-fh",
+    slug: "ruang-podcast-fh",
     kapasitas: "5 orang",
     gedung: "Yos Sudarso",
-    image: "https://hukum.upnvj.ac.id/wp-content/uploads/2022/06/RuangPODCAST-LT-4-1024x799.jpeg",
+    image:
+      "https://hukum.upnvj.ac.id/wp-content/uploads/2022/06/RuangPODCAST-LT-4-1024x799.jpeg",
   },
   {
     title: "Ruang Podcast FIK",
-     slug: "ruang-podcast-fik",
+    slug: "ruang-podcast-fik",
     kapasitas: "5 orang",
     gedung: "Ki Hajar Dewantara",
-    image:"https://new-fik.upnvj.ac.id/wp-content/uploads/2023/08/WhatsApp-Image-2023-08-07-at-15.44.52.jpeg",
+    image:
+      "https://new-fik.upnvj.ac.id/wp-content/uploads/2023/08/WhatsApp-Image-2023-08-07-at-15.44.52.jpeg",
   },
   {
     title: "Ruang Podcast FIKES",
-     slug: "ruang-podcast-fikes",
+    slug: "ruang-podcast-fikes",
     kapasitas: "5 orang",
     gedung: "FIKES Kampus Limo",
-    image:"https://fikes.upnvj.ac.id/id/files/thumb/93ef38f7d710dc957cf1d23c2808d1da/520/fit",
+    image:
+      "https://fikes.upnvj.ac.id/id/files/thumb/93ef38f7d710dc957cf1d23c2808d1da/520/fit",
   },
   {
     title: "Ruang Podcast FK",
     slug: "ruang-podcast-fk",
     kapasitas: "5 orang",
     gedung: "FK Kampus Pondok Labu",
-    image:"https://fk.upnvj.ac.id/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-07-at-10.04.34.jpeg",
+    image:
+      "https://fk.upnvj.ac.id/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-07-at-10.04.34.jpeg",
   },
   {
     title: "Ruang Podcast FISIP",
     slug: "ruang-podcast-fisip",
     kapasitas: "5 orang",
     gedung: "FISIP",
-    image:"https://fisip.upnvj.ac.id/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-12-at-15.12.39.jpeg",
+    image:
+      "https://fisip.upnvj.ac.id/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-12-at-15.12.39.jpeg",
   },
   {
     title: "Ruang Podcast FEB",
-    slug:"ruang-podcast-feb",
+    slug: "ruang-podcast-feb",
     kapasitas: "5 orang",
     gedung: "FEB",
-    image: "https://i.ytimg.com/vi/raX3zgh1WtE/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH0CYAC0AWKAgwIABABGHIgVCgrMA8=&rs=AOn4CLC4YIUaKil03CaPp4rsQlmzBv5P9w",
+    image: "https://i.ytimg.com/vi/raX3zgh1WtE/maxresdefault.jpg",
   },
   {
     title: "Lab Terpadu",
-     slug: "lab-terpadu",
+    slug: "lab-terpadu",
     kapasitas: "50 orang",
     gedung: "Perpustakaan Lt. 2",
-    image:"https://uptlabterpadu.upnvj.ac.id/wp-content/uploads/2023/08/Kegiatan-Perkuliahan-FIK-28-08-2023-01.jpeg",
+    image:
+      "https://uptlabterpadu.upnvj.ac.id/wp-content/uploads/2023/08/Kegiatan-Perkuliahan-FIK-28-08-2023-01.jpeg",
   },
   {
     title: "Ubin Cokelat",
-     slug: "ubin-cokelat",
+    slug: "ubin-cokelat",
     kapasitas: "200 orang",
     gedung: "FEB Kampus Pondok Labu",
     image: "https://feb.upnvj.ac.id/wp-content/uploads/2024/12/328.jpg",
   },
   {
     title: "Lapangan Basket",
-     slug: "lapangan-basket",
+    slug: "lapangan-basket",
     kapasitas: "200 orang",
     gedung: "Kampus Pondok Labu",
-    image:"https://cdn.idntimes.com/content-images/community/2022/07/aironebball-150630392-1387338378274022-5515620263307717663-n-4b05e1ad11e871221e4135e0f2a9a211-6e991a6de4e6b086ea74264517fdd7a3.jpg",
+    image:
+      "https://cdn.idntimes.com/content-images/community/2022/07/aironebball-150630392-1387338378274022-5515620263307717663-n.jpg",
   },
 ];
 
@@ -114,8 +125,9 @@ function Navbar() {
             </Link>
             <Link
               to="/peminjaman"
-              className="hover:text-[#5dac00] transition-colors">
-              <strong>Peminjaman</strong>
+              className="hover:text-[#5dac00] transition-colors font-bold"
+            >
+              Peminjaman
             </Link>
             <Link
               to="/tentang-kami"
@@ -141,9 +153,6 @@ export default function HomePage() {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <div className="flex flex-1">
-        {" "}
-        {/* Buka flex container */}
-        {/* ASIDE harus di dalam sini */}
         <aside className="w-64 bg-white p-6 border-r rounded-tr-3xl rounded-br-3xl shadow-lg space-y-6">
           <h2 className="text-lg font-bold flex items-center space-x-2 text-[#007E30]">
             <FunnelIcon className="w-5 h-5 text-[#007E30]" />
@@ -196,34 +205,36 @@ export default function HomePage() {
             Reset Filter
           </button>
         </aside>
+
         <main className="flex-1 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {Fasilitas.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 group">
+          {fasilitasData.map((item) => (
+            <Link
+              key={item.slug}
+              to={`/fasilitas/${item.slug}`}
+              className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 group"
+            >
               <div className="relative">
                 {item.image && (
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-44 object-cover"/>
+                    className="w-full h-44 object-cover"
+                  />
                 )}
                 <div className="absolute top-2 left-2 bg-[#5dac00] text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
                   {item.kapasitas}
                 </div>
               </div>
               <div className="p-4 text-center">
-               <Link
-                  to={`/fasilitas/${index}`} className="text-lg font-bold text-gray-800 group-hover:text-[#5dac00] transition hover:underline">
+                <h3 className="text-lg font-bold text-gray-800 group-hover:text-[#5dac00] transition hover:underline">
                   {item.title}
-                </Link>
+                </h3>
                 <p className="text-sm text-gray-600 mb-1">{item.gedung}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </main>
-      </div>{" "}
-      {/* Tutup flex container */}
+      </div>
       <Footer />
     </div>
   );
