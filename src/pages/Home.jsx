@@ -108,15 +108,16 @@ function Navbar() {
           <span className="text-xl font-bold text-black">FAST UPNVJ</span>
         </Link>
         <div className="hidden md:flex gap-6 text-sm font-medium text-gray-700">
-          <Link to="/" className="hover:text-green-500 transition">
-            Beranda
+         <Link to="/" className="relative group hover:text-lime-600 transition-colors"> Beranda
+           <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-lime-600 transition-all duration-300 group-hover:w-full"></span>
           </Link>
-          <Link to="/" className="hover:text-green-700 transition">
-            Peminjaman
+          
+          <Link to="/" className="relative group hover:text-lime-600 transition-colors">  Peminjaman
+            <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-lime-600 transition-all duration-300 group-hover:w-full"></span>
           </Link>
-          <Link to="/" className="hover:text-green-700 transition">
-            Tentang Kami
-          </Link>
+
+          <Link to="/" className="relative group hover:text-lime-600 transition-colors"> Tentang Kami<span className="absolute left-0 bottom-0 h-0.5 w-0 bg-lime-600 transition-all duration-300 group-hover:w-full"></span></Link>
+
         </div>
         <div className="flex items-center gap-3">
           <img
@@ -129,7 +130,7 @@ function Navbar() {
               localStorage.removeItem("token");
               navigate("/login");
             }}
-            className="bg-green-600 hover:bg-green-600 text-white px-4 py-2 text-sm rounded-md transition"
+            className="bg-lime-600 hover:bg-lime-600 text-white px-4 py-2 text-sm rounded-md transition"
           >
             Logout
           </button>
@@ -141,7 +142,7 @@ function Navbar() {
 
 function Footer() {
   return (
-    <footer className="bg-green-800 text-white px-8 py-10 mt-12">
+    <footer className="bg-lime-800 text-white px-8 py-10 mt-12">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between">
         <div className="mb-6 sm:mb-0">
           <img src={Logo} alt="UPN Logo" className="w-12 mb-2" />
@@ -178,7 +179,7 @@ export default function HomePage() {
       <Navbar />
       <div className="flex flex-1">
         <aside className="w-72 bg-white p-5 border-r shadow-sm space-y-6">
-          <h2 className="text-lg font-bold flex items-center gap-2 text-green-800">
+          <h2 className="text-lg font-bold flex items-center gap-2 text-black">
             <FunnelIcon className="w-5 h-5" />
             Filter Fasilitas
           </h2>
@@ -217,7 +218,7 @@ export default function HomePage() {
               <option value="gte50">&gt; 50 orang</option>
             </select>
           </div>
-          <button className="w-full bg-green-700 text-white py-2 rounded-md hover:bg-green-700 transition">
+          <button className="w-full bg-lime-600 text-white py-2 rounded-md hover:bg-lime-600 transition">
             Reset Filter
           </button>
         </aside>
@@ -234,7 +235,7 @@ export default function HomePage() {
                 className="w-full h-40 object-cover"
               />
               <div className="p-4">
-                <h3 className="text-md font-semibold text-green-800 mb-1">
+                <h3 className="text-md font-semibold text-lime-600 mb-1">
                   {item.title}
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -244,7 +245,7 @@ export default function HomePage() {
                   Gedung: {item.gedung}
                 </p>
                 <button
-                  className="w-full text-sm border border-green-600 text-green-700 hover:bg-green-700 hover:text-white py-1.5 rounded-md transition"
+                  className="w-full text-sm border border-lime-600 text-black hover:bg-lime-600 hover:text-white py-1.5 rounded-md transition"
                   onClick={() => navigate("/ajukan-peminjaman")}
                 >
                   Ajukan Peminjaman
