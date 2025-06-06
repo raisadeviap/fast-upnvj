@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/UPN.png";
 import { FunnelIcon } from "@heroicons/react/24/solid";
 import Footer from "../components/Footer";
+import { Fasilitas } from "./dataFasilitas"; 
 
 const Fasilitas = [
   {
