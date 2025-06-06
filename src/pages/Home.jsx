@@ -72,7 +72,7 @@ const Fasilitas = [
     kapasitas: "5 orang",
     gedung: "FEB",
     image:
-      " https://i.ytimg.com/vi/raX3zgh1WtE/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH0CYAC0AWKAgwIABABGHIgVCgrMA8=&rs=AOn4CLC4YIUaKil03CaPp4rsQlmzBv5P9whttps://fisip.upnvj.ac.id/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-12-at-15.12.39.jpeg",
+      "https://i.ytimg.com/vi/raX3zgh1WtE/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH0CYAC0AWKAgwIABABGHIgVCgrMA8=&rs=AOn4CLC4YIUaKil03CaPp4rsQlmzBv5P9w",
   },
   {
     title: "Lab Terpadu",
@@ -98,30 +98,40 @@ const Fasilitas = [
 
 function Navbar() {
   const navigate = useNavigate();
+  const userImage = "https://i.pravatar.cc/40?img=3";
+
   return (
-    <nav className="bg-base-100 shadow-sm sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-3">
-        <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center">
-            <img src={Logo} alt="UPNVJ Logo" className="h-12" />
-            <span className="ml-3 text-xl font-semibold">FAST UPNVJ</span>
+    <nav className="bg-white shadow-md sticky top-0 z-50">
+      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+        <Link to="/" className="flex items-center gap-3">
+          <img src={Logo} alt="UPNVJ Logo" className="h-10" />
+          <span className="text-xl font-bold text-black">FAST UPNVJ</span>
+        </Link>
+        <div className="hidden md:flex gap-6 text-sm font-medium text-gray-700">
+          <Link to="/" className="hover:text-green-500 transition">
+            Beranda
           </Link>
-          <div className="hidden md:flex space-x-8">
-            <Link to="/" className="hover:text-primary transition-colors">
-              Beranda
-            </Link>
-            <Link to="/" className="hover:text-primary transition-colors">
-              Peminjaman
-            </Link>
-            <Link to="/" className="hover:text-primary transition-colors">
-              Tentang Kami
-            </Link>
-          </div>
+          <Link to="/" className="hover:text-green-700 transition">
+            Peminjaman
+          </Link>
+          <Link to="/" className="hover:text-green-700 transition">
+            Tentang Kami
+          </Link>
+        </div>
+        <div className="flex items-center gap-3">
+          <img
+            src={userImage}
+            alt="User"
+            className="w-10 h-10 rounded-full border"
+          />
           <button
-            onClick={() => navigate("/login")}
-            className="btn btn-primary btn-sm md:btn-md"
+            onClick={() => {
+              localStorage.removeItem("token");
+              navigate("/login");
+            }}
+            className="bg-green-600 hover:bg-green-600 text-white px-4 py-2 text-sm rounded-md transition"
           >
-            Login
+            Logout
           </button>
         </div>
       </div>
@@ -131,103 +141,83 @@ function Navbar() {
 
 function Footer() {
   return (
-    <footer className="footer sm:footer-horizontal bg-accent text-accent-content p-10 mt-16">
-      <aside>
-        <img
-          src={Logo}
-          alt="UPN Logo"
-          width={50}
-          height={50}
-          className="mb-2"
-        />
-        <p>
-          FAST UPNVJ
-          <br />
-          Website Peminjaman Fasilitas Kampus UPNVJ
-        </p>
-      </aside>
-      <nav>
-        <h6 className="footer-title">Social</h6>
-        <div className="grid grid-flow-col gap-4">
-          <a>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="fill-current"
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-            >
-              <path d="..." />
-            </svg>
-          </a>
-          <a>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="fill-current"
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-            >
-              <path d="..." />
-            </svg>
-          </a>
-          <a>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="fill-current"
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-            >
-              <path d="..." />
-            </svg>
-          </a>
+    <footer className="bg-green-800 text-white px-8 py-10 mt-12">
+      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between">
+        <div className="mb-6 sm:mb-0">
+          <img src={Logo} alt="UPN Logo" className="w-12 mb-2" />
+          <p className="text-sm leading-6">
+            FAST UPNVJ
+            <br />
+            Website Peminjaman Fasilitas Kampus UPNVJ
+          </p>
         </div>
-      </nav>
+        <div>
+          <h6 className="font-semibold mb-2">Social</h6>
+          <div className="flex gap-4">
+            <a href="#" className="hover:text-yellow-300 transition">
+              Facebook
+            </a>
+            <a href="#" className="hover:text-yellow-300 transition">
+              Instagram
+            </a>
+            <a href="#" className="hover:text-yellow-300 transition">
+              Twitter
+            </a>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }
 
 export default function HomePage() {
+  const navigate = useNavigate();
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <Navbar />
       <div className="flex flex-1">
-        <aside className="w-64 bg-gray-100 p-4 border-r space-y-6">
-          <h2 className="text-lg font-bold flex items-center space-x-2">
-            <FunnelIcon className="w-5 h-5 text-gray-600" />
-            <span>Filter Fasilitas</span>
+        <aside className="w-72 bg-white p-5 border-r shadow-sm space-y-6">
+          <h2 className="text-lg font-bold flex items-center gap-2 text-green-800">
+            <FunnelIcon className="w-5 h-5" />
+            Filter Fasilitas
           </h2>
           <div>
-            <h3 className="text-sm font-semibold mb-2">Jenis Fasilitas</h3>
+            <h3 className="text-sm font-semibold text-gray-600 mb-2">
+              Jenis Fasilitas
+            </h3>
             {["Auditorium", "Ruang Podcast", "Lab", "Lapangan"].map(
               (jenis, i) => (
                 <label
                   key={i}
-                  className="flex items-center space-x-2 text-sm text-gray-700"
+                  className="flex items-center gap-2 text-sm text-gray-700"
                 >
-                  <input type="checkbox" className="accent-orange-500" />
-                  <span>{jenis}</span>
+                  <input type="checkbox" className="green-200" />
+                  {jenis}
                 </label>
               )
             )}
           </div>
           <div>
-            <h3 className="text-sm font-semibold mb-2">Lokasi/Gedung</h3>
-            <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
+            <h3 className="text-sm font-semibold text-gray-600 mb-2">
+              Lokasi/Gedung
+            </h3>
+            <select className="w-full border rounded px-3 py-2 text-sm">
               <option>Semua Lokasi</option>
               <option>Kampus Limo</option>
               <option>Pondok Labu</option>
             </select>
           </div>
           <div>
-            <h3 className="text-sm font-semibold mb-2">Kapasitas</h3>
-            <select className="w-full border-gray-300 rounded px-3 py-2 text-sm">
+            <h3 className="text-sm font-semibold text-gray-600 mb-2">
+              Kapasitas
+            </h3>
+            <select className="w-full border rounded px-3 py-2 text-sm">
               <option value="lt50">&lt; 50 orang</option>
-              <option value="gte50">&gt;= 50 orang</option>
+              <option value="gte50">&gt; 50 orang</option>
             </select>
           </div>
-          <button className="w-full bg-orange-500 text-white text-sm py-2 rounded hover:bg-orange-600 transition">
+          <button className="w-full bg-green-700 text-white py-2 rounded-md hover:bg-green-700 transition">
             Reset Filter
           </button>
         </aside>
@@ -236,21 +226,29 @@ export default function HomePage() {
           {Fasilitas.map((item, index) => (
             <div
               key={index}
-              className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition bg-white"
+              className="bg-white border rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
             >
-              {item.image && (
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-40 object-cover"
-                />
-              )}
-              <div className="p-4 text-center">
-                <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
-                <p className="text-sm text-gray-600 mb-1">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-4">
+                <h3 className="text-md font-semibold text-green-800 mb-1">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-600">
                   Kapasitas: {item.kapasitas}
                 </p>
-                <p className="text-sm text-gray-500">Gedung: {item.gedung}</p>
+                <p className="text-sm text-gray-500 mb-4">
+                  Gedung: {item.gedung}
+                </p>
+                <button
+                  className="w-full text-sm border border-green-600 text-green-700 hover:bg-green-700 hover:text-white py-1.5 rounded-md transition"
+                  onClick={() => navigate("/ajukan-peminjaman")}
+                >
+                  Ajukan Peminjaman
+                </button>
               </div>
             </div>
           ))}
