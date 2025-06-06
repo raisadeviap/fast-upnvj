@@ -4,6 +4,7 @@ import { Fasilitas } from "../data/tempt";
 
 export default function FasilitasList() {
   return (
+    
     <div className="p-10 max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold text-[#5dac00] mb-6 text-center">
         Daftar Fasilitas Kampus
@@ -15,6 +16,7 @@ export default function FasilitasList() {
             key={f.slug}
             className="block border rounded-xl overflow-hidden hover:shadow-lg transition"
           >
+        
             <img
               src={f.image}
               alt={f.title}
@@ -26,8 +28,13 @@ export default function FasilitasList() {
               <p className="text-sm text-gray-600">Kapasitas: {f.kapasitas}</p>
             </div>
           </Link>
+          
         ))}
       </div>
     </div>
+    
   );
+  
+  console.log("Slug dari URL:", slug);
+
 }

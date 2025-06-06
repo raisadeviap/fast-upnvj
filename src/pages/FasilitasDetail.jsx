@@ -9,6 +9,8 @@ export default function FasilitasPage() {
   if (slug) {
     const fasilitas = Fasilitas.find((f) => f.slug === slug);
 
+    console.log("Slug dari URL:", slug);
+
     if (!fasilitas) {
       return (
         <div className="p-6 text-center text-red-600">
