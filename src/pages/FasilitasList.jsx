@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Fasilitas } from "../data/dataFasilitas";
+import { Fasilitas } from "../data/tempt";
 
 export default function FasilitasList() {
   return (

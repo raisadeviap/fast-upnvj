@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { Fasilitas } from "./dataFasilitas";
+import { Fasilitas } from "../data/tempt";
 
 export default function FasilitasPage() {
   const { slug } = useParams();
@@ -13,7 +13,10 @@ export default function FasilitasPage() {
       return (
         <div className="p-6 text-center text-red-600">
           <p>Fasilitas tidak ditemukan.</p>
-          <Link to="/fasilitas" className="text-blue-600 underline mt-4 inline-block">
+          <Link
+            to="/fasilitas"
+            className="text-blue-600 underline mt-4 inline-block"
+          >
             ← Kembali ke daftar fasilitas
           </Link>
         </div>
@@ -28,8 +31,12 @@ export default function FasilitasPage() {
           className="w-full h-64 object-cover rounded mb-4"
         />
         <h1 className="text-2xl font-bold mb-2">{fasilitas.title}</h1>
-        <p className="mb-1"><strong>Gedung:</strong> {fasilitas.gedung}</p>
-        <p className="mb-1"><strong>Kapasitas:</strong> {fasilitas.kapasitas}</p>
+        <p className="mb-1">
+          <strong>Gedung:</strong> {fasilitas.gedung}
+        </p>
+        <p className="mb-1">
+          <strong>Kapasitas:</strong> {fasilitas.kapasitas}
+        </p>
         <Link to="/fasilitas" className="text-blue-600 mt-4 inline-block">
           ← Kembali ke daftar fasilitas
         </Link>
@@ -52,8 +59,12 @@ export default function FasilitasPage() {
             className="w-full h-48 object-cover rounded mb-3"
           />
           <h2 className="text-xl font-bold mb-1">{item.title}</h2>
-          <p className="text-gray-600 mb-1"><strong>Gedung:</strong> {item.gedung}</p>
-          <p className="text-gray-600"><strong>Kapasitas:</strong> {item.kapasitas}</p>
+          <p className="text-gray-600 mb-1">
+            <strong>Gedung:</strong> {item.gedung}
+          </p>
+          <p className="text-gray-600">
+            <strong>Kapasitas:</strong> {item.kapasitas}
+          </p>
         </Link>
       ))}
     </div>
