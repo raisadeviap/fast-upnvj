@@ -198,35 +198,35 @@ export default function HomePage() {
         </aside>
         
         <main className="flex-1 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {Fasilitas.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 group"
-            >
-              <div className="relative">
-                {item.image && (
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-44 object-cover"
-                  />
-                )}
-                <div className="absolute top-2 left-2 bg-[#5dac00] text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
-                  {item.kapasitas}
-                </div>
-              </div>
-              <div className="p-4 text-center">
-               <Link
-  to={`/fasilitas/${index}`} // atau sesuaikan dengan rute detail
-  className="text-lg font-bold text-gray-800 group-hover:text-[#5dac00] transition hover:underline"
->
-  {item.title}
-</Link>
+         {Fasilitas.map((item) => (
+  <div
+    key={item.slug}
+    className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 group"
+  >
+    <div className="relative">
+      {item.image && (
+        <img
+          src={item.image}
+          alt={item.title}
+          className="w-full h-44 object-cover"
+        />
+      )}
+      <div className="absolute top-2 left-2 bg-[#5dac00] text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+        {item.kapasitas}
+      </div>
+    </div>
 
-                <p className="text-sm text-gray-600 mb-1">{item.gedung}</p>
-              </div>
-            </div>
-          ))}
+    <div className="p-4 text-center">
+      <Link
+        to={`/fasilitas/${item.slug}`}     
+        className="text-lg font-bold text-gray-800 group-hover:text-[#5dac00] transition hover:underline"
+      >
+        {item.title}
+      </Link>
+      <p className="text-sm text-gray-600 mb-1">{item.gedung}</p>
+    </div>
+  </div>
+))}
         </main>
       </div>{" "}
       {/* Tutup flex container */}
