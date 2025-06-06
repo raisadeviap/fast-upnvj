@@ -1,10 +1,15 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { Fasilitas } from "./data/dataFasilitas";
+import { Fasilitas } from "../data/dataFasilitas";
+
 
 export default function FasilitasDetail() {
   const { slug } = useParams();
   const data = Fasilitas.find((f) => f.slug === slug);
+
+  if (!data) {
+    return <div className="p-6">Fasilitas tidak ditemukan.</div>;
+  }
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
