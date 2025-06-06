@@ -5,11 +5,19 @@ import { Fasilitas } from "./dataFasilitas";
 export default function FasilitasPage() {
   const { slug } = useParams();
 
-  // Jika ada slug, render detail
+  // Jika ada slug, render detail fasilitas
   if (slug) {
     const fasilitas = Fasilitas.find((f) => f.slug === slug);
+
     if (!fasilitas) {
-      return <p className="p-6 text-red-600">Fasilitas tidak ditemukan.</p>;
+      return (
+        <div className="p-6 text-center text-red-600">
+          <p>Fasilitas tidak ditemukan.</p>
+          <Link to="/fasilitas" className="text-blue-600 underline mt-4 inline-block">
+            ← Kembali ke daftar fasilitas
+          </Link>
+        </div>
+      );
     }
 
     return (
@@ -22,12 +30,14 @@ export default function FasilitasPage() {
         <h1 className="text-2xl font-bold mb-2">{fasilitas.title}</h1>
         <p className="mb-1"><strong>Gedung:</strong> {fasilitas.gedung}</p>
         <p className="mb-1"><strong>Kapasitas:</strong> {fasilitas.kapasitas}</p>
-        <Link to="/fasilitas" className="text-blue-600 mt-4 inline-block">← Kembali ke daftar fasilitas</Link>
+        <Link to="/fasilitas" className="text-blue-600 mt-4 inline-block">
+          ← Kembali ke daftar fasilitas
+        </Link>
       </div>
     );
   }
 
-  // Jika tidak ada slug, tampilkan daftar
+  // Jika tidak ada slug, tampilkan daftar fasilitas
   return (
     <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {Fasilitas.map((item) => (
