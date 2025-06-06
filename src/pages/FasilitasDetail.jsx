@@ -1,11 +1,10 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Fasilitas } from "./dataFasilitas";
 
 export default function FasilitasList() {
-    const { slug } = useParams();
-    const fasilitas = Fasilitas.find((f) => f.slug === slug);
+  const { slug } = useParams();
+  const fasilitas = Fasilitas.find((f) => f.slug === slug);
 
   return (
     <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -30,7 +29,6 @@ export default function FasilitasList() {
           <p className="text-gray-600 mb-4">
             <strong>Kapasitas:</strong> {item.kapasitas}
           </p>
-
         </Link>
       ))}
     </div>
