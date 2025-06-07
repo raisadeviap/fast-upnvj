@@ -16,18 +16,34 @@ function Navbar() {
           <span className="text-xl font-bold text-black">FAST UPNVJ</span>
         </Link>
         <div className="hidden md:flex gap-6 text-sm font-medium text-gray-700">
-          <Link to="/" className="relative group hover:text-lime-600 transition-colors">Beranda
+          <Link
+            to="/"
+            className="relative group hover:text-lime-600 transition-colors"
+          >
+            Beranda
             <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-lime-600 transition-all duration-300 group-hover:w-full"></span>
           </Link>
-          <Link to="/" className="relative group hover:text-lime-600 transition-colors">Peminjaman
+          <Link
+            to="/"
+            className="relative group hover:text-lime-600 transition-colors"
+          >
+            Peminjaman
             <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-lime-600 transition-all duration-300 group-hover:w-full"></span>
           </Link>
-          <Link to="/" className="relative group hover:text-lime-600 transition-colors">Tentang Kami
+          <Link
+            to="/"
+            className="relative group hover:text-lime-600 transition-colors"
+          >
+            Tentang Kami
             <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-lime-600 transition-all duration-300 group-hover:w-full"></span>
           </Link>
         </div>
         <div className="flex items-center gap-3">
-          <img src={userImage} alt="User" className="w-10 h-10 rounded-full border" />
+          <img
+            src={userImage}
+            alt="User"
+            className="w-10 h-10 rounded-full border"
+          />
           <button
             onClick={() => {
               localStorage.removeItem("token");
@@ -58,9 +74,15 @@ function Footer() {
         <div>
           <h6 className="font-semibold mb-2">Social</h6>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-yellow-300 transition">Facebook</a>
-            <a href="#" className="hover:text-yellow-300 transition">Instagram</a>
-            <a href="#" className="hover:text-yellow-300 transition">Twitter</a>
+            <a href="#" className="hover:text-yellow-300 transition">
+              Facebook
+            </a>
+            <a href="#" className="hover:text-yellow-300 transition">
+              Instagram
+            </a>
+            <a href="#" className="hover:text-yellow-300 transition">
+              Twitter
+            </a>
           </div>
         </div>
       </div>
@@ -76,7 +98,9 @@ export default function HomePage() {
   useEffect(() => {
     const fetchFasilitas = async () => {
       try {
-        const res = await axios.get("https://fast-upnvj-backend.vercel.app/api/fasilitas");
+        const res = await axios.get(
+          "https://fast-upnvj-backend.vercel.app/api/fasilitas"
+        );
         setFasilitas(res.data);
       } catch (error) {
         console.error("Gagal mengambil data fasilitas:", error);
@@ -104,7 +128,10 @@ export default function HomePage() {
             </h3>
             {["Auditorium", "Ruang Podcast", "Lab", "Lapangan"].map(
               (jenis, i) => (
-                <label key={i} className="flex items-center gap-2 text-sm text-gray-700">
+                <label
+                  key={i}
+                  className="flex items-center gap-2 text-sm text-gray-700"
+                >
                   <input type="checkbox" className="green-200" />
                   {jenis}
                 </label>
@@ -141,7 +168,9 @@ export default function HomePage() {
               <span className="loading loading-spinner loading-lg text-lime-600"></span>
             </div>
           ) : fasilitas.length === 0 ? (
-            <div className="col-span-full text-center text-gray-500">Tidak ada fasilitas tersedia.</div>
+            <div className="col-span-full text-center text-gray-500">
+              Tidak ada fasilitas tersedia.
+            </div>
           ) : (
             fasilitas.map((item) => (
               <div
