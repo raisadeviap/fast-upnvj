@@ -5,7 +5,7 @@ import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import Home from './pages/Home.jsx';
 import Dashboard from './pages/Dashboard.jsx';
-import AjukanPeminjaman from "./pages/AjukanPeminjaman";
+import AjukanPeminjaman from "./pages/AjukanPeminjaman.jsx";
 
 // Admin Layout and Pages
 import AdminDashboard from './pages/admin/AdminDashboard.jsx';
