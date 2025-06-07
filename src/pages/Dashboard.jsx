@@ -5,10 +5,12 @@ import {
   ClockIcon,
   PencilIcon,
   UserIcon,
+  XMarkIcon,
 } from "@heroicons/react/24/solid";
 import {
   UserIcon as UserIconOutline,
   ClockIcon as ClockIconOutline,
+  DocumentIcon,
 } from "@heroicons/react/24/outline";
 import axios from "axios";
 import NavbarLoggedIn from "../components/NavbarLoggedin";
@@ -126,7 +128,7 @@ function Dashboard() {
       <NavbarLoggedIn userData={userData} />
       <div className="min-h-screen flex bg-[#f8f8f8]">
         {/* Content */}
-        <div className="mt-20 px-4 md:px-20 lg:px-20 flex flex-col lg:flex-row w-full">
+        <div className="mt-10 px-4 md:px-20 lg:px-20 flex flex-col lg:flex-row w-full">
           {/* Bagian kiri */}
           <div className="flex flex-col gap-y-5 mt-5 text-zinc-900 w-full lg:max-w-70">
             {/* Profil */}
@@ -399,6 +401,7 @@ function Dashboard() {
                       <th>Jam Selesai</th>
                       <th>Proses</th>
                       <th>Catatan</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -418,6 +421,21 @@ function Dashboard() {
                           </span>
                         </td>
                         <td>{data.catatan}</td>
+                        <td className="flex gap-x-2">
+                          {data.proses === "Disetujui" ? (
+                            <button className="btn btn-info btn-sm flex items-center gap-x-2 text-white">
+                              <DocumentIcon className="w-5" />
+                              Download Dokumen
+                            </button>
+                          ) : data.proses !== "Ditolak" ? (
+                            <button className="btn btn-error btn-sm flex items-center gap-x-2">
+                              <XMarkIcon className="w-5" />
+                              Batalkan
+                            </button>
+                          ) : (
+                            ""
+                          )}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
