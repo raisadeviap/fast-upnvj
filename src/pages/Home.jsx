@@ -110,9 +110,7 @@ function Navbar() {
             <Link to="/" className="hover:text-primary transition-colors">
               Beranda
             </Link>
-            <Link to="/" className="hover:text-primary transition-colors">
-              Peminjaman
-            </Link>
+          
             <Link to="/" className="hover:text-primary transition-colors">
               Tentang Kami
             </Link>
