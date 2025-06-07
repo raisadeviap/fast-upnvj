@@ -14,7 +14,7 @@ const DashboardHome = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/users");
+      const res = await fetch("https://fast-upnvj-backend.vercel.app/api/users");
       const data = await res.json();
       setTotalUsers(data.length);
     } catch (err) {
@@ -24,7 +24,7 @@ const DashboardHome = () => {
 
   const fetchFasilitas = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/fasilitas");
+      const res = await fetch("https://fast-upnvj-backend.vercel.app/api/fasilitas");
       const data = await res.json();
       setTotalFasilitas(data.length);
     } catch (err) {
