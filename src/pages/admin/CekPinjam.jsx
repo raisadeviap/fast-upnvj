@@ -6,31 +6,50 @@ const CekPinjam = () => {
   const [pengajuan, setPengajuan] = useState([]);
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
+  const [fasilitas, setFasilitas] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetchPengajuan();
+    fetchAllData();
   }, []);
 
-  const fetchPengajuan = async () => {
+  const fetchAllData = async () => {
     try {
-      const res = await fetch("https://fast-upnvj-backend.vercel.app/api/peminjaman");
-      const data = await res.json();
+      const [peminjamanRes, fasilitasRes, userRes] = await Promise.all([
+        fetch("https://fast-upnvj-backend.vercel.app/api/peminjaman"),
+        fetch("https://fast-upnvj-backend.vercel.app/api/fasilitas"),
+        fetch("https://fast-upnvj-backend.vercel.app/api/users"),
+      ]);
 
-      const formatted = data.map((item) => ({
-        id: item.id,
-        nama_fasilitas: item.fasilitas?.nama_fasilitas || "Tidak diketahui",
-        nama_peminjam: item.nama_peminjam || item.users?.nama || "-",
-        tanggal: item.tgl_pinjam,
-        waktu_mulai: item.jam_mulai,
-        waktu_selesai: item.jam_selesai,
-        status: item.proses || "Diproses",
-        kak_uri: item.kak_uri || null,
-        disposisi_uri: item.disposisi_uri || null,
-      }));
+      const [peminjamanData, fasilitasData, userData] = await Promise.all([
+        peminjamanRes.json(),
+        fasilitasRes.json(),
+        userRes.json(),
+      ]);
+
+      setFasilitas(fasilitasData);
+      setUsers(userData);
+
+      const formatted = peminjamanData.map((item) => {
+        const fasilitasItem = fasilitasData.find((f) => f.id === item.id_fasilitas);
+        const userItem = userData.find((u) => u.id === item.id_user);
+
+        return {
+          id: item.id,
+          nama_fasilitas: fasilitasItem?.nama_fasilitas || "Tidak diketahui",
+          nama_peminjam: userItem?.nama || "Tidak diketahui",
+          tanggal: item.tgl_pinjam,
+          waktu_mulai: item.jam_mulai,
+          waktu_selesai: item.jam_selesai,
+          status: item.proses || "Diproses",
+          kak_uri: item.kak_uri || null,
+          disposisi_uri: item.disposisi_uri || null,
+        };
+      });
 
       setPengajuan(formatted);
 
-      // Inisialisasi formData lokal
+      // Inisialisasi form
       const initialForm = {};
       formatted.forEach((item) => {
         initialForm[item.id] = {
@@ -41,7 +60,7 @@ const CekPinjam = () => {
       });
       setFormData(initialForm);
     } catch (err) {
-      console.error("Gagal mengambil data pengajuan:", err);
+      console.error("Gagal mengambil data:", err);
     }
   };
 
@@ -66,7 +85,7 @@ const CekPinjam = () => {
         }
       );
       if (!res.ok) throw new Error("Gagal menyimpan data.");
-      await fetchPengajuan();
+      await fetchAllData();
     } catch (err) {
       console.error("Gagal mengirim:", err);
     } finally {
@@ -75,13 +94,13 @@ const CekPinjam = () => {
   };
 
   const updateForm = (id, field, value) => {
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [id]: {
-        ...formData[id],
+        ...prev[id],
         [field]: value,
       },
-    });
+    }));
   };
 
   return (
@@ -140,7 +159,7 @@ const CekPinjam = () => {
                     {/* Link file KAK */}
                     {item.kak_uri && (
                       <a
-                        href={item.kak_uri}
+                        href={`https://fast-upnvj-backend.vercel.app${item.kak_uri}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="link text-blue-500 text-sm"
@@ -149,7 +168,7 @@ const CekPinjam = () => {
                       </a>
                     )}
 
-                    {/* Upload file disposisi jika status dipilih 'Diterima' */}
+                    {/* Upload file disposisi jika status 'Diterima' */}
                     {formData[item.id]?.status === "Diterima" && (
                       <div className="flex flex-col gap-1">
                         <input
