@@ -41,7 +41,7 @@ const DashboardHome = () => {
       <h1 className="text-2xl font-bold mb-4">Statistik Admin</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-primary text-white p-4 rounded-xl shadow">
-          Total Users: {totalUsers}
+          Total User: {totalUsers}
         </div>
         <div className="bg-secondary text-white p-4 rounded-xl shadow">
           Total Fasilitas: {totalFasilitas}
