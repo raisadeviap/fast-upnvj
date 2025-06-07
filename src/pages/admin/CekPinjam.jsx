@@ -4,8 +4,7 @@ const VALID_STATUSES = ["Diproses", "Diterima", "Ditolak", "Dibatalkan"];
 
 const CekPinjam = () => {
   const [pengajuan, setPengajuan] = useState([]);
-  const [catatan, setCatatan] = useState({});
-  const [disposisi, setDisposisi] = useState({});
+  const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -20,27 +19,41 @@ const CekPinjam = () => {
       const formatted = data.map((item) => ({
         id: item.id,
         nama_fasilitas: item.fasilitas?.nama_fasilitas || "Tidak diketahui",
-        nama_peminjam: item.nama_peminjam || item.users?.nama || "-", // fallback ke user relasi jika ada
+        nama_peminjam: item.nama_peminjam || item.users?.nama || "-",
         tanggal: item.tgl_pinjam,
         waktu_mulai: item.jam_mulai,
         waktu_selesai: item.jam_selesai,
-        status: item.proses || "Diproses", // gunakan proses karena FE & BE pakai istilah ini
+        status: item.proses || "Diproses",
         kak_uri: item.kak_uri || null,
+        disposisi_uri: item.disposisi_uri || null,
       }));
 
       setPengajuan(formatted);
+
+      // Inisialisasi formData lokal
+      const initialForm = {};
+      formatted.forEach((item) => {
+        initialForm[item.id] = {
+          status: item.status,
+          notes: "",
+          disposisi: null,
+        };
+      });
+      setFormData(initialForm);
     } catch (err) {
       console.error("Gagal mengambil data pengajuan:", err);
     }
   };
 
-  const handleChangeStatus = async (id, newStatus) => {
-    const formData = new FormData();
-    formData.append("proses", newStatus);
-    formData.append("notes", catatan[id] || "");
+  const handleSubmit = async (id) => {
+    const data = formData[id];
+    if (!data) return;
 
-    if (newStatus === "Diterima" && disposisi[id]) {
-      formData.append("disposisi", disposisi[id]);
+    const form = new FormData();
+    form.append("proses", data.status);
+    form.append("notes", data.notes);
+    if (data.status === "Diterima" && data.disposisi) {
+      form.append("disposisi", data.disposisi);
     }
 
     try {
@@ -49,17 +62,26 @@ const CekPinjam = () => {
         `https://fast-upnvj-backend.vercel.app/api/peminjaman/${id}/status`,
         {
           method: "PUT",
-          body: formData,
+          body: form,
         }
       );
-
-      if (!res.ok) throw new Error("Gagal mengubah status peminjaman.");
+      if (!res.ok) throw new Error("Gagal menyimpan data.");
       await fetchPengajuan();
     } catch (err) {
-      console.error("Error saat mengubah status:", err);
+      console.error("Gagal mengirim:", err);
     } finally {
       setLoading(false);
     }
+  };
+
+  const updateForm = (id, field, value) => {
+    setFormData({
+      ...formData,
+      [id]: {
+        ...formData[id],
+        [field]: value,
+      },
+    });
   };
 
   return (
@@ -89,11 +111,12 @@ const CekPinjam = () => {
                   </td>
                   <td>{item.status}</td>
                   <td className="space-y-2">
+                    {/* Select status */}
                     <select
                       className="select select-sm select-bordered w-full"
-                      value={item.status}
+                      value={formData[item.id]?.status || item.status}
                       onChange={(e) =>
-                        handleChangeStatus(item.id, e.target.value)
+                        updateForm(item.id, "status", e.target.value)
                       }
                     >
                       {VALID_STATUSES.map((status) => (
@@ -103,16 +126,18 @@ const CekPinjam = () => {
                       ))}
                     </select>
 
+                    {/* Input catatan */}
                     <input
                       type="text"
                       placeholder="Catatan..."
                       className="input input-sm input-bordered w-full"
-                      value={catatan[item.id] || ""}
+                      value={formData[item.id]?.notes || ""}
                       onChange={(e) =>
-                        setCatatan({ ...catatan, [item.id]: e.target.value })
+                        updateForm(item.id, "notes", e.target.value)
                       }
                     />
 
+                    {/* Link file KAK */}
                     {item.kak_uri && (
                       <a
                         href={item.kak_uri}
@@ -120,23 +145,42 @@ const CekPinjam = () => {
                         rel="noopener noreferrer"
                         className="link text-blue-500 text-sm"
                       >
-                        Lihat KAK
+                        📎 Lihat KAK
                       </a>
                     )}
 
-                    {item.status === "Diterima" && (
-                      <input
-                        type="file"
-                        accept=".pdf,.doc,.docx"
-                        className="file-input file-input-sm w-full"
-                        onChange={(e) =>
-                          setDisposisi({
-                            ...disposisi,
-                            [item.id]: e.target.files[0],
-                          })
-                        }
-                      />
+                    {/* Upload file disposisi jika status dipilih 'Diterima' */}
+                    {formData[item.id]?.status === "Diterima" && (
+                      <div className="flex flex-col gap-1">
+                        <input
+                          type="file"
+                          accept=".pdf,.doc,.docx"
+                          className="file-input file-input-sm w-full"
+                          onChange={(e) =>
+                            updateForm(item.id, "disposisi", e.target.files[0])
+                          }
+                        />
+                        {item.disposisi_uri && (
+                          <a
+                            href={`https://fast-upnvj-backend.vercel.app${item.disposisi_uri}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="link text-green-600 text-xs"
+                          >
+                            🔍 Lihat Disposisi
+                          </a>
+                        )}
+                      </div>
                     )}
+
+                    {/* Tombol kirim */}
+                    <button
+                      className="btn btn-sm btn-primary w-full mt-1"
+                      onClick={() => handleSubmit(item.id)}
+                      disabled={loading}
+                    >
+                      {loading ? "⏳ Mengirim..." : "Kirim"}
+                    </button>
                   </td>
                 </tr>
               ))
@@ -149,7 +193,6 @@ const CekPinjam = () => {
             )}
           </tbody>
         </table>
-        {loading && <div className="text-center mt-4">⏳ Menyimpan perubahan...</div>}
       </div>
     </div>
   );
