@@ -5,7 +5,7 @@ const API_URL = 'https://fast-upnvj-backend.vercel.app/api/users';
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [form, setForm] = useState({
-    nim: '', nama: '', email: '', fakultas: '', program_studi: '', password: '', role: 'mahasiswa'
+    nim: '', nama: '', email: '', fakultas: '', program_studi: '', password: '', role: 1
   });
   const [editingId, setEditingId] = useState(null);
 
@@ -46,7 +46,7 @@ const Users = () => {
       return;
     }
 
-    setForm({ nim: '', nama: '', email: '', fakultas: '', program_studi: '', password: '', role: 'mahasiswa' });
+    setForm({ nim: '', nama: '', email: '', fakultas: '', program_studi: '', password: '', role: 1 });
     setEditingId(null);
     fetchUsers();
   } catch (error) {
