@@ -49,7 +49,7 @@ function Login() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/login",
+        "https://fast-upnvj-backend.vercel.app/api/auth/login",
         formData,
         {
           headers: {
@@ -70,7 +70,7 @@ function Login() {
 
           const token = response.data.token;
           localStorage.setItem("token", token);
-        }, 3000);
+        }, 1000);
       } else {
         setToast({
           message: "Login gagal. Silakan coba lagi.",
