@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import TogglePassword from "../components/TogglePassword";
+import axios from "axios";
 
 function Register() {
   const [toast, setToast] = useState({
@@ -17,62 +18,31 @@ function Register() {
     nim: "",
     email: "",
     password: "",
-    confirm_password: "",
+    confirmPassword: "",
   });
 
-  console.log("Login form data:", formData);
+  const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
+
     setToast({
       message: "",
       type: "",
     });
 
-    if (
-      !formData.nama.trim() ||
-      !formData.nim.trim() ||
-      !formData.email.trim() ||
-      !formData.password.trim() ||
-      !formData.confirm_password.trim()
-    ) {
-      setToast({
-        message: "Semua field wajib diisi!",
-        type: "error",
-      });
-
-      setTimeout(() => {
-        setToast({
-          message: "",
-          type: "",
-        });
-      }, 3000);
-      return;
-    }
-    
-
-    if (formData.password !== formData.confirm_password) {
-      setToast({
-        message: "Password dan konfirmasi password tidak cocok!",
-        type: "error",
-      });
-
-      setTimeout(() => {
-        setToast({
-          message: "",
-          type: "",
-        });
-      }, 3000);
-      return;
-    }
     setLoading(true);
 
-    // Simulasi proses registrasi
-    setTimeout(() => {
-      setLoading(false);
+    if (
+      !formData.nama ||
+      !formData.nim ||
+      !formData.email ||
+      !formData.password ||
+      !formData.confirmPassword
+    ) {
       setToast({
-        message: "Registrasi berhasil! Silakan login.",
-        type: "success",
+        message: "Semua field harus diisi.",
+        type: "error",
       });
 
       setTimeout(() => {
@@ -81,7 +51,45 @@ function Register() {
           type: "",
         });
       }, 3000);
-    }, 3000);
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/auth/register",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.status === 201) {
+        setToast({
+          message: "Registrasi berhasil! Silakan login.",
+          type: "success",
+        });
+
+        setTimeout(() => {
+          navigate("/login");
+
+          setLoading(false);
+        }, 2000);
+      } else {
+        setToast({
+          message: "Registrasi gagal. Silakan coba lagi.",
+          type: "error",
+        });
+      }
+    } catch (error) {
+      setToast({
+        message: "Registrasi gagal. Silakan coba lagi.",
+        type: "error",
+      });
+      console.log(error);
+    }
   };
 
   return (
@@ -216,7 +224,7 @@ function Register() {
                   onChange={(e) =>
                     setFormData({
                       ...formData,
-                      confirm_password: e.target.value,
+                      confirmPassword: e.target.value,
                     })
                   }
                   required
