@@ -1,5 +1,6 @@
 // src/pages/Admin/AdminDashboard.jsx
 import { Outlet, NavLink } from 'react-router-dom';
+import '../../App.css';
 
 const AdminDashboard = () => {
   return (
