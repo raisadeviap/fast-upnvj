@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import Logo from "../assets/UPN.png";
-import { FunnelIcon } from "@heroicons/react/24/solid";
-import AjukanPeminjaman from "./pages/AjukanPeminjaman";
+import axios from "axios";
 
-
-function Navbar() {
+const Navbar = () => {
   const navigate = useNavigate();
   const userImage = "https://i.pravatar.cc/40?img=3";
 
@@ -17,6 +14,7 @@ function Navbar() {
           <img src={Logo} alt="UPNVJ Logo" className="h-10" />
           <span className="text-xl font-bold text-black">FAST UPNVJ</span>
         </Link>
+
         <div className="hidden md:flex gap-6 text-sm font-medium text-gray-700">
           <Link
             to="/"
@@ -25,6 +23,7 @@ function Navbar() {
             Beranda
             <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-lime-600 transition-all duration-300 group-hover:w-full"></span>
           </Link>
+
           <Link
             to="/"
             className="relative group hover:text-lime-600 transition-colors"
@@ -32,6 +31,7 @@ function Navbar() {
             Peminjaman
             <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-lime-600 transition-all duration-300 group-hover:w-full"></span>
           </Link>
+
           <Link
             to="/"
             className="relative group hover:text-lime-600 transition-colors"
@@ -40,6 +40,7 @@ function Navbar() {
             <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-lime-600 transition-all duration-300 group-hover:w-full"></span>
           </Link>
         </div>
+
         <div className="flex items-center gap-3">
           <img
             src={userImage}
@@ -59,154 +60,194 @@ function Navbar() {
       </div>
     </nav>
   );
-}
+};
 
-function Footer() {
-  return (
-    <footer className="bg-lime-800 text-white px-8 py-10 mt-12">
-      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between">
-        <div className="mb-6 sm:mb-0">
-          <img src={Logo} alt="UPN Logo" className="w-12 mb-2" />
-          <p className="text-sm leading-6">
-            FAST UPNVJ
-            <br />
-            Website Peminjaman Fasilitas Kampus UPNVJ
-          </p>
-        </div>
-        <div>
-          <h6 className="font-semibold mb-2">Social</h6>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-yellow-300 transition">
-              Facebook
-            </a>
-            <a href="#" className="hover:text-yellow-300 transition">
-              Instagram
-            </a>
-            <a href="#" className="hover:text-yellow-300 transition">
-              Twitter
-            </a>
-          </div>
+const Footer = () => (
+  <footer className="bg-green-800 text-white px-8 py-10 mt-12">
+    <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between">
+      <div className="mb-6 sm:mb-0">
+        <img src={Logo} alt="UPN Logo" className="w-12 mb-2" />
+        <p className="text-sm leading-6">
+          FAST UPNVJ
+          <br />
+          Website Peminjaman Fasilitas Kampus UPNVJ
+        </p>
+      </div>
+
+      <div>
+        <h6 className="font-semibold mb-2">Social</h6>
+        <div className="flex gap-4">
+          <a href="#" className="hover:text-yellow-300 transition">
+            Facebook
+          </a>
+          <a href="#" className="hover:text-yellow-300 transition">
+            Instagram
+          </a>
+          <a href="#" className="hover:text-yellow-300 transition">
+            Twitter
+          </a>
         </div>
       </div>
-    </footer>
-  );
-}
+    </div>
+  </footer>
+);
 
-export default function HomePage() {
+export default function AjukanPeminjaman() {
   const navigate = useNavigate();
-  const [fasilitas, setFasilitas] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { state } = useLocation();
+  const fasilitas = state?.fasilitas;
 
-  useEffect(() => {
-    const fetchFasilitas = async () => {
-      try {
-        const res = await axios.get(
-          "https://fast-upnvj-backend.vercel.app/api/fasilitas"
-        );
-        setFasilitas(res.data);
-      } catch (error) {
-        console.error("Gagal mengambil data fasilitas:", error);
-      } finally {
-        setLoading(false);
-      }
+  const [form, setForm] = useState({
+    namaKegiatan: "",
+    tanggal: "",
+    waktuMulai: "",
+    waktuSelesai: "",
+    pj: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      fasilitasId: fasilitas?.id,
+      namaKegiatan: form.namaKegiatan,
+      tanggal: form.tanggal,
+      waktuMulai: form.waktuMulai,
+      waktuSelesai: form.waktuSelesai,
+      penanggungJawab: form.pj,
     };
 
-    fetchFasilitas();
-  }, []);
+    try {
+      const response = await axios.post(
+        "https://api.example.com/peminjaman",
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      console.log("Sukses:", response.data);
+      navigate("/", { replace: true });
+    } catch (error) {
+      console.error("Error:", error.response?.data || error.message);
+      alert("Pengajuan gagal. Coba lagi.");
+    }
+  };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <>
       <Navbar />
-      <div className="flex flex-1">
-        <aside className="w-72 bg-white p-5 border-r shadow-sm space-y-6">
-          <h2 className="text-lg font-bold flex items-center gap-2 text-black">
-            <FunnelIcon className="w-5 h-5" />
-            Filter Fasilitas
-          </h2>
-          {/* Filter belum terhubung */}
-          <div>
-            <h3 className="text-sm font-semibold text-gray-600 mb-2">
-              Jenis Fasilitas
-            </h3>
-            {["Auditorium", "Ruang Podcast", "Lab", "Lapangan"].map(
-              (jenis, i) => (
-                <label
-                  key={i}
-                  className="flex items-center gap-2 text-sm text-gray-700"
-                >
-                  <input type="checkbox" className="green-200" />
-                  {jenis}
-                </label>
-              )
-            )}
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold text-gray-600 mb-2">
-              Lokasi/Gedung
-            </h3>
-            <select className="w-full border rounded px-3 py-2 text-sm">
-              <option>Semua Lokasi</option>
-              <option>Kampus Limo</option>
-              <option>Pondok Labu</option>
-            </select>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold text-gray-600 mb-2">
-              Kapasitas
-            </h3>
-            <select className="w-full border rounded px-3 py-2 text-sm">
-              <option value="lt50">&lt; 50 orang</option>
-              <option value="gte50">&gt; 50 orang</option>
-            </select>
-          </div>
-          <button className="w-full bg-lime-600 text-white py-2 rounded-md hover:bg-lime-600 transition">
-            Reset Filter
-          </button>
-        </aside>
 
-        <main className="flex-1 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {loading ? (
-            <div className="col-span-full flex justify-center">
-              <span className="loading loading-spinner loading-lg text-lime-600"></span>
+      <div className="min-h-screen bg-gray-50 p-8">
+        <h1 className="text-2xl font-bold text-black mb-6">
+          Form Pengajuan Peminjaman
+        </h1>
+
+        {fasilitas && (
+          <div className="mb-4 p-4 border rounded bg-white shadow">
+            <h2 className="text-lg font-semibold">{fasilitas.title}</h2>
+            <p className="text-sm text-gray-600">
+              Kapasitas: {fasilitas.kapasitas} &nbsp;|&nbsp; Gedung:{" "}
+              {fasilitas.gedung}
+            </p>
+          </div>
+        )}
+
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 bg-white p-6 rounded shadow-md"
+        >
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Nama Kegiatan
+            </label>
+            <input
+              type="text"
+              name="namaKegiatan"
+              value={form.namaKegiatan}
+              onChange={handleChange}
+              className="mt-1 block w-full border border-gray-300 rounded px-3 py-2"
+              placeholder="Contoh: Seminar Kewirausahaan"
+              required
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Tanggal Peminjaman
+              </label>
+              <input
+                type="date"
+                name="tanggal"
+                value={form.tanggal}
+                onChange={handleChange}
+                className="mt-1 block w-full border border-gray-300 rounded px-3 py-2"
+                required
+              />
             </div>
-          ) : fasilitas.length === 0 ? (
-            <div className="col-span-full text-center text-gray-500">
-              Tidak ada fasilitas tersedia.
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Penanggung Jawab
+              </label>
+              <input
+                type="text"
+                name="pj"
+                value={form.pj}
+                onChange={handleChange}
+                className="mt-1 block w-full border border-gray-300 rounded px-3 py-2"
+                placeholder="Nama lengkap penanggung jawab"
+                required
+              />
             </div>
-          ) : (
-            fasilitas.map((item) => (
-              <div
-                key={item.id}
-                className="bg-white border rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
-              >
-                <img
-                  src={item.foto_uri}
-                  alt={item.nama_fasilitas}
-                  className="w-full h-40 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="text-md font-semibold text-lime-600 mb-1">
-                    {item.nama_fasilitas}
-                  </h3>
-                  <p className="text-sm text-gray-600">
-                    Kapasitas: {item.kapasitas}
-                  </p>
-                  <p className="text-sm text-gray-500 mb-4">
-                    Gedung: {item.lokasi}
-                  </p>
-                  <button
-                    className="w-full text-sm border border-lime-600 text-black hover:bg-lime-600 hover:text-white py-1.5 rounded-md transition"
-                    onClick={() => navigate("/ajukan-peminjaman")}
-                  >
-                    Ajukan Peminjaman
-                  </button>
-                </div>
-              </div>
-            ))
-          )}
-        </main>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Waktu Mulai
+              </label>
+              <input
+                type="time"
+                name="waktuMulai"
+                value={form.waktuMulai}
+                onChange={handleChange}
+                className="mt-1 block w-full border border-gray-300 rounded px-3 py-2"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Waktu Selesai
+              </label>
+              <input
+                type="time"
+                name="waktuSelesai"
+                value={form.waktuSelesai}
+                onChange={handleChange}
+                className="mt-1 block w-full border border-gray-300 rounded px-3 py-2"
+                required
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            className="bg-lime-600 text-white px-4 py-2 rounded hover:bg-lime-600 transition w-full md:w-auto"
+          >
+            Kirim Pengajuan
+          </button>
+        </form>
       </div>
+
       <Footer />
-    </div>
+    </>
   );
 }
