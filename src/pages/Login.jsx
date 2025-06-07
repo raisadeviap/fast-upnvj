@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import TogglePassword from "../components/TogglePassword";
+import axios from "axios";
 
 function Login() {
   const [toast, setToast] = useState({
@@ -16,20 +17,26 @@ function Login() {
     password: "",
   });
 
+  const navigate = useNavigate();
+
   console.log("Login form data:", formData);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+
     setToast({
       message: "",
       type: "",
     });
 
+    setLoading(true);
+
     if (!formData.nim || !formData.password) {
       setToast({
-        message: "NIM dan password harus diisi!",
+        message: "NIM dan password harus diisi.",
         type: "error",
       });
+      setLoading(false);
 
       setTimeout(() => {
         setToast({
@@ -40,30 +47,44 @@ function Login() {
       return;
     }
 
-    setLoading(true);
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/auth/login",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-    // Simulasi proses login
-    setTimeout(() => {
-      setLoading(false);
-      if (formData.nim === "2310512" && formData.password === "password") {
+      if (response.status === 200) {
         setToast({
           message: "Login berhasil!",
           type: "success",
         });
-        // Redirect ke halaman dashboard atau halaman lain
+
+        setTimeout(() => {
+          setLoading(false);
+          navigate("/home");
+
+          const token = response.data.token;
+          localStorage.setItem("token", token);
+        }, 3000);
       } else {
         setToast({
-          message: "NIM atau password salah!",
+          message: "Login gagal. Silakan coba lagi.",
           type: "error",
         });
+        setLoading(false);
       }
-      setTimeout(() => {
-        setToast({
-          message: "",
-          type: "",
-        });
-      }, 3000);
-    }, 3000);
+    } catch (error) {
+      setToast({
+        message: "Login gagal. Silakan coba lagi.",
+        type: "error",
+      });
+      setLoading(false);
+    }
   };
 
   return (
