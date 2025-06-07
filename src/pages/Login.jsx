@@ -64,12 +64,34 @@ function Login() {
           type: "success",
         });
 
-        setTimeout(() => {
+        setTimeout(async () => {
           setLoading(false);
-          navigate("/home");
 
           const token = response.data.token;
           localStorage.setItem("token", token);
+
+          // ambil user id dari token
+          const payload = JSON.parse(atob(token.split(".")[1])); // decode bagian tengah JWT
+          const userId = payload.id;
+
+          // ambil data user berdasarkan user id
+          const userRes = await axios.get(
+            `https://fast-upnvj-backend.vercel.app/api/users/${userId}`,
+            {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          const role = userRes.data.role;
+
+          if (role === 1) {
+            navigate("/home");
+          } else if (role === 2) {
+            navigate("/admin");
+          }
         }, 1000);
       } else {
         setToast({
