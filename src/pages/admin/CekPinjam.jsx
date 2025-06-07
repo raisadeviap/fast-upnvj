@@ -31,7 +31,7 @@ const CekPinjam = () => {
 
   const handleAction = async (id, status) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/peminjaman/${id}`, {
+      const res = await fetch(`https://fast-upnvj-backend.vercel.app/api/peminjaman/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

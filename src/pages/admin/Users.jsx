@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const API_URL = 'http://localhost:3000/api/users';
+const API_URL = 'https://fast-upnvj-backend.vercel.app/api/users';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -20,24 +20,40 @@ const Users = () => {
   }, []);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const { name, value } = e.target;
+  setForm((prev) => ({
+    ...prev,
+    [name]: name === "role" ? parseInt(value) : value,
+  }));
+};
+
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const method = editingId ? 'PUT' : 'POST';
-    const url = editingId ? `${API_URL}/${editingId}` : API_URL;
+  e.preventDefault();
+  const method = editingId ? 'PUT' : 'POST';
+  const url = editingId ? `${API_URL}/${editingId}` : API_URL;
 
-    await fetch(url, {
+  try {
+    const res = await fetch(url, {
       method,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form)
+      body: JSON.stringify(form),
     });
+
+    if (!res.ok) {
+      const errorData = await res.json();
+      alert('Gagal: ' + (errorData.message || 'Terjadi kesalahan'));
+      return;
+    }
 
     setForm({ nim: '', nama: '', email: '', fakultas: '', program_studi: '', password: '', role: 'mahasiswa' });
     setEditingId(null);
     fetchUsers();
-  };
+  } catch (error) {
+    alert('Kesalahan jaringan, coba lagi');
+  }
+};
+
 
   const handleEdit = (user) => {
     setForm({ ...user, password: '' });
@@ -61,8 +77,8 @@ const Users = () => {
         <input name="program_studi" value={form.program_studi} onChange={handleChange} placeholder="Program Studi" className="input input-bordered" required />
         <input name="password" value={form.password} onChange={handleChange} placeholder="Password" type="password" className="input input-bordered" required={!editingId} />
         <select name="role" value={form.role} onChange={handleChange} className="select select-bordered">
-          <option value="mahasiswa">Mahasiswa</option>
-          <option value="admin">Admin</option>
+          <option value={1}>Mahasiswa</option>
+          <option value={2}>Admin</option>
         </select>
         <button type="submit" className="btn btn-primary col-span-2">{editingId ? 'Update' : 'Tambah'} User</button>
       </form>

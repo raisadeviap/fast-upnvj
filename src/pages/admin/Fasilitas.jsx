@@ -10,7 +10,7 @@ const Fasilitas = () => {
   });
   const [editId, setEditId] = useState(null);
 
-  const API_URL = "http://localhost:3000/api/fasilitas";
+  const API_URL = "https://fast-upnvj-backend.vercel.app/api/fasilitas";
 
   useEffect(() => {
     fetchFacilities();
@@ -175,7 +175,7 @@ const Fasilitas = () => {
                 <td>
                   {facility.foto_uri ? (
                     <img
-                      src={`http://localhost:3000/uploads/${facility.foto_uri}`}
+                      src={`https://fast-upnvj-backend.vercel.app/uploads/${facility.foto_uri}`}
                       alt={facility.nama_fasilitas}
                       className="w-16 h-16 object-cover"
                     />
