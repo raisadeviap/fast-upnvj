@@ -134,7 +134,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <NavbarLoggedIn />
+      <NavbarLoggedIn/>
       <div className="flex flex-1">
         <aside className="w-72 bg-white p-5 border-r shadow-sm space-y-6">
           <h2 className="text-lg font-bold flex items-center gap-2 text-black">
