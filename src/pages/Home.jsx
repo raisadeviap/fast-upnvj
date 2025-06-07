@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/UPN.png";
 import { FunnelIcon } from "@heroicons/react/24/solid";
+import NavbarLoggedIn from "../components/NavbarLoggedin";
+
 
 const Fasilitas = [
   {
@@ -96,50 +98,6 @@ const Fasilitas = [
   },
 ];
 
-function Navbar() {
-  const navigate = useNavigate();
-  const userImage = "https://i.pravatar.cc/40?img=3";
-
-  return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-3">
-          <img src={Logo} alt="UPNVJ Logo" className="h-10" />
-          <span className="text-xl font-bold text-black">FAST UPNVJ</span>
-        </Link>
-        <div className="hidden md:flex gap-6 text-sm font-medium text-gray-700">
-         <Link to="/" className="relative group hover:text-lime-600 transition-colors"> Beranda
-           <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-lime-600 transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          
-          <Link to="/" className="relative group hover:text-lime-600 transition-colors">  Peminjaman
-            <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-lime-600 transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-
-          <Link to="/" className="relative group hover:text-lime-600 transition-colors"> Tentang Kami<span className="absolute left-0 bottom-0 h-0.5 w-0 bg-lime-600 transition-all duration-300 group-hover:w-full"></span></Link>
-
-        </div>
-        <div className="flex items-center gap-3">
-          <img
-            src={userImage}
-            alt="User"
-            className="w-10 h-10 rounded-full border"
-          />
-          <button
-            onClick={() => {
-              localStorage.removeItem("token");
-              navigate("/login");
-            }}
-            className="bg-lime-600 hover:bg-lime-600 text-white px-4 py-2 text-sm rounded-md transition"
-          >
-            Logout
-          </button>
-        </div>
-      </div>
-    </nav>
-  );
-}
-
 function Footer() {
   return (
     <footer className="bg-lime-800 text-white px-8 py-10 mt-12">
@@ -176,7 +134,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <Navbar />
+      <NavbarLoggedIn/>
       <div className="flex flex-1">
         <aside className="w-72 bg-white p-5 border-r shadow-sm space-y-6">
           <h2 className="text-lg font-bold flex items-center gap-2 text-black">

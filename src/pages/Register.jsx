@@ -57,7 +57,7 @@ function Register() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/register",
+        "http://fast-upnvj-backend.vercel.app/api/auth/register",
         formData,
         {
           headers: {
