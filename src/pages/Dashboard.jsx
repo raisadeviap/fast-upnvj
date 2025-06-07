@@ -13,7 +13,7 @@ import {
   DocumentIcon,
 } from "@heroicons/react/24/outline";
 import axios from "axios";
-import NavbarLoggedIn from "../components/NavbarLoggedin";
+import NavbarLoggedIn from "../components/NavbarLoggedIn";
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState("informasi-pengguna");

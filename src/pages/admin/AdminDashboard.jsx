@@ -2,7 +2,7 @@
 import { Outlet, NavLink } from 'react-router-dom';
 // Pastikan path ini sesuai
 import '../../App.css';
-import NavbarLoggedIn from '../../components/NavbarLoggedin';
+import NavbarLoggedIn from '../../components/NavbarLoggedIn';
 
 const AdminDashboard = () => {
   return (

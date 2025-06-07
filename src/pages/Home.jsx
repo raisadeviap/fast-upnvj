@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/UPN.png";
 import { FunnelIcon } from "@heroicons/react/24/solid";
-import NavbarLoggedIn from "../components/NavbarLoggedin";
+import NavbarLoggedIn from "../components/NavbarLoggedIn";
 
 
 const Fasilitas = [

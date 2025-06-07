@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation, Link, useParams } from "react-router-dom";
 import Logo from "../assets/UPN.png";
 import axios from "axios";
-import NavbarLoggedIn from "../components/NavbarLoggedin";
+import NavbarLoggedIn from "../components/NavbarLoggedIn";
 
 const Footer = () => (
 	<footer className="bg-green-800 text-white px-8 py-10 mt-12">
