@@ -125,7 +125,7 @@ function Dashboard() {
 
   return (
     <div>
-      <NavbarLoggedIn userData={userData} />
+      <NavbarLoggedIn userData={userData}/>
       <div className="min-h-screen flex bg-[#f8f8f8]">
         {/* Content */}
         <div className="mt-10 px-4 md:px-20 lg:px-20 flex flex-col lg:flex-row w-full">
