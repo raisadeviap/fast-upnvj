@@ -29,17 +29,17 @@ function Navbar() {
               <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <Link 
-              to="/" 
+              to="/home" 
               className="relative group hover:text-primary transition-colors"
             >
-              Tentang Kami
+              Peminjaman
               <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <Link 
               to="/" 
               className="relative group hover:text-primary transition-colors"
             >
-              Layanan
+              Tentang Kami
               <span className="absolute left-0 bottom-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </Link>
           </div>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import '../../App.css';
 
 const DashboardHome = () => {
   const [totalUsers, setTotalUsers] = useState(0);
