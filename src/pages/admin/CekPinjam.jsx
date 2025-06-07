@@ -159,7 +159,7 @@ const CekPinjam = () => {
                     {/* Link file KAK */}
                     {item.kak_uri && (
                       <a
-                        href={`https://fast-upnvj-backend.vercel.app${item.kak_uri}`}
+                        href={`${item.kak_uri}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="link text-blue-500 text-sm"
@@ -181,7 +181,7 @@ const CekPinjam = () => {
                         />
                         {item.disposisi_uri && (
                           <a
-                            href={`https://fast-upnvj-backend.vercel.app${item.disposisi_uri}`}
+                            href={`${item.disposisi_uri}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="link text-green-600 text-xs"
